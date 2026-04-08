@@ -1,108 +1,126 @@
 /* =====================================================
-   md-mediadesign — Script v3
-   WebGL Animated Shader Hero + Interactions
+   md-mediadesign — Script v3.1
+   WebGL2 Animated Shader Hero (ported from React)
+   Colors adapted: orange/amber → indigo/violet/cyan
    ===================================================== */
 
 /* =====================================================
-   WebGL Shader Hero
+   WebGL2 Shader Hero
+   Shader core by Matthias Hurrle (@atzedent), adapted
    ===================================================== */
 (function initShader() {
   const canvas = document.getElementById('shader-canvas');
   if (!canvas) return;
 
-  const gl = canvas.getContext('webgl', { antialias: false, alpha: false });
+  const gl = canvas.getContext('webgl2');
   if (!gl) {
     canvas.style.display = 'none';
-    document.body.style.background = '#050508';
     return;
   }
 
-  const VS = `
-    attribute vec2 a_pos;
-    void main() {
-      gl_Position = vec4(a_pos, 0.0, 1.0);
-    }
-  `;
+  /* --- Shaders --- */
+  const VS = `#version 300 es
+precision highp float;
+in vec4 position;
+void main(){ gl_Position = position; }`;
 
-  const FS = `
-    precision mediump float;
-    uniform float u_t;
-    uniform vec2  u_res;
+  /* Adapted: orange/amber → indigo/violet/cyan palette */
+  const FS = `#version 300 es
+precision highp float;
+out vec4 O;
+uniform vec2  resolution;
+uniform float time;
+uniform vec2  move;
+uniform vec2  touch;
+uniform int   pointerCount;
+uniform vec2  pointers;
+#define FC gl_FragCoord.xy
+#define T  time
+#define R  resolution
+#define MN min(R.x, R.y)
 
-    vec2 hash2(vec2 p) {
-      p = vec2(dot(p, vec2(127.1, 311.7)), dot(p, vec2(269.5, 183.3)));
-      return -1.0 + 2.0 * fract(sin(p) * 43758.5453);
-    }
+float rnd(vec2 p) {
+  p = fract(p * vec2(12.9898, 78.233));
+  p += dot(p, p + 34.56);
+  return fract(p.x * p.y);
+}
 
-    float gnoise(vec2 p) {
-      vec2 i = floor(p);
-      vec2 f = fract(p);
-      vec2 u = f * f * (3.0 - 2.0 * f);
-      return mix(
-        mix(dot(hash2(i),           f),
-            dot(hash2(i + vec2(1,0)), f - vec2(1,0)), u.x),
-        mix(dot(hash2(i + vec2(0,1)), f - vec2(0,1)),
-            dot(hash2(i + vec2(1,1)), f - vec2(1,1)), u.x),
-        u.y
-      );
-    }
+float noise(in vec2 p) {
+  vec2 i = floor(p), f = fract(p), u = f * f * (3. - 2. * f);
+  float a = rnd(i),
+        b = rnd(i + vec2(1, 0)),
+        c = rnd(i + vec2(0, 1)),
+        d = rnd(i + 1.);
+  return mix(mix(a, b, u.x), mix(c, d, u.x), u.y);
+}
 
-    float fbm(vec2 p) {
-      float v = 0.0;
-      float a = 0.5;
-      for (int i = 0; i < 5; i++) {
-        v += a * gnoise(p);
-        p  = p * 2.1 + vec2(1.7, 9.2);
-        a *= 0.5;
-      }
-      return v;
-    }
+float fbm(vec2 p) {
+  float t = .0, a = 1.;
+  mat2 m = mat2(1., -.5, .2, 1.2);
+  for (int i = 0; i < 5; i++) {
+    t += a * noise(p);
+    p *= 2. * m;
+    a *= .5;
+  }
+  return t;
+}
 
-    void main() {
-      vec2 uv = gl_FragCoord.xy / u_res;
-      float t = u_t * 0.09;
+float clouds(vec2 p) {
+  float d = 1., t = .0;
+  for (float i = .0; i < 3.; i++) {
+    float a = d * fbm(i * 10. + p.x * .2 + .2 * (1. + i) * p.y + d + i * i + p);
+    t = mix(t, d, a);
+    d = a;
+    p *= 2. / (i + 1.);
+  }
+  return t;
+}
 
-      vec2 q = vec2(fbm(uv + t * 0.8),
-                    fbm(uv + vec2(5.2, 1.3) + t * 0.6));
+void main(void) {
+  vec2 uv = (FC - .5 * R) / MN;
+  vec2 st = uv * vec2(2., 1.);
 
-      vec2 r = vec2(fbm(uv + 4.0 * q + vec2(1.7, 9.2) + t * 0.13),
-                    fbm(uv + 4.0 * q + vec2(8.3, 2.8) + t * 0.11));
+  vec3 col = vec3(0);
 
-      float n = fbm(uv + 4.0 * r);
-      n = n * 0.5 + 0.5;
+  float bg = clouds(vec2(st.x + T * .5, -st.y));
+  uv *= 1. - .3 * (sin(T * .2) * .5 + .5);
 
-      /* Color palette: very dark indigo → violet → deep blue */
-      vec3 c0 = vec3(0.018, 0.012, 0.06);   /* near black-indigo   */
-      vec3 c1 = vec3(0.06,  0.03,  0.22);   /* dark purple         */
-      vec3 c2 = vec3(0.12,  0.06,  0.38);   /* mid violet          */
-      vec3 c3 = vec3(0.22,  0.12,  0.55);   /* bright violet       */
-      vec3 c4 = vec3(0.04,  0.08,  0.30);   /* deep blue           */
+  for (float i = 1.; i < 12.; i++) {
+    uv += .1 * cos(i * vec2(.1 + .01 * i, .8) + i * i + T * .5 + .1 * uv.x);
+    vec2 p = uv;
+    float d = length(p);
 
-      vec3 col = mix(c0, c1, smoothstep(0.0,  0.25, n));
-      col = mix(col, c4, smoothstep(0.15, 0.45, n));
-      col = mix(col, c2, smoothstep(0.35, 0.65, n));
-      col = mix(col, c3, smoothstep(0.55, 0.88, n));
+    /* Original used vec3(1,2,3) for warm colors.
+       We rotate the hue to cool indigo/violet/cyan:
+       channel order (3,1,2) → blue-dominant, purple accent, cyan highlight */
+    col += .00125 / d * (cos(sin(i) * vec3(3., 1., 2.)) + 1.);
 
-      /* Subtle cyan shimmer near top */
-      float shimmer = smoothstep(0.85, 1.0, n) * smoothstep(0.7, 1.0, uv.y);
-      col += vec3(0.0, 0.08, 0.15) * shimmer;
+    float b = noise(i + p + bg * 1.731);
+    col += .002 * b / length(max(p, vec2(b * p.x * .02, p.y)));
 
-      /* Vignette */
-      vec2 cen = uv - 0.5;
-      float vig = 1.0 - smoothstep(0.3, 1.1, length(cen) * 1.6);
-      col *= vig * 0.8 + 0.2;
+    /* Background tint: deep indigo instead of warm brown */
+    col = mix(col, vec3(bg * .05, bg * .04, bg * .25), d);
+  }
 
-      /* Enforce dark floor */
-      col = mix(vec3(0.018, 0.012, 0.06), col, 0.68);
+  /* Shift overall palette toward indigo/violet */
+  col = col.bgr * vec3(.65, .55, 1.0)
+      + col.grb * vec3(.1,  .15, .25);
 
-      gl_FragColor = vec4(col, 1.0);
-    }
-  `;
+  /* Darken floor so text stays readable */
+  col *= .55;
+  col = pow(max(col, vec3(0.)), vec3(.85));
 
+  O = vec4(col, 1.);
+}`;
+
+  /* --- Compile helpers --- */
   function compile(type, src) {
     const s = gl.createShader(type);
     gl.shaderSource(s, src);
     gl.compileShader(s);
+    if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) {
+      console.error('Shader error:', gl.getShaderInfoLog(s));
+    }
     return s;
   }
 
@@ -110,62 +128,120 @@
   gl.attachShader(prog, compile(gl.VERTEX_SHADER,   VS));
   gl.attachShader(prog, compile(gl.FRAGMENT_SHADER, FS));
   gl.linkProgram(prog);
+  if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
+    console.error(gl.getProgramInfoLog(prog));
+    canvas.style.display = 'none';
+    return;
+  }
   gl.useProgram(prog);
 
+  /* --- Geometry (full-screen quad) --- */
   const buf = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  gl.bufferData(gl.ARRAY_BUFFER,
+    new Float32Array([-1, 1, -1, -1, 1, 1, 1, -1]), gl.STATIC_DRAW);
 
-  const loc = gl.getAttribLocation(prog, 'a_pos');
-  gl.enableVertexAttribArray(loc);
-  gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+  const posLoc = gl.getAttribLocation(prog, 'position');
+  gl.enableVertexAttribArray(posLoc);
+  gl.vertexAttribPointer(posLoc, 2, gl.FLOAT, false, 0, 0);
 
-  const uT   = gl.getUniformLocation(prog, 'u_t');
-  const uRes = gl.getUniformLocation(prog, 'u_res');
+  /* --- Uniform locations --- */
+  const uRes          = gl.getUniformLocation(prog, 'resolution');
+  const uTime         = gl.getUniformLocation(prog, 'time');
+  const uMove         = gl.getUniformLocation(prog, 'move');
+  const uTouch        = gl.getUniformLocation(prog, 'touch');
+  const uPointerCount = gl.getUniformLocation(prog, 'pointerCount');
+  const uPointers     = gl.getUniformLocation(prog, 'pointers');
+
+  /* --- Resize --- */
+  let dpr = Math.max(1, 0.5 * window.devicePixelRatio);
 
   function resize() {
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    dpr = Math.max(1, 0.5 * window.devicePixelRatio);
     canvas.width  = window.innerWidth  * dpr;
     canvas.height = window.innerHeight * dpr;
     gl.viewport(0, 0, canvas.width, canvas.height);
-    gl.uniform2f(uRes, canvas.width, canvas.height);
   }
 
   window.addEventListener('resize', resize, { passive: true });
   resize();
 
-  let start = null;
-  let frame = null;
-  let visible = true;
+  /* --- Pointer tracking --- */
+  const pointers   = new Map();
+  let   mouseMove  = [0, 0];
+  let   lastCoords = [0, 0];
 
-  document.addEventListener('visibilitychange', () => {
-    visible = !document.hidden;
-    if (visible && !frame) render(null);
-  });
-
-  function render(ts) {
-    if (!visible) { frame = null; return; }
-    if (!start) start = ts;
-    gl.uniform1f(uT, (ts - start) * 0.001);
-    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-    frame = requestAnimationFrame(render);
+  function mapCoords(x, y) {
+    return [x * dpr, canvas.height - y * dpr];
   }
 
-  frame = requestAnimationFrame(render);
+  canvas.addEventListener('pointerdown', e => {
+    pointers.set(e.pointerId, mapCoords(e.clientX, e.clientY));
+  });
+  canvas.addEventListener('pointerup', e => {
+    lastCoords = pointers.get(e.pointerId) || lastCoords;
+    pointers.delete(e.pointerId);
+  });
+  canvas.addEventListener('pointerleave', e => {
+    lastCoords = pointers.get(e.pointerId) || lastCoords;
+    pointers.delete(e.pointerId);
+  });
+  canvas.addEventListener('pointermove', e => {
+    if (!pointers.size) return;
+    pointers.set(e.pointerId, mapCoords(e.clientX, e.clientY));
+    mouseMove = [mouseMove[0] + e.movementX, mouseMove[1] + e.movementY];
+  });
+
+  /* --- Render loop --- */
+  let startTime  = null;
+  let frameId    = null;
+  let pageActive = true;
+
+  document.addEventListener('visibilitychange', () => {
+    pageActive = !document.hidden;
+    if (pageActive && !frameId) frameId = requestAnimationFrame(loop);
+  });
+
+  function loop(now) {
+    if (!pageActive) { frameId = null; return; }
+    if (!startTime) startTime = now;
+    const t = (now - startTime) * 1e-3;
+
+    gl.clearColor(0, 0, 0, 1);
+    gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.useProgram(prog);
+    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+
+    const firstPtr = pointers.size
+      ? Array.from(pointers.values())[0]
+      : lastCoords;
+    const allPtrs = pointers.size
+      ? Array.from(pointers.values()).flat()
+      : [0, 0];
+
+    gl.uniform2f(uRes,    canvas.width, canvas.height);
+    gl.uniform1f(uTime,   t);
+    gl.uniform2f(uMove,   ...mouseMove);
+    gl.uniform2f(uTouch,  ...firstPtr);
+    gl.uniform1i(uPointerCount, pointers.size);
+    gl.uniform2fv(uPointers, allPtrs);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+
+    mouseMove = [0, 0];
+    frameId = requestAnimationFrame(loop);
+  }
+
+  frameId = requestAnimationFrame(loop);
 })();
 
 /* =====================================================
-   DOM Ready
+   DOM Ready — Interactions & Animations
    ===================================================== */
 document.addEventListener('DOMContentLoaded', () => {
 
   /* --- Header scroll effect --- */
   const header = document.getElementById('header');
-
-  const onScroll = () => {
-    header.classList.toggle('scrolled', window.scrollY > 48);
-  };
-
+  const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 48);
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
@@ -191,17 +267,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const revealEls = document.querySelectorAll('.reveal');
 
   const revealObs = new IntersectionObserver((entries) => {
-    let delay = 0;
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
-      // Stagger cards in the same row
       const el = entry.target;
-      setTimeout(() => el.classList.add('visible'), delay);
-      // Detect sibling cards for stagger
-      const parent = el.parentElement;
-      const siblings = [...parent.children].filter(c => c.classList.contains('reveal'));
+      const siblings = [...el.parentElement.children].filter(c => c.classList.contains('reveal'));
       const idx = siblings.indexOf(el);
-      delay = (idx % 3) * 80;
+      setTimeout(() => el.classList.add('visible'), (idx % 3) * 80);
       revealObs.unobserve(el);
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
@@ -221,7 +292,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const tick = (now) => {
         const p = Math.min((now - start) / dur, 1);
-        // Ease out expo
         const e = p === 1 ? 1 : 1 - Math.pow(2, -10 * p);
         el.textContent = Math.floor(e * target);
         if (p < 1) requestAnimationFrame(tick);
@@ -244,35 +314,29 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!entry.isIntersecting) return;
       const id = entry.target.getAttribute('id');
       navLinks.forEach(link => {
-        const active = link.getAttribute('href') === `#${id}`;
-        link.style.color = active ? 'var(--brand-bright)' : '';
+        link.style.color = link.getAttribute('href') === `#${id}` ? 'var(--brand-bright)' : '';
       });
     });
   }, { threshold: 0.4, rootMargin: '-80px 0px -45% 0px' });
 
   sections.forEach(s => navObs.observe(s));
 
-  /* --- Custom Cursor Glow (desktop only) --- */
+  /* --- Cursor glow (desktop only) --- */
   if (window.matchMedia('(pointer: fine)').matches) {
     const glow = document.createElement('div');
     glow.style.cssText = `
-      position: fixed; pointer-events: none; z-index: 9999;
-      width: 400px; height: 400px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(99,102,241,0.06) 0%, transparent 70%);
-      transform: translate(-50%, -50%);
-      transition: opacity 0.4s;
-      top: 0; left: 0;
+      position:fixed;pointer-events:none;z-index:9999;
+      width:420px;height:420px;border-radius:50%;
+      background:radial-gradient(circle, rgba(99,102,241,0.07) 0%, transparent 70%);
+      transform:translate(-50%,-50%);
+      top:0;left:0;transition:opacity .4s;
     `;
     document.body.appendChild(glow);
 
-    let cx = window.innerWidth / 2;
-    let cy = window.innerHeight / 2;
+    let cx = innerWidth / 2, cy = innerHeight / 2;
     let tx = cx, ty = cy;
 
-    window.addEventListener('mousemove', e => {
-      tx = e.clientX;
-      ty = e.clientY;
-    }, { passive: true });
+    window.addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY; }, { passive: true });
 
     (function animGlow() {
       cx += (tx - cx) * 0.1;
@@ -284,20 +348,17 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* --- Magnetic buttons --- */
-  document.querySelectorAll('.btn-primary, .btn-ghost, .nav-cta').forEach(btn => {
-    if (!window.matchMedia('(pointer: fine)').matches) return;
-
-    btn.addEventListener('mousemove', e => {
-      const rect = btn.getBoundingClientRect();
-      const x = e.clientX - rect.left - rect.width  / 2;
-      const y = e.clientY - rect.top  - rect.height / 2;
-      btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+  if (window.matchMedia('(pointer: fine)').matches) {
+    document.querySelectorAll('.btn-primary, .btn-ghost, .nav-cta').forEach(btn => {
+      btn.addEventListener('mousemove', e => {
+        const r = btn.getBoundingClientRect();
+        const x = e.clientX - r.left  - r.width  / 2;
+        const y = e.clientY - r.top   - r.height / 2;
+        btn.style.transform = `translate(${x * 0.18}px, ${y * 0.18}px)`;
+      });
+      btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
     });
-
-    btn.addEventListener('mouseleave', () => {
-      btn.style.transform = '';
-    });
-  });
+  }
 
   /* --- Contact Form --- */
   const form = document.getElementById('kontaktForm');
