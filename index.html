@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="md-mediadesign — Werbeagentur in Regensburg. Moderne Webseiten, OnePager, Logodesign, SEO und mehr. Über 20 Jahre Erfahrung.">
+  <title>md mediadesign — Webdesign & Mediengestaltung aus Regensburg</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Shader Canvas (Hero Background) -->
+  <canvas id="shader-canvas"></canvas>
+
+  <!-- Navigation -->
+  <header class="site-header" id="header">
+    <div class="container header-inner">
+      <a href="#" class="logo">
+        <img src="assets/logo.png" alt="md mediadesign Logo" class="logo-img">
+      </a>
+      <nav class="main-nav" id="mainNav">
+        <ul class="nav-list">
+          <li><a href="#leistungen" class="nav-link">Leistungen</a></li>
+          <li><a href="#ueber-uns" class="nav-link">Über uns</a></li>
+          <li><a href="#ablauf" class="nav-link">Ablauf</a></li>
+          <li><a href="#referenzen" class="nav-link">Referenzen</a></li>
+          <li><a href="#kontakt" class="nav-cta">Kontakt</a></li>
+        </ul>
+      </nav>
+      <button class="burger" id="burger" aria-label="Menü öffnen">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="hero-overlay"></div>
+    <div class="container hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          <span>Werbeagentur aus Regensburg</span>
+        </div>
+        <h1 class="hero-title">
+          Digitale Lösungen,<br>
+          die <span class="grad-text">wirken.</span>
+        </h1>
+        <p class="hero-sub">Webdesign, Branding &amp; Online-Marketing — seit 1998.<br>Wir bauen digitale Auftritte, die Kunden überzeugen und Marken stärken.</p>
+        <div class="hero-actions">
+          <a href="#kontakt" class="btn-primary">
+            <span>Angebot anfordern</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="#leistungen" class="btn-ghost">Leistungen entdecken</a>
+        </div>
+        <div class="hero-trust">
+          <div class="trust-item">
+            <span class="trust-num">20+</span>
+            <span class="trust-label">Jahre Erfahrung</span>
+          </div>
+          <div class="trust-divider"></div>
+          <div class="trust-item">
+            <span class="trust-num">85+</span>
+            <span class="trust-label">Websites gebaut</span>
+          </div>
+          <div class="trust-divider"></div>
+          <div class="trust-item">
+            <span class="trust-num">100%</span>
+            <span class="trust-label">Empfehlungsrate</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="hero-scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- Marquee -->
+  <div class="marquee-band">
+    <div class="marquee-track">
+      <div class="marquee-items" aria-hidden="true">
+        <span>Webdesign</span><span class="mx">✦</span>
+        <span>OnePager</span><span class="mx">✦</span>
+        <span>Logo &amp; Branding</span><span class="mx">✦</span>
+        <span>SEO</span><span class="mx">✦</span>
+        <span>Social Media</span><span class="mx">✦</span>
+        <span>Hosting</span><span class="mx">✦</span>
+        <span>Webdesign</span><span class="mx">✦</span>
+        <span>OnePager</span><span class="mx">✦</span>
+        <span>Logo &amp; Branding</span><span class="mx">✦</span>
+        <span>SEO</span><span class="mx">✦</span>
+        <span>Social Media</span><span class="mx">✦</span>
+        <span>Hosting</span><span class="mx">✦</span>
+      </div>
+      <div class="marquee-items" aria-hidden="true">
+        <span>Webdesign</span><span class="mx">✦</span>
+        <span>OnePager</span><span class="mx">✦</span>
+        <span>Logo &amp; Branding</span><span class="mx">✦</span>
+        <span>SEO</span><span class="mx">✦</span>
+        <span>Social Media</span><span class="mx">✦</span>
+        <span>Hosting</span><span class="mx">✦</span>
+        <span>Webdesign</span><span class="mx">✦</span>
+        <span>OnePager</span><span class="mx">✦</span>
+        <span>Logo &amp; Branding</span><span class="mx">✦</span>
+        <span>SEO</span><span class="mx">✦</span>
+        <span>Social Media</span><span class="mx">✦</span>
+        <span>Hosting</span><span class="mx">✦</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Leistungen -->
+  <section class="section leistungen" id="leistungen">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-label">Was wir bieten</span>
+        <h2 class="section-title">Unsere <span class="grad-text">Leistungen</span></h2>
+        <p class="section-desc">Von der Idee bis zur fertigen Umsetzung — alles aus einer Hand.</p>
+      </div>
+      <div class="services-grid">
+
+        <div class="service-card reveal">
+          <div class="sc-num">01</div>
+          <div class="sc-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3>Webdesign</h3>
+          <p>Maßgeschneiderte, responsive Webseiten — kein Template von der Stange. Modernes Design, das auf allen Geräten überzeugt.</p>
+          <a href="#kontakt" class="sc-link">Mehr erfahren <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+
+        <div class="service-card service-card--featured reveal">
+          <div class="sc-badge">Bestseller</div>
+          <div class="sc-num">02</div>
+          <div class="sc-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <h3>OnePager</h3>
+          <p>Ihre Visitenkarte im Internet. Schnell einsetzbar, rechtssicher und barrierefrei. Ab 999 € — die perfekte Online-Visitenkarte.</p>
+          <a href="#kontakt" class="sc-link">Mehr erfahren <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="sc-num">03</div>
+          <div class="sc-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <h3>Logo &amp; Branding</h3>
+          <p>Markenidentität, die bleibt. Vom Logodesign über Farben bis zur kompletten Corporate Identity — alles aus einem Guss.</p>
+          <a href="#kontakt" class="sc-link">Mehr erfahren <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="sc-num">04</div>
+          <div class="sc-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+          <h3>SEO</h3>
+          <p>Sichtbarkeit in Suchmaschinen steigern. Maßgeschneiderte Strategien für nachhaltig bessere Rankings und mehr Besucher.</p>
+          <a href="#kontakt" class="sc-link">Mehr erfahren <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="sc-num">05</div>
+          <div class="sc-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          </div>
+          <h3>Social Media</h3>
+          <p>Aufmerksamkeit auf Ihren Kanälen. Wir erstellen Beiträge und Kampagnen, die Ihre Zielgruppe wirklich erreichen.</p>
+          <a href="#kontakt" class="sc-link">Mehr erfahren <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="sc-num">06</div>
+          <div class="sc-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+          </div>
+          <h3>Hosting</h3>
+          <p>Sicheres und schnelles Webhosting ab 9,99 €/mtl. Damit Ihre Seite zuverlässig online ist — rund um die Uhr.</p>
+          <a href="#kontakt" class="sc-link">Mehr erfahren <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- OnePager Feature -->
+  <section class="feature-section" id="onepager">
+    <div class="container">
+      <div class="feature-grid">
+        <div class="feature-content reveal">
+          <span class="section-label section-label--light">Unser Bestseller</span>
+          <h2 class="section-title section-title--light">OnePager <span class="grad-text">ab 999 €</span></h2>
+          <p class="feature-desc">Ihre professionelle Online-Visitenkarte. Rechtssicher, barrierefrei und mobil optimiert. In wenigen Tagen online — perfekt als Ergänzung zu Ihrem Google Maps Eintrag.</p>
+          <ul class="feature-list">
+            <li>
+              <span class="feat-check">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              Responsive auf allen Geräten
+            </li>
+            <li>
+              <span class="feat-check">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              DSGVO-konform &amp; rechtssicher
+            </li>
+            <li>
+              <span class="feat-check">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              Barrierefrei nach WCAG
+            </li>
+            <li>
+              <span class="feat-check">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              SEO-optimiert für lokale Suche
+            </li>
+            <li>
+              <span class="feat-check">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+              Hosting inklusive (12 Monate)
+            </li>
+          </ul>
+          <a href="#kontakt" class="btn-primary">
+            <span>Jetzt OnePager anfragen</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+        <div class="feature-visual reveal">
+          <div class="browser-mockup">
+            <div class="browser-bar">
+              <div class="browser-dots">
+                <span></span><span></span><span></span>
+              </div>
+              <div class="browser-url">md-mediadesign.de</div>
+            </div>
+            <div class="browser-content">
+              <div class="mock-hero"></div>
+              <div class="mock-text"></div>
+              <div class="mock-text mock-text--sm"></div>
+              <div class="mock-cards">
+                <div class="mock-card"></div>
+                <div class="mock-card"></div>
+                <div class="mock-card"></div>
+              </div>
+              <div class="mock-cta"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item reveal">
+          <span class="stat-num" data-target="120">0</span>
+          <span class="stat-label">Logos erstellt</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item reveal">
+          <span class="stat-num" data-target="85">0</span>
+          <span class="stat-label">Websites gebaut</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item reveal">
+          <span class="stat-num stat-num--pct" data-target="100">0</span>
+          <span class="stat-label">Positives Feedback</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item reveal">
+          <span class="stat-num" data-target="200">0</span>
+          <span class="stat-label">Printmedien</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Über uns / Timeline -->
+  <section class="section ueber-uns" id="ueber-uns">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-label">Wer wir sind</span>
+        <h2 class="section-title">Über <span class="grad-text">20 Jahre</span> Erfahrung</h2>
+        <p class="section-desc">Von Werbetechnik bis Webdesign — wir entwickeln uns stetig weiter, damit unsere Kunden immer die beste Lösung bekommen.</p>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item reveal">
+          <div class="tl-year">1998</div>
+          <div class="tl-connector">
+            <div class="tl-dot"></div>
+            <div class="tl-line"></div>
+          </div>
+          <div class="tl-card">
+            <h3>Werbetechnik</h3>
+            <p>Schilder, Lichtreklamen und Airbrush — hier hat alles begonnen.</p>
+          </div>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="tl-year">2003</div>
+          <div class="tl-connector">
+            <div class="tl-dot"></div>
+            <div class="tl-line"></div>
+          </div>
+          <div class="tl-card">
+            <h3>Mediengestaltung</h3>
+            <p>HTML und Flash machten das Internet dynamisch. Barrierefreie Webseiten brachten mehr Ästhetik.</p>
+          </div>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="tl-year">2018</div>
+          <div class="tl-connector">
+            <div class="tl-dot"></div>
+            <div class="tl-line"></div>
+          </div>
+          <div class="tl-card">
+            <h3>Fachinformatik</h3>
+            <p>HTML5 und responsive Design für die Vielzahl an Geräten und Auflösungen.</p>
+          </div>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="tl-year">2021</div>
+          <div class="tl-connector">
+            <div class="tl-dot tl-dot--active"></div>
+          </div>
+          <div class="tl-card tl-card--active">
+            <h3>WordPress &amp; UX</h3>
+            <p>Mit modernen Tools und UI Design wird aus der Idee ein fertiges Produkt.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ablauf -->
+  <section class="section ablauf" id="ablauf">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-label">So arbeiten wir</span>
+        <h2 class="section-title">In <span class="grad-text">3 Schritten</span> zum Ziel</h2>
+        <p class="section-desc">Unkompliziert, transparent und persönlich.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div class="step-num">01</div>
+          <h3>Ihre Idee</h3>
+          <p>Teilen Sie uns Ihre Vorstellungen mit. Je genauer, desto besser — aber auch eine grobe Idee reicht vollkommen aus.</p>
+        </div>
+        <div class="step-arrow reveal">
+          <svg width="48" height="24" viewBox="0 0 48 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="0" y1="12" x2="38" y2="12"/><polyline points="32 5 40 12 32 19"/></svg>
+        </div>
+        <div class="step reveal">
+          <div class="step-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+          </div>
+          <div class="step-num">02</div>
+          <h3>Planung</h3>
+          <p>Wir analysieren den Umfang, erstellen ein Konzept und stimmen alles gemeinsam mit Ihnen ab.</p>
+        </div>
+        <div class="step-arrow reveal">
+          <svg width="48" height="24" viewBox="0 0 48 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="0" y1="12" x2="38" y2="12"/><polyline points="32 5 40 12 32 19"/></svg>
+        </div>
+        <div class="step reveal">
+          <div class="step-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <div class="step-num">03</div>
+          <h3>Angebot</h3>
+          <p>Unverbindliches Angebot — transparent und kalkulierbar. Keine versteckten Kosten, keine Überraschungen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Referenzen -->
+  <section class="section referenzen" id="referenzen">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-label">Unsere Arbeit</span>
+        <h2 class="section-title">Ausgewählte <span class="grad-text">Referenzen</span></h2>
+        <p class="section-desc">Ein Auszug unserer Projekte — unser Portfolio spricht für sich.</p>
+      </div>
+      <div class="portfolio-grid">
+        <div class="portfolio-card reveal">
+          <div class="portfolio-img" style="background-image: url('projektbilder/Website/Onlinestore_mazzinga.jpg');"></div>
+          <div class="portfolio-overlay">
+            <span class="portfolio-tag">Online Shop</span>
+            <h3>Mazzinga</h3>
+            <p>Webdesign &amp; Online Shop</p>
+          </div>
+        </div>
+        <a href="onepager.html" class="portfolio-card portfolio-card--link reveal">
+          <div class="portfolio-img" style="background-image: url('projektbilder/Website/OnePager_Arzt_Dr-Schmidt.webp');"></div>
+          <div class="portfolio-overlay">
+            <span class="portfolio-tag">OnePager · Festpreis</span>
+            <h3>OnePager ab 999 €</h3>
+            <p>Ihre Visitenkarte im Internet — Mehr erfahren →</p>
+          </div>
+        </a>
+        <div class="portfolio-card reveal">
+          <div class="portfolio-img" style="background-image: url('projektbilder/Logos/WassUp_Logo.jpg');"></div>
+          <div class="portfolio-overlay">
+            <span class="portfolio-tag">Logo Design</span>
+            <h3>WassUp</h3>
+            <p>Logo &amp; Branding</p>
+          </div>
+        </div>
+        <div class="portfolio-card reveal">
+          <div class="portfolio-img" style="background-image: url('projektbilder/Flyer/Futurekids.jpg');"></div>
+          <div class="portfolio-overlay">
+            <span class="portfolio-tag">Printmedien</span>
+            <h3>Futurekids</h3>
+            <p>Flyer Design</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="cta-section">
+    <div class="cta-glow"></div>
+    <div class="container cta-inner reveal">
+      <span class="section-label section-label--light">Bereit loszulegen?</span>
+      <h2>Welches ist Ihr<br><span class="grad-text">nächstes Projekt?</span></h2>
+      <p>Kontaktieren Sie uns — wir freuen uns auf Ihre Idee.</p>
+      <a href="#kontakt" class="btn-primary btn-primary--lg">
+        <span>Jetzt Kontakt aufnehmen</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Kontakt -->
+  <section class="section kontakt" id="kontakt">
+    <div class="container">
+      <div class="kontakt-grid">
+        <div class="kontakt-info reveal">
+          <span class="section-label">Loslegen</span>
+          <h2 class="section-title">Kontakt <span class="grad-text">aufnehmen</span></h2>
+          <p class="section-desc">Wir melden uns in der Regel innerhalb von 24 Stunden zurück.</p>
+          <div class="contact-details">
+            <a href="tel:094064250005" class="contact-item">
+              <div class="contact-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.11 12 19.79 19.79 0 0 1 1.04 3.37 2 2 0 0 1 3 1.37h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <div>
+                <strong>Telefon</strong>
+                <span>09406 42 500 05</span>
+              </div>
+            </a>
+            <a href="tel:01728191039" class="contact-item">
+              <div class="contact-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+              </div>
+              <div>
+                <strong>Mobil</strong>
+                <span>0172 819 10 39</span>
+              </div>
+            </a>
+            <a href="mailto:mail@md-mediadesign.de" class="contact-item">
+              <div class="contact-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div>
+                <strong>E-Mail</strong>
+                <span>mail@md-mediadesign.de</span>
+              </div>
+            </a>
+            <div class="contact-item">
+              <div class="contact-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div>
+                <strong>Adresse</strong>
+                <span>Donaustr. 6, 93105 Tegernheim</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="kontakt-form-wrap reveal">
+          <form class="kontakt-form" id="kontaktForm">
+            <div class="form-row">
+              <div class="form-field">
+                <label for="name">Name *</label>
+                <input type="text" id="name" name="name" placeholder="Ihr Name" required>
+              </div>
+              <div class="form-field">
+                <label for="email">E-Mail *</label>
+                <input type="email" id="email" name="email" placeholder="ihre@email.de" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="telefon">Telefon</label>
+                <input type="tel" id="telefon" name="telefon" placeholder="Optional">
+              </div>
+              <div class="form-field">
+                <label for="betreff">Betreff</label>
+                <select id="betreff" name="betreff">
+                  <option value="">Bitte wählen ...</option>
+                  <option value="webdesign">Webdesign</option>
+                  <option value="onepager">OnePager</option>
+                  <option value="logo">Logo &amp; Branding</option>
+                  <option value="seo">SEO</option>
+                  <option value="sonstiges">Sonstiges</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-field form-field--full">
+              <label for="nachricht">Nachricht *</label>
+              <textarea id="nachricht" name="nachricht" rows="5" placeholder="Beschreiben Sie kurz Ihr Projekt ..." required></textarea>
+            </div>
+            <div class="form-field form-field--full">
+              <label class="checkbox-wrap">
+                <input type="checkbox" name="datenschutz" required>
+                <span class="checkbox-box"></span>
+                <span class="checkbox-text">Ich habe die <a href="datenschutz.html" target="_blank">Datenschutzerklärung</a> gelesen und stimme zu. *</span>
+              </label>
+            </div>
+            <div class="form-field form-field--full">
+              <button type="submit" class="btn-primary btn-primary--full">
+                <span>Nachricht senden</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="assets/logo.png" alt="md mediadesign" class="footer-logo">
+        <p>Webdesign &amp; Mediengestaltung aus Regensburg.<br>Seit 1998.</p>
+      </div>
+      <div class="footer-nav">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#leistungen">Leistungen</a></li>
+          <li><a href="#ueber-uns">Über uns</a></li>
+          <li><a href="#ablauf">Ablauf</a></li>
+          <li><a href="#referenzen">Referenzen</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+      </div>
+      <div class="footer-nav">
+        <h4>Rechtliches</h4>
+        <ul>
+          <li><a href="impressum.html">Impressum</a></li>
+          <li><a href="datenschutz.html">Datenschutz</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; 2025 md mediadesign — Marco Delicati. Alle Rechte vorbehalten.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

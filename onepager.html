@@ -1,0 +1,1422 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="OnePager ab 999 € Festpreis — Ihre professionelle Visitenkarte im Internet. DSGVO-konform, SEO-optimiert, barrierefrei. Fertig in 5 Tagen. md-mediadesign Regensburg.">
+  <title>OnePager ab 999 € — Ihre Visitenkarte im Internet | md mediadesign</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+
+    /* ============================================
+       OnePager Landingpage — Eigene Stile
+       ============================================ */
+
+    /* ── Zurück-Link ── */
+    .back-link {
+      position: fixed;
+      top: 24px;
+      left: 24px;
+      z-index: 1100;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gray-500);
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--gray-200);
+      border-radius: 50px;
+      padding: 8px 18px 8px 12px;
+      transition: all var(--transition);
+      text-decoration: none;
+    }
+    .back-link:hover {
+      color: var(--blue);
+      border-color: var(--blue);
+      box-shadow: 0 4px 12px var(--blue-glow);
+      transform: translateX(-2px);
+    }
+
+    /* ── HERO ── */
+    .lp-hero {
+      position: relative;
+      background: var(--gray-900);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .lp-hero-bg {
+      position: absolute;
+      inset: 0;
+    }
+    .lp-hero-gradient {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 65% 40%, rgba(37,99,235,0.28) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 15% 80%, rgba(99,102,241,0.15) 0%, transparent 60%);
+    }
+    .lp-hero-pattern {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.04) 1px, transparent 0);
+      background-size: 28px 28px;
+    }
+    .lp-hero-inner {
+      position: relative;
+      z-index: 1;
+      padding: 160px 0 100px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+
+    /* Hero Content */
+    .lp-hero-content .hero-badge {
+      background: rgba(37,99,235,0.15);
+      border-color: rgba(37,99,235,0.3);
+      color: var(--blue-bright);
+    }
+    .lp-hero-title {
+      font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 20px;
+      letter-spacing: -0.03em;
+    }
+    .lp-hero-title .highlight { color: var(--blue-bright); }
+    .lp-hero-subtitle {
+      font-size: 1.1rem;
+      color: var(--gray-400);
+      line-height: 1.8;
+      margin-bottom: 32px;
+      max-width: 460px;
+    }
+    .lp-price-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+    .lp-price-badge {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 4px;
+      background: var(--blue);
+      color: var(--white);
+      padding: 14px 28px;
+      border-radius: var(--radius-sm);
+      box-shadow: 0 10px 36px rgba(37,99,235,0.45);
+    }
+    .lp-price-badge .price-big {
+      font-size: 2.6rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+    .lp-price-badge .price-currency {
+      font-size: 1.3rem;
+      font-weight: 600;
+      opacity: 0.8;
+      margin-right: 2px;
+      align-self: flex-start;
+      margin-top: 4px;
+    }
+    .lp-price-badge .price-label {
+      font-size: 0.82rem;
+      font-weight: 500;
+      opacity: 0.7;
+      margin-left: 10px;
+      align-self: flex-end;
+      margin-bottom: 4px;
+    }
+    .lp-price-note {
+      font-size: 0.82rem;
+      color: var(--gray-500);
+      line-height: 1.5;
+    }
+    .lp-price-note strong { color: var(--gray-300); }
+    .lp-trust-row {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 32px;
+    }
+    .lp-trust-chip {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--gray-500);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+    .lp-trust-chip svg { color: var(--blue-bright); flex-shrink: 0; }
+
+    /* Hero Visual */
+    .lp-hero-visual {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .lp-mockup {
+      background: var(--gray-800);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.45);
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+    .lp-mockup-bar {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 13px 18px;
+      background: rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .lp-mockup-bar .dot { width: 11px; height: 11px; border-radius: 50%; }
+    .lp-mockup-bar .dot:nth-child(1) { background: #ff5f57; }
+    .lp-mockup-bar .dot:nth-child(2) { background: #ffbd2e; }
+    .lp-mockup-bar .dot:nth-child(3) { background: #28c840; }
+    .lp-mockup-bar .url-bar {
+      flex: 1;
+      background: rgba(255,255,255,0.06);
+      border-radius: 5px;
+      padding: 5px 12px;
+      font-size: 11px;
+      color: var(--gray-500);
+      margin-left: 10px;
+      letter-spacing: 0.02em;
+    }
+    .lp-mockup-content {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .lp-mockup-hero-block {
+      height: 85px;
+      background: linear-gradient(120deg, var(--blue) 0%, #1e40af 100%);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      padding: 0 18px;
+      gap: 10px;
+    }
+    .lp-mockup-hero-text { flex: 1; }
+    .lp-mockup-hero-text .ln { height: 8px; background: rgba(255,255,255,0.55); border-radius: 4px; margin-bottom: 7px; }
+    .lp-mockup-hero-text .ln:nth-child(1) { width: 68%; }
+    .lp-mockup-hero-text .ln:nth-child(2) { width: 44%; background: rgba(255,255,255,0.28); }
+    .lp-mockup-hero-btn { width: 56px; height: 26px; background: rgba(255,255,255,0.9); border-radius: 20px; flex-shrink: 0; }
+    .lp-mockup-row3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; }
+    .lp-mockup-mini { height: 48px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 7px; }
+    .lp-mockup-row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .lp-mockup-input { height: 28px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 5px; }
+    .lp-mockup-cta { height: 32px; background: var(--blue); border-radius: 20px; width: 48%; opacity: 0.9; }
+    .lp-5days {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius-sm);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .lp-5days-icon {
+      width: 40px; height: 40px;
+      background: rgba(37,99,235,0.18);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--blue-bright);
+      flex-shrink: 0;
+    }
+    .lp-5days-text strong { display: block; color: var(--white); font-size: 0.88rem; font-weight: 700; }
+    .lp-5days-text span { font-size: 0.78rem; color: var(--gray-500); }
+
+    /* ── FEATURES ── */
+    .lp-features { background: var(--white); }
+    .lp-features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .lp-feature-item {
+      padding: 32px 28px;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      background: var(--white);
+      transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .lp-feature-item::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--blue);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition);
+    }
+    .lp-feature-item:hover { border-color: transparent; box-shadow: var(--shadow-xl); transform: translateY(-4px); }
+    .lp-feature-item:hover::after { transform: scaleX(1); }
+    .lp-feature-icon {
+      width: 52px; height: 52px;
+      background: var(--blue-light);
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--blue);
+      margin-bottom: 18px;
+      transition: all var(--transition);
+    }
+    .lp-feature-item:hover .lp-feature-icon { background: var(--blue); color: var(--white); }
+    .lp-feature-item h3 { font-size: 1rem; font-weight: 700; color: var(--black); margin-bottom: 8px; letter-spacing: -0.01em; }
+    .lp-feature-item p { font-size: 0.88rem; color: var(--gray-500); line-height: 1.7; }
+
+    /* ── PROZESS ── */
+    .lp-prozess { background: var(--gray-50); }
+    .lp-prozess-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      position: relative;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .lp-prozess-grid::before {
+      content: '';
+      position: absolute;
+      top: 34px;
+      left: calc(12.5% + 8px);
+      right: calc(12.5% + 8px);
+      height: 2px;
+      background: linear-gradient(90deg, var(--blue) 0%, rgba(37,99,235,0.3) 100%);
+      pointer-events: none;
+    }
+    .lp-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+    .lp-step-day {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 10px;
+    }
+    .lp-step-circle {
+      width: 52px; height: 52px;
+      background: var(--white);
+      border: 3px solid var(--blue);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--blue);
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 0 0 6px rgba(37,99,235,0.08);
+      transition: all var(--transition);
+    }
+    .lp-step:hover .lp-step-circle { background: var(--blue); color: var(--white); transform: scale(1.1); }
+    .lp-step h3 { font-size: 1rem; font-weight: 700; color: var(--black); margin-bottom: 8px; }
+    .lp-step p { font-size: 0.85rem; color: var(--gray-500); line-height: 1.7; }
+
+    /* ── BEISPIELE ── */
+    .lp-beispiele { background: var(--gray-900); }
+    .lp-beispiele .section-label--light { color: var(--blue-bright); }
+    .lp-beispiele-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .lp-beispiel-card {
+      border-radius: var(--radius);
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 16 / 10;
+      border: 1px solid rgba(255,255,255,0.07);
+      cursor: default;
+    }
+    .lp-beispiel-card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: top;
+      transition: transform 0.6s ease;
+      display: block;
+    }
+    .lp-beispiel-card:hover img { transform: scale(1.04); }
+    .lp-beispiel-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.75) 100%);
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 28px;
+    }
+    .lp-beispiel-tag {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--blue-bright);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 6px;
+    }
+    .lp-beispiel-overlay h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    /* ── ZIELGRUPPE ── */
+    .lp-zielgruppe { background: var(--white); }
+    .lp-zielgruppe-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .lp-ziel-card {
+      padding: 28px 22px;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      text-align: center;
+      transition: all var(--transition);
+    }
+    .lp-ziel-card:hover {
+      border-color: var(--blue);
+      box-shadow: 0 8px 28px var(--blue-glow);
+      transform: translateY(-4px);
+    }
+    .lp-ziel-icon {
+      width: 56px; height: 56px;
+      background: var(--blue-light);
+      border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+      color: var(--blue);
+      transition: all var(--transition);
+    }
+    .lp-ziel-card:hover .lp-ziel-icon { background: var(--blue); color: var(--white); }
+    .lp-ziel-card h3 { font-size: 0.95rem; font-weight: 700; color: var(--black); margin-bottom: 6px; }
+    .lp-ziel-card p { font-size: 0.82rem; color: var(--gray-500); line-height: 1.65; }
+
+    /* ── PREIS ── */
+    .lp-preis {
+      background: linear-gradient(135deg, #eef5ff 0%, #e8f0fe 50%, #dbeafe 100%);
+    }
+    .lp-preis-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .lp-preis-info h2 {
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      color: var(--black);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .lp-preis-info p {
+      font-size: 1rem;
+      color: var(--gray-500);
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+    .lp-preis-perks {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .lp-perk {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: var(--gray-700);
+      font-weight: 500;
+    }
+    .lp-perk svg { color: var(--blue); flex-shrink: 0; }
+    .lp-preis-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 24px 64px rgba(37,99,235,0.15), var(--shadow-xl);
+      overflow: hidden;
+      border: 1px solid rgba(37,99,235,0.1);
+    }
+    .lp-preis-header {
+      background: linear-gradient(135deg, var(--blue) 0%, var(--blue-dark) 100%);
+      padding: 40px 44px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .lp-preis-header::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.08) 1px, transparent 0);
+      background-size: 18px 18px;
+    }
+    .lp-preis-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 12px;
+      position: relative;
+    }
+    .lp-preis-amount {
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 4px;
+    }
+    .lp-preis-amount .currency {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.8);
+      margin-top: 8px;
+    }
+    .lp-preis-amount .amount {
+      font-size: 5rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+    .lp-preis-amount .tax {
+      display: block;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.5);
+      margin-top: 8px;
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+    .lp-preis-body { padding: 36px 44px; }
+    .lp-preis-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .lp-preis-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.9rem;
+      color: var(--gray-700);
+      font-weight: 500;
+    }
+    .lp-check-circle {
+      width: 22px; height: 22px;
+      background: var(--blue-light);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      color: var(--blue);
+    }
+    .lp-preis-note {
+      font-size: 0.8rem;
+      color: var(--gray-400);
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid var(--gray-200);
+      line-height: 1.6;
+    }
+
+    /* ── FAQ ── */
+    .lp-faq { background: var(--gray-50); }
+    .lp-faq-list {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .lp-faq-item {
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .lp-faq-item:first-child { border-top: 1px solid var(--gray-200); }
+    .lp-faq-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 0;
+      background: none;
+      border: none;
+      font-family: var(--font);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--black);
+      cursor: pointer;
+      text-align: left;
+      gap: 16px;
+      transition: color var(--transition-fast);
+    }
+    .lp-faq-btn:hover { color: var(--blue); }
+    .lp-faq-icon {
+      width: 30px; height: 30px;
+      background: var(--gray-200);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: all var(--transition);
+      color: var(--gray-700);
+    }
+    .lp-faq-item.open .lp-faq-icon {
+      background: var(--blue);
+      color: var(--white);
+      transform: rotate(45deg);
+    }
+    .lp-faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+    }
+    .lp-faq-item.open .lp-faq-answer { max-height: 240px; }
+    .lp-faq-answer p {
+      padding-bottom: 24px;
+      font-size: 0.93rem;
+      color: var(--gray-500);
+      line-height: 1.85;
+    }
+
+    /* ── HIGHLIGHT STRIP ── */
+    .lp-highlight {
+      position: relative;
+      min-height: 400px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .lp-highlight-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+    .lp-highlight-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(8,8,16,0.72);
+    }
+    .lp-highlight-inner {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 80px 0;
+    }
+    .lp-highlight-quote {
+      font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.35;
+      letter-spacing: -0.02em;
+      margin: 0 auto 48px;
+      max-width: 720px;
+    }
+    .lp-highlight-quote em {
+      color: var(--blue-bright);
+      font-style: normal;
+    }
+    .lp-highlight-stats {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 80px;
+      flex-wrap: wrap;
+    }
+    .lp-highlight-stat {
+      text-align: center;
+      max-width: 220px;
+    }
+    .lp-highlight-stat strong {
+      display: block;
+      font-size: 3.8rem;
+      font-weight: 800;
+      color: var(--blue-bright);
+      line-height: 1;
+      margin-bottom: 10px;
+      letter-spacing: -0.04em;
+    }
+    .lp-highlight-stat span {
+      font-size: 0.83rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.55;
+    }
+    .lp-highlight-divider {
+      width: 1px;
+      height: 80px;
+      background: rgba(255,255,255,0.12);
+      align-self: center;
+    }
+
+    /* ── PROZESS — card style ── */
+    .lp-step-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 36px 28px 32px;
+      transition: all var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .lp-step-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--blue);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition);
+    }
+    .lp-step-card:hover {
+      border-color: transparent;
+      box-shadow: var(--shadow-xl);
+      transform: translateY(-4px);
+    }
+    .lp-step-card:hover::before { transform: scaleX(1); }
+    .lp-step-card .lp-step-day {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 16px;
+    }
+    .lp-step-card .lp-step-circle {
+      width: 52px; height: 52px;
+      background: var(--blue-light);
+      border: none;
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--blue);
+      margin-bottom: 18px;
+      box-shadow: none;
+      transition: all var(--transition);
+    }
+    .lp-step-card:hover .lp-step-circle { background: var(--blue); color: var(--white); }
+    .lp-step-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--black); margin-bottom: 10px; text-align: left; }
+    .lp-step-card p { font-size: 0.88rem; color: var(--gray-500); line-height: 1.7; text-align: left; }
+    .lp-step-card .lp-step-num {
+      position: absolute;
+      top: 20px; right: 24px;
+      font-size: 4rem;
+      font-weight: 800;
+      color: var(--gray-100);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      transition: color var(--transition);
+    }
+    .lp-step-card:hover .lp-step-num { color: rgba(37,99,235,0.07); }
+
+    /* ── ZIELGRUPPE WITH PHOTOS ── */
+    .lp-ziel-photo {
+      height: 180px;
+      overflow: hidden;
+      margin: -28px -22px 20px;
+      border-radius: var(--radius) var(--radius) 0 0;
+    }
+    .lp-ziel-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.6s ease;
+    }
+    .lp-ziel-card:hover .lp-ziel-photo img { transform: scale(1.07); }
+    .lp-ziel-card .lp-ziel-icon { margin-top: 0; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .lp-hero-inner { grid-template-columns: 1fr; gap: 48px; }
+      .lp-features-grid { grid-template-columns: repeat(2, 1fr); }
+      .lp-zielgruppe-grid { grid-template-columns: repeat(2, 1fr); }
+      .lp-preis-wrap { grid-template-columns: 1fr; gap: 40px; }
+      .lp-prozess-grid { grid-template-columns: repeat(2, 1fr); }
+      .lp-prozess-grid::before { display: none; }
+    }
+    @media (max-width: 768px) {
+      .lp-hero-inner { padding: 130px 0 80px; }
+      .lp-features-grid { grid-template-columns: 1fr; }
+      .lp-beispiele-grid { grid-template-columns: 1fr; }
+      .lp-zielgruppe-grid { grid-template-columns: repeat(2, 1fr); }
+      .lp-prozess-grid { grid-template-columns: 1fr; max-width: 320px; }
+      .lp-preis-header { padding: 32px 28px; }
+      .lp-preis-body { padding: 28px 28px; }
+      .lp-preis-amount .amount { font-size: 4rem; }
+      .back-link { top: 16px; left: 16px; font-size: 12px; padding: 7px 14px 7px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Zurück zur Hauptseite -->
+  <a href="index.html" class="back-link">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+    Zurück
+  </a>
+
+  <!-- Navigation -->
+  <header class="site-header" id="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <img src="assets/logo.png" alt="md mediadesign Logo" class="logo-img">
+      </a>
+      <nav class="main-nav" id="mainNav">
+        <ul class="nav-list">
+          <li><a href="index.html#leistungen" class="nav-link">Leistungen</a></li>
+          <li><a href="index.html#ueber-uns" class="nav-link">Über uns</a></li>
+          <li><a href="index.html#referenzen" class="nav-link">Referenzen</a></li>
+          <li><a href="index.html#kontakt" class="nav-link nav-link--cta">Kontakt</a></li>
+        </ul>
+      </nav>
+      <button class="burger" id="burger" aria-label="Menü öffnen">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ════════════════════════════════════════
+       HERO
+       ════════════════════════════════════════ -->
+  <section class="lp-hero">
+    <div class="lp-hero-bg">
+      <div class="lp-hero-gradient"></div>
+      <div class="lp-hero-pattern"></div>
+    </div>
+    <div class="container lp-hero-inner">
+
+      <!-- LEFT: Content -->
+      <div class="lp-hero-content">
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          Festpreis · Kein Verstecktes
+        </div>
+        <h1 class="lp-hero-title">
+          Ihre Visitenkarte<br>im Internet —<br><span class="highlight">fertig in 5 Tagen.</span>
+        </h1>
+        <p class="lp-hero-subtitle">
+          Ein professioneller OnePager für Ihren Betrieb. Rechtssicher, barrierefrei, SEO-optimiert und auf jedem Gerät überzeugend — zum fairen Festpreis.
+        </p>
+        <div class="lp-price-row">
+          <div class="lp-price-badge">
+            <span class="price-currency">€</span>
+            <span class="price-big">999</span>
+            <span class="price-label">Festpreis<br>inkl. MwSt.</span>
+          </div>
+          <div class="lp-price-note">
+            <strong>Keine versteckten Kosten.</strong><br>
+            Hosting inklusive (12 Monate).
+          </div>
+        </div>
+        <div class="hero-actions">
+          <a href="index.html#kontakt" class="btn btn--primary btn--glow">
+            <span>Jetzt anfragen</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="#was-inklusive" class="btn btn--glass">Was ist inklusive?</a>
+        </div>
+        <div class="lp-trust-row">
+          <div class="lp-trust-chip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            DSGVO-konform
+          </div>
+          <div class="lp-trust-chip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            Barrierefrei (WCAG)
+          </div>
+          <div class="lp-trust-chip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            SEO-optimiert
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Mockup -->
+      <div class="lp-hero-visual">
+        <div class="lp-mockup">
+          <div class="lp-mockup-bar">
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="url-bar">www.ihre-firma.de</span>
+          </div>
+          <div style="line-height:0; overflow:hidden;">
+            <img
+              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80"
+              alt="Professionelle Website auf Laptop"
+              style="width:100%; height:280px; object-fit:cover; object-position:center; display:block;"
+              loading="eager">
+          </div>
+        </div>
+        <div class="lp-5days">
+          <div class="lp-5days-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="lp-5days-text">
+            <strong>In 5 Werktagen online</strong>
+            <span>Von Briefing bis Go-Live — garantiert.</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="hero-scroll-indicator">
+      <div class="hero-scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- Marquee -->
+  <div class="marquee-section">
+    <div class="marquee-track">
+      <div class="marquee-content">
+        <span>Responsive Design</span><span class="marquee-dot">●</span>
+        <span>DSGVO-konform</span><span class="marquee-dot">●</span>
+        <span>SEO-optimiert</span><span class="marquee-dot">●</span>
+        <span>Barrierefrei</span><span class="marquee-dot">●</span>
+        <span>12 Monate Hosting</span><span class="marquee-dot">●</span>
+        <span>Kontaktformular</span><span class="marquee-dot">●</span>
+        <span>Google Maps</span><span class="marquee-dot">●</span>
+        <span>Festpreis 999 €</span><span class="marquee-dot">●</span>
+        <span>Responsive Design</span><span class="marquee-dot">●</span>
+        <span>DSGVO-konform</span><span class="marquee-dot">●</span>
+        <span>SEO-optimiert</span><span class="marquee-dot">●</span>
+        <span>Barrierefrei</span><span class="marquee-dot">●</span>
+        <span>12 Monate Hosting</span><span class="marquee-dot">●</span>
+        <span>Kontaktformular</span><span class="marquee-dot">●</span>
+        <span>Google Maps</span><span class="marquee-dot">●</span>
+        <span>Festpreis 999 €</span><span class="marquee-dot">●</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       WAS IST INKLUSIVE
+       ════════════════════════════════════════ -->
+  <section class="section lp-features" id="was-inklusive">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Alles dabei</span>
+        <h2 class="section-title">Was ist inklusive?</h2>
+        <p class="section-desc">Kein Extras, kein Kleingedrucktes. Der Festpreis von 999 € umfasst alles, was Ihre Website braucht.</p>
+      </div>
+      <div class="lp-features-grid">
+
+        <div class="lp-feature-item reveal">
+          <div class="lp-feature-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3>Responsives Design</h3>
+          <p>Ihr OnePager sieht auf Smartphone, Tablet und Desktop gleichermaßen professionell aus. Kein Template — individuelle Gestaltung.</p>
+        </div>
+
+        <div class="lp-feature-item reveal">
+          <div class="lp-feature-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>DSGVO-konform & rechtssicher</h3>
+          <p>Impressum, Datenschutzerklärung, Cookie-Hinweis — alles korrekt und aktuell. Sie sind auf der sicheren Seite.</p>
+        </div>
+
+        <div class="lp-feature-item reveal">
+          <div class="lp-feature-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+          <h3>SEO-Optimierung</h3>
+          <p>Strukturierte Metadaten, optimierte Ladezeiten und lokale SEO damit Google Ihre Seite findet und Kunden Sie entdecken.</p>
+        </div>
+
+        <div class="lp-feature-item reveal">
+          <div class="lp-feature-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          </div>
+          <h3>Barrierefrei (WCAG 2.1)</h3>
+          <p>Ihre Seite ist für alle zugänglich. Wir erfüllen die Barrierefreiheitsanforderungen — wichtig für Sichtbarkeit und Inklusion.</p>
+        </div>
+
+        <div class="lp-feature-item reveal">
+          <div class="lp-feature-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <h3>Kontaktformular</h3>
+          <p>Anfragen direkt auf Ihre E-Mail — zuverlässig und spamgeschützt. Ihre Kunden können Sie sofort und einfach erreichen.</p>
+        </div>
+
+        <div class="lp-feature-item reveal">
+          <div class="lp-feature-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+          </div>
+          <h3>12 Monate Hosting inklusive</h3>
+          <p>Schnelles, deutsches Hosting im Festpreis enthalten. Danach verlängerbar für 9,99 €/Monat — ohne Überraschungen.</p>
+        </div>
+
+        <div class="lp-feature-item reveal">
+          <div class="lp-feature-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h3>Google Maps Integration</h3>
+          <p>Ihr Standort direkt auf der Seite eingebettet. So finden Kunden Sie schnell — online und in der Realität.</p>
+        </div>
+
+        <div class="lp-feature-item reveal">
+          <div class="lp-feature-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <h3>Individuelles Design</h3>
+          <p>Ihre Farben, Ihr Logo, Ihre Texte. Kein Baukasten, kein Standard-Template — sondern ein Auftritt, der wirklich zu Ihnen passt.</p>
+        </div>
+
+        <div class="lp-feature-item reveal">
+          <div class="lp-feature-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <h3>Persönliche Beratung</h3>
+          <p>Kein Ticketsystem, kein Chat-Bot. Sie sprechen direkt mit mir — von der ersten Idee bis zur fertigen Seite.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       HIGHLIGHT STRIP
+       ════════════════════════════════════════ -->
+  <section class="lp-highlight">
+    <div class="lp-highlight-bg" style="background-image:url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1800&q=80');"></div>
+    <div class="container lp-highlight-inner">
+      <p class="lp-highlight-quote">
+        „Im Internet entscheiden <em>Sekunden</em> — nicht Stunden.<br>
+        Ihr erster Eindruck zählt."
+      </p>
+      <div class="lp-highlight-stats">
+        <div class="lp-highlight-stat">
+          <strong>75%</strong>
+          <span>der Nutzer beurteilen ein Unternehmen allein anhand seiner Website</span>
+        </div>
+        <div class="lp-highlight-divider"></div>
+        <div class="lp-highlight-stat">
+          <strong>57%</strong>
+          <span>empfehlen kein Unternehmen mit schlecht gestalteter mobiler Website weiter</span>
+        </div>
+        <div class="lp-highlight-divider"></div>
+        <div class="lp-highlight-stat">
+          <strong>88%</strong>
+          <span>suchen lokale Dienstleister zuerst im Internet — vor jedem anderen Kanal</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       SO LÄUFT ES AB
+       ════════════════════════════════════════ -->
+  <section class="section lp-prozess" id="ablauf">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Einfach & transparent</span>
+        <h2 class="section-title">In 5 Tagen online</h2>
+        <p class="section-desc">Vier klare Schritte — unkompliziert und ohne langen Vorlauf.</p>
+      </div>
+      <div class="lp-prozess-grid">
+        <div class="lp-step-card reveal">
+          <span class="lp-step-num">01</span>
+          <div class="lp-step-day">Tag 1</div>
+          <div class="lp-step-circle">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <h3>Briefing</h3>
+          <p>Sie teilen mir Ihre Wünsche mit — Texte, Logo, Farben und Ziele. Per E-Mail, Telefon oder Video-Call. Je mehr Sie mitgeben, desto besser das Ergebnis.</p>
+        </div>
+        <div class="lp-step-card reveal">
+          <span class="lp-step-num">02</span>
+          <div class="lp-step-day">Tag 2–3</div>
+          <div class="lp-step-circle">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+          </div>
+          <h3>Design & Entwicklung</h3>
+          <p>Ich erstelle Ihren OnePager — individuell gestaltet, auf allen Geräten optimiert und technisch auf dem neuesten Stand. Kein Baukasten, kein Copy-Paste.</p>
+        </div>
+        <div class="lp-step-card reveal">
+          <span class="lp-step-num">03</span>
+          <div class="lp-step-day">Tag 4</div>
+          <div class="lp-step-circle">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <h3>Feedback & Feinschliff</h3>
+          <p>Sie erhalten einen Link zur Vorschau und geben mir Feedback. Ich setze alle Änderungswünsche schnell und unkompliziert um — so lange, bis Sie zufrieden sind.</p>
+        </div>
+        <div class="lp-step-card reveal">
+          <span class="lp-step-num">04</span>
+          <div class="lp-step-day">Tag 5</div>
+          <div class="lp-step-circle">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3>Go Live</h3>
+          <p>Ihre Seite geht online — auf Ihrer eigenen Domain, mit schnellem deutschem Hosting. Ich kümmere mich um alles Technische, Sie können sich zurücklehnen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       BEISPIELE
+       ════════════════════════════════════════ -->
+  <section class="section lp-beispiele">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label section-label--light">Aus der Praxis</span>
+        <h2 class="section-title section-title--light">Echte OnePager</h2>
+        <p class="section-desc" style="color: var(--gray-500);">Ein Auszug aus unseren umgesetzten Projekten — für Ärzte, Freelancer, Therapeuten und mehr.</p>
+      </div>
+      <div class="lp-beispiele-grid">
+
+        <div class="lp-beispiel-card reveal">
+          <img src="projektbilder/Website/OnePager_Arzt_Dr-Schmidt.webp" alt="OnePager Arztpraxis Dr. Schmidt" loading="lazy">
+          <div class="lp-beispiel-overlay">
+            <div class="lp-beispiel-tag">Arztpraxis</div>
+            <h3>Dr. Schmidt — OnePager Medizin</h3>
+          </div>
+        </div>
+
+        <div class="lp-beispiel-card reveal">
+          <img src="projektbilder/Website/OnePager_Immobilien_tim-hausmann.webp" alt="OnePager Immobilien Tim Hausmann" loading="lazy">
+          <div class="lp-beispiel-overlay">
+            <div class="lp-beispiel-tag">Immobilien</div>
+            <h3>Tim Hausmann — OnePager Immobilien</h3>
+          </div>
+        </div>
+
+        <div class="lp-beispiel-card reveal">
+          <img src="projektbilder/Website/OnePager_Reikimeister_enerjoe.webp" alt="OnePager Reikimeister Enerjoe" loading="lazy">
+          <div class="lp-beispiel-overlay">
+            <div class="lp-beispiel-tag">Therapeuten</div>
+            <h3>Enerjoe — OnePager Reiki & Energie</h3>
+          </div>
+        </div>
+
+        <div class="lp-beispiel-card reveal">
+          <img src="projektbilder/Website/OnePager_Portfolio_marco-delicati.webp" alt="OnePager Portfolio Marco Delicati" loading="lazy">
+          <div class="lp-beispiel-overlay">
+            <div class="lp-beispiel-tag">Portfolio</div>
+            <h3>Marco Delicati — OnePager Portfolio</h3>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       ZIELGRUPPE
+       ════════════════════════════════════════ -->
+  <section class="section lp-zielgruppe">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Für wen?</span>
+        <h2 class="section-title">Ideal für jeden, der online gefunden werden will</h2>
+        <p class="section-desc">Ob Handwerker, Therapeut oder Freelancer — ein OnePager macht Sie sichtbar.</p>
+      </div>
+      <div class="lp-zielgruppe-grid">
+        <div class="lp-ziel-card reveal">
+          <div class="lp-ziel-photo">
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80" alt="Freelancer am Laptop" loading="lazy">
+          </div>
+          <div class="lp-ziel-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          </div>
+          <h3>Selbstständige & Freelancer</h3>
+          <p>Ihre Kompetenzen professionell präsentieren — ohne Blog, ohne Shop, ohne Aufwand. Ein klarer Auftritt, der Kunden überzeugt.</p>
+        </div>
+        <div class="lp-ziel-card reveal">
+          <div class="lp-ziel-photo">
+            <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=600&q=80" alt="Handwerker bei der Arbeit" loading="lazy">
+          </div>
+          <div class="lp-ziel-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <h3>Handwerker & Dienstleister</h3>
+          <p>Online sichtbar sein, bevor der Mitbewerber es ist. Mehr Anfragen durch lokale Sichtbarkeit und Google-Präsenz.</p>
+        </div>
+        <div class="lp-ziel-card reveal">
+          <div class="lp-ziel-photo">
+            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=600&q=80" alt="Arzt oder Therapeut" loading="lazy">
+          </div>
+          <div class="lp-ziel-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <h3>Ärzte & Therapeuten</h3>
+          <p>Vertrauen aufbauen, noch bevor der erste Termin stattfindet. Ein seriöser Webauftritt macht den Unterschied.</p>
+        </div>
+        <div class="lp-ziel-card reveal">
+          <div class="lp-ziel-photo">
+            <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80" alt="Verein oder Team" loading="lazy">
+          </div>
+          <div class="lp-ziel-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>Vereine & Organisationen</h3>
+          <p>Mitglieder informieren, Events kommunizieren, Kontakt ermöglichen — einfach, günstig und professionell.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       PREIS
+       ════════════════════════════════════════ -->
+  <section class="section lp-preis" id="preis">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Transparent & fair</span>
+        <h2 class="section-title">Ein Preis. Alles inklusive.</h2>
+      </div>
+      <div class="lp-preis-wrap">
+        <div class="lp-preis-info reveal">
+          <h2>Kein Stundensatz.<br>Kein Verstecktes.</h2>
+          <p>Sie wissen von Anfang an, was Sie zahlen. Der Festpreis gilt — unabhängig davon, wie lange die Umsetzung dauert oder wie viele Abstimmungsrunden nötig sind.</p>
+          <div class="lp-preis-perks">
+            <div class="lp-perk">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Festpreis — keine Nachberechnung
+            </div>
+            <div class="lp-perk">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Fertig in 5 Werktagen garantiert
+            </div>
+            <div class="lp-perk">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Alle Leistungen inklusive
+            </div>
+            <div class="lp-perk">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Persönliche Betreuung durch mich
+            </div>
+            <div class="lp-perk">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Hosting im ersten Jahr inklusive
+            </div>
+          </div>
+        </div>
+        <div class="lp-preis-card reveal">
+          <div class="lp-preis-header">
+            <div class="lp-preis-label">OnePager — Festpreis</div>
+            <div class="lp-preis-amount">
+              <span class="currency">€</span>
+              <div>
+                <span class="amount">999</span>
+                <span class="tax">inkl. 19 % MwSt. · einmalig</span>
+              </div>
+            </div>
+          </div>
+          <div class="lp-preis-body">
+            <ul class="lp-preis-list">
+              <li>
+                <span class="lp-check-circle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                Individuelles, responsives Design
+              </li>
+              <li>
+                <span class="lp-check-circle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                DSGVO-konform & rechtssicher
+              </li>
+              <li>
+                <span class="lp-check-circle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                SEO-Optimierung & Metadaten
+              </li>
+              <li>
+                <span class="lp-check-circle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                Barrierefreiheit nach WCAG 2.1
+              </li>
+              <li>
+                <span class="lp-check-circle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                Kontaktformular & Google Maps
+              </li>
+              <li>
+                <span class="lp-check-circle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+                12 Monate Hosting inklusive
+              </li>
+            </ul>
+            <a href="index.html#kontakt" class="btn btn--primary btn--full btn--glow">Jetzt unverbindlich anfragen</a>
+            <p class="lp-preis-note">
+              Nach dem 1. Jahr: Hosting für 9,99 €/Monat.<br>
+              Keine versteckten Kosten, kein Vertrag.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       FAQ
+       ════════════════════════════════════════ -->
+  <section class="section lp-faq">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Häufige Fragen</span>
+        <h2 class="section-title">Noch Fragen?</h2>
+        <p class="section-desc">Die häufigsten Fragen zum OnePager — ehrlich beantwortet.</p>
+      </div>
+      <div class="lp-faq-list">
+
+        <div class="lp-faq-item">
+          <button class="lp-faq-btn">
+            Was ist der Unterschied zu einem Website-Baukasten wie Wix oder Jimdo?
+            <span class="lp-faq-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </span>
+          </button>
+          <div class="lp-faq-answer">
+            <p>Baukästen sind gut für Selbermacher — aber oft langsam, limitiert und voller Werbung auf Ihrer eigenen Seite. Ihr OnePager von mir ist individuell auf Sie zugeschnitten, schneller und sauber programmiert — ohne fremde Logos und ohne monatliche Abo-Falle.</p>
+          </div>
+        </div>
+
+        <div class="lp-faq-item">
+          <button class="lp-faq-btn">
+            Was muss ich selbst mitbringen?
+            <span class="lp-faq-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </span>
+          </button>
+          <div class="lp-faq-answer">
+            <p>Idealerweise Ihr Logo (wenn vorhanden), die gewünschten Texte und ein paar Bilder. Haben Sie noch kein Logo? Kein Problem — ich kann auch dabei helfen. Texte können Sie mir als Stichpunkte geben, ich formuliere sie professionell aus.</p>
+          </div>
+        </div>
+
+        <div class="lp-faq-item">
+          <button class="lp-faq-btn">
+            Kann ich später Seiten oder Unterseiten hinzufügen?
+            <span class="lp-faq-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </span>
+          </button>
+          <div class="lp-faq-answer">
+            <p>Ja — falls Ihre Website mit der Zeit wächst, kann der OnePager jederzeit erweitert werden. Wir erstellen dann ein individuelles Angebot für die zusätzlichen Seiten. Der OnePager ist also kein Endpunkt, sondern ein solider Start.</p>
+          </div>
+        </div>
+
+        <div class="lp-faq-item">
+          <button class="lp-faq-btn">
+            Bin ich nach dem ersten Jahr an etwas gebunden?
+            <span class="lp-faq-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </span>
+          </button>
+          <div class="lp-faq-answer">
+            <p>Nein — es gibt keinen Vertrag und keine Mindestlaufzeit. Nach dem ersten Jahr (Hosting inklusive) können Sie das Hosting für 9,99 €/Monat weiterführen oder jederzeit kündigen. Ihre Website-Dateien gehören Ihnen.</p>
+          </div>
+        </div>
+
+        <div class="lp-faq-item">
+          <button class="lp-faq-btn">
+            Was passiert, wenn mir das Design nicht gefällt?
+            <span class="lp-faq-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </span>
+          </button>
+          <div class="lp-faq-answer">
+            <p>Ich erarbeite das Design eng mit Ihnen ab — durch ein ausführliches Briefing und eine Feedback-Runde. Kleinere Anpassungen sind immer inklusive. Sie gehen erst online, wenn Sie zufrieden sind.</p>
+          </div>
+        </div>
+
+        <div class="lp-faq-item">
+          <button class="lp-faq-btn">
+            Brauche ich eine eigene Domain?
+            <span class="lp-faq-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </span>
+          </button>
+          <div class="lp-faq-answer">
+            <p>Falls Sie noch keine Domain haben, helfe ich Ihnen dabei, die passende zu registrieren. Domain-Kosten (ca. 12–15 €/Jahr) sind nicht im Festpreis enthalten, aber überschaubar und transparent.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       CTA BANNER
+       ════════════════════════════════════════ -->
+  <section class="cta-banner">
+    <div class="cta-banner-bg"></div>
+    <div class="container cta-banner-inner">
+      <h2>Bereit für Ihren OnePager?</h2>
+      <p>Schreiben Sie mir — kostenlos und unverbindlich. In 24 Stunden melde ich mich zurück.</p>
+      <a href="index.html#kontakt" class="btn btn--white">
+        <span>Jetzt Kontakt aufnehmen</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="assets/logo.png" alt="md mediadesign" class="footer-logo">
+        <p>Webdesign & Mediengestaltung aus Regensburg. Seit 1998.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html#leistungen">Leistungen</a></li>
+          <li><a href="index.html#ueber-uns">Über uns</a></li>
+          <li><a href="index.html#referenzen">Referenzen</a></li>
+          <li><a href="index.html#kontakt">Kontakt</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Rechtliches</h4>
+        <ul>
+          <li><a href="impressum.html">Impressum</a></li>
+          <li><a href="datenschutz.html">Datenschutz</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <p>&copy; 2025 md mediadesign — Marco Delicati. Alle Rechte vorbehalten.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // FAQ Accordion
+    document.querySelectorAll('.lp-faq-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.lp-faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.lp-faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+  </script>
+</body>
+</html>
