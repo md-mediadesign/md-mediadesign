@@ -107,23 +107,23 @@ void main(void) {
      No purple, no orange — just light through dark water. */
   float lum = dot(col, vec3(.2126, .7152, .0722));
 
-  /* Navy base color (#0d1220) */
-  vec3 dark  = vec3(.05, .07, .13);
-  /* Bright peaks: near-white with a cold steel-blue touch */
-  vec3 light = vec3(.72, .82, .98);
-  /* Mid-tone: steel blue (#4a80d0) */
+  /* Dark: deep navy */
+  vec3 dark  = vec3(.05, .07, .14);
+  /* Mid: steel blue (#4a80d0) */
   vec3 mid   = vec3(.29, .50, .82);
+  /* Clouds: bright near-white, slightly cool */
+  vec3 cloud = vec3(.88, .92, 1.00);
 
-  col = mix(dark, mid,   smoothstep(.0,  .45, lum));
-  col = mix(col,  light, smoothstep(.35, .85, lum));
+  col = mix(dark,  mid,   smoothstep(.0,  .30, lum));
+  col = mix(col,   cloud, smoothstep(.25, .70, lum));
 
-  /* Very subtle warmth cut — keep it cool */
-  col.r *= .80;
-  col.g *= .90;
+  /* Keep reds/greens cool, blue-white clouds */
+  col.r *= .82;
+  col.g *= .92;
 
-  /* Overall brightness — dim enough for text contrast */
-  col *= .70;
-  col = pow(max(col, vec3(0.)), vec3(.88));
+  /* Brightness up — clouds should be clearly visible */
+  col *= 1.15;
+  col = pow(max(col, vec3(0.)), vec3(.80));
 
   O = vec4(col, 1.);
 }`;
