@@ -24,7 +24,7 @@ precision highp float;
 in vec4 position;
 void main(){ gl_Position = position; }`;
 
-  /* Adapted: orange/amber → indigo/violet/cyan palette */
+  /* Adapted: Visitenkarte palette — Dark Navy + Steel Blue */
   const FS = `#version 300 es
 precision highp float;
 out vec4 O;
@@ -102,13 +102,18 @@ void main(void) {
     col = mix(col, vec3(bg * .05, bg * .04, bg * .25), d);
   }
 
-  /* Shift overall palette toward indigo/violet */
-  col = col.bgr * vec3(.65, .55, 1.0)
-      + col.grb * vec3(.1,  .15, .25);
+  /* Shift palette toward Visitenkarte: dark navy + steel blue.
+     Keep blue channel dominant, reduce red/green. */
+  col = col.bgr * vec3(.55, .45, 1.0)   /* strong blue channel */
+      + col.grb * vec3(.05, .08, .30);  /* deep navy base */
+
+  /* Tint toward steel blue (#4a80d0 ~ .29,.50,.82) */
+  float lum = dot(col, vec3(.2126,.7152,.0722));
+  col = mix(col, vec3(.06, .14, .30) * lum * 3.5, .35);
 
   /* Darken floor so text stays readable */
-  col *= .55;
-  col = pow(max(col, vec3(0.)), vec3(.85));
+  col *= .52;
+  col = pow(max(col, vec3(0.)), vec3(.82));
 
   O = vec4(col, 1.);
 }`;
@@ -327,7 +332,7 @@ document.addEventListener('DOMContentLoaded', () => {
     glow.style.cssText = `
       position:fixed;pointer-events:none;z-index:9999;
       width:420px;height:420px;border-radius:50%;
-      background:radial-gradient(circle, rgba(99,102,241,0.07) 0%, transparent 70%);
+      background:radial-gradient(circle, rgba(74,128,208,0.08) 0%, transparent 70%);
       transform:translate(-50%,-50%);
       top:0;left:0;transition:opacity .4s;
     `;
