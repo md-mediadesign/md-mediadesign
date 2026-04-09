@@ -102,18 +102,28 @@ void main(void) {
     col = mix(col, vec3(bg * .05, bg * .04, bg * .25), d);
   }
 
-  /* Shift palette toward Visitenkarte: dark navy + steel blue.
-     Keep blue channel dominant, reduce red/green. */
-  col = col.bgr * vec3(.55, .45, 1.0)   /* strong blue channel */
-      + col.grb * vec3(.05, .08, .30);  /* deep navy base */
+  /* Desaturate to luminance, then tint:
+     dark areas → deep navy, bright peaks → cold white/silver.
+     No purple, no orange — just light through dark water. */
+  float lum = dot(col, vec3(.2126, .7152, .0722));
 
-  /* Tint toward steel blue (#4a80d0 ~ .29,.50,.82) */
-  float lum = dot(col, vec3(.2126,.7152,.0722));
-  col = mix(col, vec3(.06, .14, .30) * lum * 3.5, .35);
+  /* Navy base color (#0d1220) */
+  vec3 dark  = vec3(.05, .07, .13);
+  /* Bright peaks: near-white with a cold steel-blue touch */
+  vec3 light = vec3(.72, .82, .98);
+  /* Mid-tone: steel blue (#4a80d0) */
+  vec3 mid   = vec3(.29, .50, .82);
 
-  /* Darken floor so text stays readable */
-  col *= .52;
-  col = pow(max(col, vec3(0.)), vec3(.82));
+  col = mix(dark, mid,   smoothstep(.0,  .45, lum));
+  col = mix(col,  light, smoothstep(.35, .85, lum));
+
+  /* Very subtle warmth cut — keep it cool */
+  col.r *= .80;
+  col.g *= .90;
+
+  /* Overall brightness — dim enough for text contrast */
+  col *= .70;
+  col = pow(max(col, vec3(0.)), vec3(.88));
 
   O = vec4(col, 1.);
 }`;
