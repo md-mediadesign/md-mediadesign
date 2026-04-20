@@ -4,6 +4,13 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
-    { "source": "/:path*", "destination": "/maintenance.html" }
+    { "source": "/starfighter", "destination": "/starfighter.html" },
+    { "source": "/starfighter-classic", "destination": "/starfighter-classic.html" },
+    { "source": "/landingpage", "destination": "/landingpage.html" },
+    { "source": "/whey", "destination": "/maintenance.html" },
+    { "source": "/impressum", "destination": "/impressum.html" },
+    { "source": "/datenschutz", "destination": "/datenschutz.html" },
+    { "source": "/barrierefreiheit", "destination": "/barrierefreiheit.html" },
+    { "source": "/briefing", "destination": "/briefing.html" }
   ]
 }

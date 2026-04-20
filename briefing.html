@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Website-Briefing für Kunden von md-mediadesign — strukturierte Projekterfassung.">
+<title>Website-Briefing · md mediadesign</title>
+<link rel="icon" type="image/png" href="/assets/logo.png">
+<link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
+<link href="https://fonts.bunny.net/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brand:        #4a80d0;
+    --brand-bright: #6a9fdf;
+    --brand-dark:   #2d5fa8;
+    --accent:       #7ab4e8;
+    --accent-dark:  #3a6bc7;
+    --bg:           #05060d;
+    --bg-card:      #0b1326;
+    --bg-elevated:  #101b36;
+    --bg-input:     #070b1a;
+    --surface:      #0b1326;
+    --text:         #f1f5f9;
+    --muted:        #94a3b8;
+    --text-subtle:  #4a6080;
+    --border:       rgba(74,128,208,0.12);
+    --border-md:    rgba(74,128,208,0.22);
+    --border-light: rgba(74,128,208,0.30);
+    --success:      #5baee0;
+    --radius:       12px;
+    --radius-sm:    8px;
+    --radius-lg:    20px;
+    --shadow:       0 1px 3px rgba(0,0,0,0.4), 0 4px 20px rgba(0,0,0,0.35);
+    --shadow-hover: 0 8px 32px rgba(74,128,208,0.2);
+    --font-display: 'Space Grotesk', system-ui, sans-serif;
+    --font-body:    'Inter', system-ui, sans-serif;
+    --grad-text:    linear-gradient(120deg, var(--brand-bright), var(--accent));
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-body);
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(74,128,208,0.12), transparent 60%),
+      var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+  ::selection { background: var(--brand); color: #fff; }
+  .container { max-width: 920px; margin: 0 auto; padding: 56px 24px 96px; position: relative; z-index: 2; }
+
+  .brand-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 40px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  .brand-bar img { height: 32px; width: auto; }
+  .brand-bar .brand-label {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--muted);
+    letter-spacing: 0.02em;
+  }
+
+  header.briefing-header {
+    text-align: left;
+    margin-bottom: 48px;
+  }
+  .briefing-header .eyebrow {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brand-bright);
+    margin-bottom: 18px;
+    padding: 6px 12px;
+    border: 1px solid var(--border-md);
+    border-radius: 100px;
+    background: rgba(74,128,208,0.06);
+  }
+  .briefing-header h1 {
+    margin: 0 0 16px;
+    font-family: var(--font-display);
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    color: var(--text);
+  }
+  .briefing-header h1 .grad {
+    background: var(--grad-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .briefing-header p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.65;
+    max-width: 680px;
+  }
+  .progress {
+    position: sticky;
+    top: 0;
+    background: linear-gradient(to bottom, var(--bg) 70%, transparent);
+    padding: 20px 0 16px;
+    z-index: 50;
+    margin-bottom: 32px;
+    backdrop-filter: blur(10px);
+  }
+  .progress-bar {
+    height: 4px;
+    background: rgba(74,128,208,0.1);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .progress-bar__fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--brand), var(--accent));
+    width: 0%;
+    transition: width 0.4s cubic-bezier(0.22,1,0.36,1);
+    box-shadow: 0 0 12px rgba(74,128,208,0.6);
+  }
+  .progress-label {
+    font-family: var(--font-display);
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 10px;
+    letter-spacing: 0.04em;
+  }
+  .progress-label span { color: var(--brand-bright); font-weight: 600; }
+  section.block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+    transition: border-color 0.25s var(--ease, ease), box-shadow 0.25s ease;
+  }
+  section.block:hover { border-color: var(--border-md); box-shadow: var(--shadow-hover); }
+  section.block h2 {
+    margin: 0 0 10px;
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    color: var(--text);
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+  }
+  section.block h2 .num {
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--brand-bright);
+    background: rgba(74,128,208,0.1);
+    border: 1px solid var(--border-md);
+    padding: 5px 11px;
+    border-radius: 100px;
+    letter-spacing: 0.08em;
+  }
+  section.block .section-desc {
+    color: var(--muted);
+    font-size: 15px;
+    margin: 0 0 28px;
+    line-height: 1.6;
+  }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .grid-1 { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+  .field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 4px; }
+  .field.full { grid-column: 1 / -1; }
+  .field label {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    letter-spacing: -0.005em;
+  }
+  .field label .req { color: var(--brand-bright); margin-left: 2px; }
+  .field .hint {
+    font-size: 13px;
+    color: var(--text-subtle);
+    margin-top: -2px;
+    margin-bottom: 4px;
+    line-height: 1.5;
+  }
+  .field input[type="text"],
+  .field input[type="email"],
+  .field input[type="tel"],
+  .field input[type="url"],
+  .field input[type="number"],
+  .field input[type="date"],
+  .field select,
+  .field textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--border-md);
+    border-radius: var(--radius-sm);
+    font-size: 15px;
+    font-family: inherit;
+    background: var(--bg-input);
+    color: var(--text);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  }
+  .field input::placeholder, .field textarea::placeholder { color: var(--text-subtle); }
+  .field textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
+  .field input:focus, .field select:focus, .field textarea:focus {
+    outline: none;
+    border-color: var(--brand-bright);
+    background: var(--bg-elevated);
+    box-shadow: 0 0 0 3px rgba(74, 128, 208, 0.2);
+  }
+  .field select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'><path d='M1 1l5 5 5-5' stroke='%236a9fdf' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 40px;
+  }
+  .check-group, .radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 4px 0;
+  }
+  .check-group.row, .radio-group.row { flex-direction: row; flex-wrap: wrap; gap: 16px; }
+  .check-item, .radio-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    cursor: pointer;
+    padding: 12px 16px;
+    border: 1px solid var(--border-md);
+    border-radius: var(--radius-sm);
+    background: var(--bg-input);
+    color: var(--text);
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+    flex: 1 1 auto;
+    min-width: 150px;
+  }
+  .check-item:hover, .radio-item:hover {
+    border-color: var(--brand-bright);
+    background: var(--bg-elevated);
+  }
+  .check-item:has(input:checked), .radio-item:has(input:checked) {
+    border-color: var(--brand-bright);
+    background: rgba(74,128,208,0.12);
+    box-shadow: inset 0 0 0 1px rgba(74,128,208,0.3);
+  }
+  .check-item input, .radio-item input { margin-top: 3px; accent-color: var(--brand); flex-shrink: 0; }
+  .check-item span, .radio-item span { font-size: 14px; color: var(--text); }
+  .check-item .sub, .radio-item .sub { display: block; color: var(--muted); font-size: 12px; margin-top: 2px; font-weight: 400; }
+  .conditional {
+    display: none;
+    margin-top: 24px;
+    padding: 24px;
+    border: 1px solid var(--border-md);
+    border-left: 3px solid var(--brand);
+    background: linear-gradient(180deg, rgba(74,128,208,0.06), rgba(74,128,208,0.02));
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+  .conditional.active { display: block; animation: slideDown 0.4s var(--ease, cubic-bezier(0.22,1,0.36,1)); }
+  .conditional.flash {
+    animation: slideDown 0.4s var(--ease, cubic-bezier(0.22,1,0.36,1)), flashHighlight 2s ease-out;
+  }
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes flashHighlight {
+    0%   { box-shadow: 0 0 0 0 rgba(74,128,208,0.0), 0 0 0 rgba(74,128,208,0); }
+    20%  { box-shadow: 0 0 0 4px rgba(74,128,208,0.35), 0 0 40px rgba(74,128,208,0.5); }
+    100% { box-shadow: 0 0 0 0 rgba(74,128,208,0.0), 0 0 0 rgba(74,128,208,0); }
+  }
+  .conditional h2 { color: var(--brand-bright); }
+  .conditional .cond-title {
+    margin: 0 0 20px;
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--brand-bright);
+    letter-spacing: -0.01em;
+  }
+  .file-drop {
+    display: block;
+    border: 2px dashed var(--border-md);
+    border-radius: var(--radius);
+    padding: 28px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    background: var(--bg-input);
+    color: var(--muted);
+  }
+  .file-drop:hover { border-color: var(--brand-bright); background: var(--bg-elevated); color: var(--text); }
+  .file-drop input { display: none; }
+  .file-drop .icon { font-size: 28px; margin-bottom: 8px; opacity: 0.7; color: var(--brand-bright); }
+  .file-drop .label { font-weight: 600; font-size: 14px; color: var(--text); }
+  .file-drop .hint { color: var(--muted); font-size: 13px; margin-top: 4px; }
+  .file-list { margin-top: 12px; font-size: 13px; color: var(--muted); }
+  .file-list li { padding: 4px 0; }
+  .actions {
+    margin-top: 40px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+  }
+  button.submit {
+    background: linear-gradient(135deg, var(--brand) 0%, var(--accent-dark) 100%);
+    color: #fff;
+    border: 1px solid var(--brand-bright);
+    padding: 16px 36px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: var(--font-display);
+    letter-spacing: -0.005em;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: box-shadow 0.25s ease, transform 0.1s ease, filter 0.2s ease;
+    box-shadow: 0 4px 20px rgba(74,128,208,0.3);
+  }
+  button.submit:hover { box-shadow: 0 8px 32px rgba(74,128,208,0.5); filter: brightness(1.1); }
+  button.submit:active { transform: translateY(1px); }
+  button.submit:disabled { opacity: 0.6; cursor: wait; }
+  button.secondary {
+    background: transparent;
+    color: var(--muted);
+    border: 1px solid var(--border-md);
+    padding: 16px 24px;
+    font-size: 14px;
+    font-family: var(--font-display);
+    font-weight: 500;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+  button.secondary:hover { border-color: var(--brand-bright); color: var(--text); }
+  .footer-note {
+    text-align: center;
+    margin-top: 48px;
+    color: var(--text-subtle);
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .form-msg {
+    margin-top: 20px;
+    padding: 14px 18px;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    display: none;
+  }
+  .form-msg.err {
+    display: block;
+    background: rgba(220,38,38,0.1);
+    border: 1px solid rgba(220,38,38,0.3);
+    color: #fca5a5;
+  }
+  .success-screen {
+    display: none;
+    text-align: center;
+    padding: 96px 24px;
+  }
+  .success-screen.active { display: block; animation: fadeUp 0.6s var(--ease, cubic-bezier(0.22,1,0.36,1)); }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .success-screen .mark {
+    width: 72px; height: 72px; margin: 0 auto 20px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(74,128,208,0.15);
+    border: 1px solid var(--brand);
+    color: var(--brand-bright);
+    font-size: 32px;
+  }
+  .success-screen h2 {
+    font-family: var(--font-display);
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin: 0 0 16px;
+    color: var(--text);
+  }
+  .success-screen p { color: var(--muted); max-width: 480px; margin: 0 auto; font-size: 16px; line-height: 1.65; }
+  .intro-box {
+    background: rgba(74,128,208,0.06);
+    border: 1px solid var(--border-md);
+    border-radius: var(--radius);
+    padding: 18px 22px;
+    margin-bottom: 32px;
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .intro-box strong { color: var(--brand-bright); font-weight: 600; }
+  hr.divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 32px 0 24px;
+  }
+  .pair-inline { display: flex; gap: 8px; align-items: center; }
+  .pair-inline input[type="text"] { flex: 1; }
+  .tag-label {
+    display: inline-block;
+    background: rgba(74,128,208,0.1);
+    color: var(--brand-bright);
+    font-family: var(--font-display);
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 10px;
+    margin-left: 8px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: 1px solid var(--border-md);
+  }
+  @media (max-width: 640px) {
+    .container { padding: 32px 16px 64px; }
+    section.block { padding: 24px 20px; }
+    .actions { flex-direction: column-reverse; }
+    .actions button { width: 100%; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="brand-bar">
+    <img src="assets/logo.png" alt="md mediadesign">
+    <span class="brand-label">Website-Briefing</span>
+  </div>
+
+  <header class="briefing-header">
+    <div class="eyebrow">Projekterfassung</div>
+    <h1>Ihr Website-Projekt — <span class="grad">alles Wichtige</span> auf einen Blick</h1>
+    <p>Damit wir Ihre Website passgenau gestalten können, benötigen wir einige Informationen von Ihnen. Nehmen Sie sich ruhig die nötige Zeit — je präziser Ihre Angaben, desto schneller und besser kommen wir ans Ziel. Felder mit <span style="color:var(--brand-bright)">*</span> sind Pflichtangaben, alles andere ist optional.</p>
+  </header>
+
+  <div class="progress" id="progress">
+    <div class="progress-bar"><div class="progress-bar__fill" id="progressFill"></div></div>
+    <div class="progress-label"><span id="progressText">0 %</span> ausgefüllt</div>
+  </div>
+
+  <div class="intro-box">
+    <strong>Tipp:</strong> Sie müssen das Formular nicht auf einmal ausfüllen. Alle Ihre Eingaben werden automatisch in diesem Browser zwischengespeichert. Wenn Sie zurückkehren, sind Ihre Angaben wieder da.
+  </div>
+
+  <form id="briefingForm" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data" novalidate>
+    <input type="hidden" name="access_key" value="e4c660cb-1427-4610-b1a6-ed1ea44b5e55">
+    <input type="hidden" name="subject" value="Neues Website-Briefing über md-mediadesign.de">
+    <input type="hidden" name="from_name" value="md-mediadesign · Briefing">
+    <input type="hidden" name="replyto" id="replyto">
+    <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" aria-hidden="true">
+
+    <!-- 1. UNTERNEHMEN & KONTAKT -->
+    <section class="block" data-section="1">
+      <h2><span class="num">01</span> Unternehmen &amp; Kontakt</h2>
+      <p class="section-desc">Grunddaten zu Ihrem Unternehmen und der Person, mit der wir zusammenarbeiten.</p>
+      <div class="grid">
+        <div class="field">
+          <label>Firmen- / Unternehmensname <span class="req">*</span></label>
+          <input type="text" name="01 Firmenname" required>
+        </div>
+        <div class="field">
+          <label>Rechtsform</label>
+          <input type="text" name="02 Rechtsform" placeholder="z. B. GmbH, UG, Einzelunternehmen">
+        </div>
+        <div class="field">
+          <label>Vorname &amp; Nachname (Ansprechpartner) <span class="req">*</span></label>
+          <input type="text" name="03 Ansprechpartner" required>
+        </div>
+        <div class="field">
+          <label>Position / Funktion</label>
+          <input type="text" name="04 Position" placeholder="z. B. Geschäftsführung, Marketing">
+        </div>
+        <div class="field">
+          <label>E-Mail <span class="req">*</span></label>
+          <input type="email" name="05 E-Mail" id="emailInput" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label>Telefon</label>
+          <input type="tel" name="06 Telefon">
+        </div>
+        <div class="field full">
+          <label>Firmenanschrift (für Impressum)</label>
+          <input type="text" name="07 Firmenanschrift" placeholder="Straße, Hausnummer, PLZ, Ort">
+        </div>
+        <div class="field">
+          <label>Umsatzsteuer-ID <span class="tag-label">für Impressum</span></label>
+          <input type="text" name="08 USt-ID">
+        </div>
+        <div class="field">
+          <label>Handelsregister-Nr. / Registergericht</label>
+          <input type="text" name="09 Handelsregister">
+        </div>
+        <div class="field full">
+          <label>Geschäftsführer / Inhaber (Name/n)</label>
+          <input type="text" name="10 Geschäftsführer">
+        </div>
+        <div class="field full">
+          <label>Bestehende Website (falls vorhanden)</label>
+          <input type="url" name="11 Bestehende Website" placeholder="https://...">
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. PROJEKT-GRUNDLAGEN -->
+    <section class="block" data-section="2">
+      <h2><span class="num">02</span> Projekt-Grundlagen</h2>
+      <p class="section-desc">Worum geht es — und was soll die Website für Sie leisten?</p>
+
+      <div class="field">
+        <label>Welche Art von Website benötigen Sie? <span class="req">*</span></label>
+        <div class="hint" style="color: var(--brand-bright); font-weight: 500; background: rgba(74,128,208,0.08); padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border-md); margin-bottom: 4px;">
+          Mehrfachauswahl möglich. Je nach Auswahl erscheinen direkt darunter passende Zusatzfragen.
+        </div>
+        <div class="check-group row">
+          <label class="check-item"><input type="checkbox" name="12 Website-Typ[]" value="business" data-toggle="cond-business"><span>Business-Website<span class="sub">One-Pager oder mehrseitig</span></span></label>
+          <label class="check-item"><input type="checkbox" name="12 Website-Typ[]" value="shop" data-toggle="cond-shop"><span>Online-Shop<span class="sub">E-Commerce, Produkte</span></span></label>
+          <label class="check-item"><input type="checkbox" name="12 Website-Typ[]" value="webapp" data-toggle="cond-webapp"><span>Webapp / Tool<span class="sub">Interaktive Anwendung</span></span></label>
+          <label class="check-item"><input type="checkbox" name="12 Website-Typ[]" value="landing" data-toggle="cond-landing"><span>Landingpage<span class="sub">Kampagne / Conversion</span></span></label>
+        </div>
+      </div>
+
+      <!-- Business-Zusatzfragen -->
+      <div class="conditional" id="cond-business">
+        <h3 class="cond-title">Zusatzfragen zur Business-Website</h3>
+        <div class="field">
+          <label>Umfang</label>
+          <div class="radio-group row">
+            <label class="radio-item"><input type="radio" name="36a Business - Umfang" value="onepager"><span>One-Pager<span class="sub">Alles auf einer Seite</span></span></label>
+            <label class="radio-item"><input type="radio" name="36a Business - Umfang" value="mehrseitig"><span>Mehrseitig<span class="sub">Mehrere Unterseiten</span></span></label>
+            <label class="radio-item"><input type="radio" name="36a Business - Umfang" value="unklar"><span>Noch unklar<span class="sub">Bitte beraten</span></span></label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Shop-Zusatzfragen -->
+      <div class="conditional" id="cond-shop">
+        <h3 class="cond-title">Zusatzfragen zum Online-Shop</h3>
+        <div class="grid">
+          <div class="field">
+            <label>Geschätzte Anzahl Produkte</label>
+            <select name="36 Shop - Produktanzahl">
+              <option value="">Bitte wählen</option>
+              <option value="10">bis 10</option>
+              <option value="50">11 – 50</option>
+              <option value="200">51 – 200</option>
+              <option value="1000">201 – 1.000</option>
+              <option value="1000plus">über 1.000</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Shopsystem-Präferenz</label>
+            <select name="37 Shop - Shopsystem">
+              <option value="">Keine Präferenz</option>
+              <option value="woo">WooCommerce</option>
+              <option value="shopify">Shopify</option>
+              <option value="shopware">Shopware</option>
+              <option value="jtl">JTL</option>
+              <option value="andere">Andere</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label>Produktkategorien / Sortiment</label>
+          <textarea name="38 Shop - Kategorien" placeholder="Welche Produktgruppen verkaufen Sie?"></textarea>
+        </div>
+        <div class="field">
+          <label>Produktvarianten?</label>
+          <div class="check-group row">
+            <label class="check-item"><input type="checkbox" name="39 Shop - Varianten[]" value="groessen"><span>Größen</span></label>
+            <label class="check-item"><input type="checkbox" name="39 Shop - Varianten[]" value="farben"><span>Farben</span></label>
+            <label class="check-item"><input type="checkbox" name="39 Shop - Varianten[]" value="mengen"><span>Mengeneinheiten</span></label>
+            <label class="check-item"><input type="checkbox" name="39 Shop - Varianten[]" value="digital"><span>Digitale Downloads</span></label>
+            <label class="check-item"><input type="checkbox" name="39 Shop - Varianten[]" value="abo"><span>Abonnements</span></label>
+          </div>
+        </div>
+        <div class="field">
+          <label>Zahlungsmethoden</label>
+          <div class="check-group row">
+            <label class="check-item"><input type="checkbox" name="40 Shop - Zahlungsmethoden[]" value="paypal"><span>PayPal</span></label>
+            <label class="check-item"><input type="checkbox" name="40 Shop - Zahlungsmethoden[]" value="kk"><span>Kreditkarte</span></label>
+            <label class="check-item"><input type="checkbox" name="40 Shop - Zahlungsmethoden[]" value="klarna"><span>Klarna</span></label>
+            <label class="check-item"><input type="checkbox" name="40 Shop - Zahlungsmethoden[]" value="sepa"><span>SEPA-Lastschrift</span></label>
+            <label class="check-item"><input type="checkbox" name="40 Shop - Zahlungsmethoden[]" value="rechnung"><span>Kauf auf Rechnung</span></label>
+            <label class="check-item"><input type="checkbox" name="40 Shop - Zahlungsmethoden[]" value="vorkasse"><span>Vorkasse</span></label>
+            <label class="check-item"><input type="checkbox" name="40 Shop - Zahlungsmethoden[]" value="apple"><span>Apple/Google Pay</span></label>
+          </div>
+        </div>
+        <div class="grid">
+          <div class="field">
+            <label>Versandzonen</label>
+            <select name="41 Shop - Versandzonen">
+              <option value="">Bitte wählen</option>
+              <option value="de">Nur Deutschland</option>
+              <option value="dach">D-A-CH</option>
+              <option value="eu">EU-weit</option>
+              <option value="welt">Weltweit</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Warenwirtschaft / ERP-Anbindung?</label>
+            <input type="text" name="42 Shop - ERP / Warenwirtschaft" placeholder="z. B. lexoffice, DATEV, SAP, keine">
+          </div>
+        </div>
+      </div>
+
+      <!-- Webapp-Zusatzfragen -->
+      <div class="conditional" id="cond-webapp">
+        <h3 class="cond-title">Zusatzfragen zur Webapp / zum Tool</h3>
+        <div class="field">
+          <label>Kurzbeschreibung der Webapp</label>
+          <textarea name="43 Webapp - Beschreibung" placeholder="Was soll die App tun? Welches Problem löst sie?"></textarea>
+        </div>
+        <div class="field">
+          <label>Nutzer-Rollen (Mehrfachauswahl)</label>
+          <div class="check-group row">
+            <label class="check-item"><input type="checkbox" name="44 Webapp - Nutzerrollen[]" value="gast"><span>Gast / ohne Login</span></label>
+            <label class="check-item"><input type="checkbox" name="44 Webapp - Nutzerrollen[]" value="user"><span>Registrierte Nutzer</span></label>
+            <label class="check-item"><input type="checkbox" name="44 Webapp - Nutzerrollen[]" value="admin"><span>Admin / Backoffice</span></label>
+            <label class="check-item"><input type="checkbox" name="44 Webapp - Nutzerrollen[]" value="team"><span>Team / Organisation</span></label>
+          </div>
+        </div>
+        <div class="field">
+          <label>API-Anbindungen / Schnittstellen</label>
+          <textarea name="45 Webapp - API / Schnittstellen" placeholder="z. B. CRM, Zahlungsanbieter, externe Datenquellen"></textarea>
+        </div>
+        <div class="field">
+          <label>Hauptfunktionen (Feature-Liste)</label>
+          <textarea name="46 Webapp - Hauptfunktionen" rows="4" placeholder="Listen Sie die wichtigsten Funktionen auf."></textarea>
+        </div>
+      </div>
+
+      <!-- Landingpage-Zusatzfragen -->
+      <div class="conditional" id="cond-landing">
+        <h3 class="cond-title">Zusatzfragen zur Landingpage / Kampagne</h3>
+        <div class="grid">
+          <div class="field">
+            <label>Kampagnen-Ziel</label>
+            <select name="47 Landingpage - Kampagnenziel">
+              <option value="">Bitte wählen</option>
+              <option value="lead">Leadgenerierung (Formular)</option>
+              <option value="sale">Direktverkauf</option>
+              <option value="registrierung">Registrierung / Anmeldung</option>
+              <option value="download">Download / Whitepaper</option>
+              <option value="termin">Terminbuchung</option>
+              <option value="awareness">Awareness</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Gewünschter Call-to-Action (CTA)</label>
+            <input type="text" name="48 Landingpage - Call-to-Action" placeholder="z. B. 'Jetzt kostenlos testen'">
+          </div>
+        </div>
+        <div class="field">
+          <label>Traffic-Quelle(n)</label>
+          <div class="check-group row">
+            <label class="check-item"><input type="checkbox" name="49 Landingpage - Traffic-Quellen[]" value="google"><span>Google Ads</span></label>
+            <label class="check-item"><input type="checkbox" name="49 Landingpage - Traffic-Quellen[]" value="meta"><span>Meta Ads (FB/IG)</span></label>
+            <label class="check-item"><input type="checkbox" name="49 Landingpage - Traffic-Quellen[]" value="linkedin"><span>LinkedIn Ads</span></label>
+            <label class="check-item"><input type="checkbox" name="49 Landingpage - Traffic-Quellen[]" value="email"><span>E-Mail-Marketing</span></label>
+            <label class="check-item"><input type="checkbox" name="49 Landingpage - Traffic-Quellen[]" value="print"><span>Print / Offline</span></label>
+            <label class="check-item"><input type="checkbox" name="49 Landingpage - Traffic-Quellen[]" value="organic"><span>Organisch / SEO</span></label>
+          </div>
+        </div>
+        <div class="field">
+          <label>A/B-Testing gewünscht?</label>
+          <div class="radio-group row">
+            <label class="radio-item"><input type="radio" name="50 Landingpage - A/B-Testing" value="ja"><span>Ja</span></label>
+            <label class="radio-item"><input type="radio" name="50 Landingpage - A/B-Testing" value="nein"><span>Nein</span></label>
+            <label class="radio-item"><input type="radio" name="50 Landingpage - A/B-Testing" value="unklar"><span>Bitte beraten</span></label>
+          </div>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <div class="grid-1">
+        <div class="field">
+          <label>Kurzbeschreibung Ihres Unternehmens <span class="req">*</span></label>
+          <div class="hint">Was machen Sie? In 2-3 Sätzen, wie Sie es einem Fremden erklären würden.</div>
+          <textarea name="13 Unternehmensbeschreibung" required></textarea>
+        </div>
+        <div class="field">
+          <label>Was ist das Hauptziel der neuen Website? <span class="req">*</span></label>
+          <div class="hint">z. B. Neukunden gewinnen, Produkte verkaufen, Marke präsentieren, Termine buchen lassen ...</div>
+          <textarea name="14 Hauptziel" required></textarea>
+        </div>
+        <div class="field">
+          <label>Zielgruppe(n)</label>
+          <div class="hint">Wer soll die Website besuchen? Alter, Branche, Interessen, B2B oder B2C?</div>
+          <textarea name="15 Zielgruppe"></textarea>
+        </div>
+        <div class="field">
+          <label>Was macht Sie besonders? (USP)</label>
+          <div class="hint">Was unterscheidet Sie vom Wettbewerb? Warum sollten Kunden zu Ihnen kommen?</div>
+          <textarea name="16 USP"></textarea>
+        </div>
+        <div class="field">
+          <label>Falls Sie bereits eine Website haben: Was stört Sie daran?</label>
+          <textarea name="17 Probleme bestehende Website"></textarea>
+        </div>
+        <div class="field">
+          <label>Wichtigste Mitbewerber (2-3 Namen + ggf. Website)</label>
+          <textarea name="18 Mitbewerber"></textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. DESIGN & BRANDING -->
+    <section class="block" data-section="3">
+      <h2><span class="num">03</span> Design &amp; Branding</h2>
+      <p class="section-desc">Ihr visueller Auftritt — Logo, Farben, Stil und Bildwelt.</p>
+
+      <div class="field">
+        <label>Ist ein Corporate Design vorhanden?</label>
+        <div class="radio-group row">
+          <label class="radio-item"><input type="radio" name="19 Corporate Design vorhanden" value="ja"><span>Ja, komplett</span></label>
+          <label class="radio-item"><input type="radio" name="19 Corporate Design vorhanden" value="teilweise"><span>Teilweise (nur Logo)</span></label>
+          <label class="radio-item"><input type="radio" name="19 Corporate Design vorhanden" value="nein"><span>Nein, muss erstellt werden</span></label>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="field">
+          <label>Hausfarben (Hex-Codes)</label>
+          <input type="text" name="20 Hausfarben" placeholder="z. B. #1a1a1a, #ff6b35">
+        </div>
+        <div class="field">
+          <label>Hausschrift(en)</label>
+          <input type="text" name="21 Hausschriften" placeholder="z. B. Inter, Helvetica Neue">
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Gewünschter Stil (Mehrfachauswahl)</label>
+        <div class="check-group row">
+          <label class="check-item"><input type="checkbox" name="22 Gewünschter Stil[]" value="modern"><span>Modern</span></label>
+          <label class="check-item"><input type="checkbox" name="22 Gewünschter Stil[]" value="minimalistisch"><span>Minimalistisch</span></label>
+          <label class="check-item"><input type="checkbox" name="22 Gewünschter Stil[]" value="klassisch"><span>Klassisch / seriös</span></label>
+          <label class="check-item"><input type="checkbox" name="22 Gewünschter Stil[]" value="verspielt"><span>Verspielt / kreativ</span></label>
+          <label class="check-item"><input type="checkbox" name="22 Gewünschter Stil[]" value="technisch"><span>Technisch / reduziert</span></label>
+          <label class="check-item"><input type="checkbox" name="22 Gewünschter Stil[]" value="luxurioes"><span>Luxuriös / hochwertig</span></label>
+          <label class="check-item"><input type="checkbox" name="22 Gewünschter Stil[]" value="warm"><span>Warm / einladend</span></label>
+          <label class="check-item"><input type="checkbox" name="22 Gewünschter Stil[]" value="mutig"><span>Mutig / auffällig</span></label>
+        </div>
+      </div>
+
+      <div class="grid-1">
+        <div class="field">
+          <label>3 Websites, die Ihnen gefallen (inkl. was daran gefällt)</label>
+          <div class="hint">Links + kurze Begründung. Das hilft uns enorm, Ihren Geschmack zu verstehen.</div>
+          <textarea name="23 Referenz-Websites (gefallen)" rows="4" placeholder="https://beispiel.de — gefällt mir, weil ..."></textarea>
+        </div>
+        <div class="field">
+          <label>Websites, die Ihnen gar nicht gefallen (optional)</label>
+          <textarea name="24 Referenz-Websites (gefallen nicht)"></textarea>
+        </div>
+        <div class="field">
+          <label>Bildsprache / Bildstil</label>
+          <div class="check-group row">
+            <label class="check-item"><input type="checkbox" name="25 Bildsprache[]" value="fotografie"><span>Fotografie</span></label>
+            <label class="check-item"><input type="checkbox" name="25 Bildsprache[]" value="illustration"><span>Illustrationen</span></label>
+            <label class="check-item"><input type="checkbox" name="25 Bildsprache[]" value="icons"><span>Icons / Piktogramme</span></label>
+            <label class="check-item"><input type="checkbox" name="25 Bildsprache[]" value="3d"><span>3D / Renderings</span></label>
+            <label class="check-item"><input type="checkbox" name="25 Bildsprache[]" value="mix"><span>Mix</span></label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. STRUKTUR & SEITEN -->
+    <section class="block" data-section="4">
+      <h2><span class="num">04</span> Struktur &amp; Seiten</h2>
+      <p class="section-desc">Welche Seiten und Bereiche soll die Website haben?</p>
+
+      <div class="field">
+        <label>Benötigte Seiten (Mehrfachauswahl)</label>
+        <div class="check-group row">
+          <label class="check-item"><input type="checkbox" name="26 Benötigte Seiten[]" value="start" checked><span>Startseite</span></label>
+          <label class="check-item"><input type="checkbox" name="26 Benötigte Seiten[]" value="ueber"><span>Über uns / Team</span></label>
+          <label class="check-item"><input type="checkbox" name="26 Benötigte Seiten[]" value="leistungen"><span>Leistungen / Services</span></label>
+          <label class="check-item"><input type="checkbox" name="26 Benötigte Seiten[]" value="produkte"><span>Produkte</span></label>
+          <label class="check-item"><input type="checkbox" name="26 Benötigte Seiten[]" value="referenzen"><span>Referenzen / Portfolio</span></label>
+          <label class="check-item"><input type="checkbox" name="26 Benötigte Seiten[]" value="blog"><span>Blog / News</span></label>
+          <label class="check-item"><input type="checkbox" name="26 Benötigte Seiten[]" value="karriere"><span>Karriere / Jobs</span></label>
+          <label class="check-item"><input type="checkbox" name="26 Benötigte Seiten[]" value="faq"><span>FAQ</span></label>
+          <label class="check-item"><input type="checkbox" name="26 Benötigte Seiten[]" value="downloads"><span>Downloads</span></label>
+          <label class="check-item"><input type="checkbox" name="26 Benötigte Seiten[]" value="kontakt" checked><span>Kontakt</span></label>
+          <label class="check-item"><input type="checkbox" name="26 Benötigte Seiten[]" value="impressum" checked><span>Impressum</span></label>
+          <label class="check-item"><input type="checkbox" name="26 Benötigte Seiten[]" value="datenschutz" checked><span>Datenschutz</span></label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Weitere Seiten oder Besonderheiten</label>
+        <textarea name="27 Weitere Seiten" placeholder="z. B. Standortseiten, Ratgeber, Login-Bereich ..."></textarea>
+      </div>
+
+      <div class="field">
+        <label>Geschätzte Gesamt-Seitenzahl</label>
+        <div class="radio-group row">
+          <label class="radio-item"><input type="radio" name="28 Gesamt-Seitenzahl" value="1"><span>One-Pager (1 Seite)</span></label>
+          <label class="radio-item"><input type="radio" name="28 Gesamt-Seitenzahl" value="2-5"><span>2 – 5 Seiten</span></label>
+          <label class="radio-item"><input type="radio" name="28 Gesamt-Seitenzahl" value="6-15"><span>6 – 15 Seiten</span></label>
+          <label class="radio-item"><input type="radio" name="28 Gesamt-Seitenzahl" value="16-30"><span>16 – 30 Seiten</span></label>
+          <label class="radio-item"><input type="radio" name="28 Gesamt-Seitenzahl" value="30plus"><span>30+ Seiten</span></label>
+          <label class="radio-item"><input type="radio" name="28 Gesamt-Seitenzahl" value="unklar"><span>Noch unklar</span></label>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. INHALTE -->
+    <section class="block" data-section="5">
+      <h2><span class="num">05</span> Inhalte (Texte, Bilder, Medien)</h2>
+      <p class="section-desc">Wer liefert was? Das hat großen Einfluss auf Aufwand und Zeitplan.</p>
+
+      <div class="grid">
+        <div class="field">
+          <label>Texte</label>
+          <select name="29 Texte (Lieferung)">
+            <option value="">Bitte wählen</option>
+            <option value="kunde">Wir liefern alle Texte selbst</option>
+            <option value="teilweise">Teilweise — für manches brauchen wir Unterstützung</option>
+            <option value="md">Bitte Copywriting komplett übernehmen</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Bildmaterial</label>
+          <select name="30 Bildmaterial (Lieferung)">
+            <option value="">Bitte wählen</option>
+            <option value="kunde">Wir haben eigene Bilder</option>
+            <option value="stock">Stockbilder sind ok</option>
+            <option value="shooting">Wir brauchen ein Foto-Shooting</option>
+            <option value="mix">Mix aus eigenen und Stock</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Videos benötigt?</label>
+          <select name="31 Videos">
+            <option value="">Bitte wählen</option>
+            <option value="nein">Nein</option>
+            <option value="vorhanden">Ja, sind vorhanden</option>
+            <option value="produktion">Ja, Produktion nötig</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Icons / Illustrationen benötigt?</label>
+          <select name="32 Icons / Illustrationen">
+            <option value="">Bitte wählen</option>
+            <option value="nein">Nein</option>
+            <option value="standard">Standard-Icons reichen</option>
+            <option value="individuell">Individuelle Illustrationen gewünscht</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. FUNKTIONEN -->
+    <section class="block" data-section="6">
+      <h2><span class="num">06</span> Funktionen &amp; Features</h2>
+      <p class="section-desc">Welche Funktionen soll die Website haben?</p>
+
+      <div class="field">
+        <label>Gewünschte Funktionen (Mehrfachauswahl)</label>
+        <div class="check-group row">
+          <label class="check-item"><input type="checkbox" name="33 Gewünschte Funktionen[]" value="kontaktformular"><span>Kontaktformular</span></label>
+          <label class="check-item"><input type="checkbox" name="33 Gewünschte Funktionen[]" value="newsletter"><span>Newsletter-Anmeldung</span></label>
+          <label class="check-item"><input type="checkbox" name="33 Gewünschte Funktionen[]" value="mehrsprachig"><span>Mehrsprachigkeit</span></label>
+          <label class="check-item"><input type="checkbox" name="33 Gewünschte Funktionen[]" value="login"><span>Login / Mitgliederbereich</span></label>
+          <label class="check-item"><input type="checkbox" name="33 Gewünschte Funktionen[]" value="download"><span>Download-Bereich</span></label>
+          <label class="check-item"><input type="checkbox" name="33 Gewünschte Funktionen[]" value="terminbuchung"><span>Terminbuchung (Calendly o. ä.)</span></label>
+          <label class="check-item"><input type="checkbox" name="33 Gewünschte Funktionen[]" value="maps"><span>Google Maps</span></label>
+          <label class="check-item"><input type="checkbox" name="33 Gewünschte Funktionen[]" value="social"><span>Social Media Feeds</span></label>
+          <label class="check-item"><input type="checkbox" name="33 Gewünschte Funktionen[]" value="chat"><span>Live-Chat</span></label>
+          <label class="check-item"><input type="checkbox" name="33 Gewünschte Funktionen[]" value="testimonials"><span>Bewertungen / Testimonials</span></label>
+          <label class="check-item"><input type="checkbox" name="33 Gewünschte Funktionen[]" value="suche"><span>Suchfunktion</span></label>
+          <label class="check-item"><input type="checkbox" name="33 Gewünschte Funktionen[]" value="cookie"><span>Cookie-Consent-Banner</span></label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Sprachen (falls mehrsprachig)</label>
+        <input type="text" name="34 Sprachen" placeholder="z. B. Deutsch, Englisch, Französisch">
+      </div>
+
+      <div class="field">
+        <label>Weitere Funktionen oder Besonderheiten</label>
+        <textarea name="35 Weitere Funktionen"></textarea>
+      </div>
+    </section>
+
+    <!-- 7. TECHNIK & HOSTING -->
+    <section class="block" data-section="7">
+      <h2><span class="num">07</span> Technik &amp; Hosting</h2>
+      <p class="section-desc">Wo läuft die Website — und was ist bereits vorhanden?</p>
+      <div class="grid">
+        <div class="field">
+          <label>Domain vorhanden?</label>
+          <select name="51 Domain vorhanden">
+            <option value="">Bitte wählen</option>
+            <option value="ja">Ja</option>
+            <option value="nein">Nein, bitte registrieren</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Welche Domain(s)?</label>
+          <input type="text" name="52 Domain(s)" placeholder="z. B. ihrefirma.de, ihrefirma.com">
+        </div>
+        <div class="field">
+          <label>Hosting vorhanden?</label>
+          <select name="53 Hosting vorhanden">
+            <option value="">Bitte wählen</option>
+            <option value="ja">Ja</option>
+            <option value="nein">Nein, bitte neu</option>
+            <option value="unklar">Weiß nicht</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Hosting-Anbieter (falls vorhanden)</label>
+          <input type="text" name="54 Hosting-Anbieter" placeholder="z. B. IONOS, All-Inkl, Hetzner">
+        </div>
+        <div class="field">
+          <label>E-Mail-Postfächer benötigt?</label>
+          <div class="hint">Bei den meisten Hostern sind Postfächer kostenlos enthalten.</div>
+          <input type="text" name="55 E-Mail-Postfächer" placeholder="z. B. 3 Postfächer (info@, mail@, buchhaltung@)">
+        </div>
+        <div class="field">
+          <label>Möchten Sie Inhalte später selbst pflegen können?</label>
+          <div class="hint">z. B. Texte ändern, News posten, Bilder austauschen. Beeinflusst die technische Umsetzung.</div>
+          <div class="radio-group row">
+            <label class="radio-item"><input type="radio" name="56 Inhalte selbst pflegen" value="ja"><span>Ja, regelmäßig<span class="sub">Blog/News, häufige Änderungen</span></span></label>
+            <label class="radio-item"><input type="radio" name="56 Inhalte selbst pflegen" value="gelegentlich"><span>Gelegentlich<span class="sub">Ein paar Mal im Jahr</span></span></label>
+            <label class="radio-item"><input type="radio" name="56 Inhalte selbst pflegen" value="nein"><span>Nein<span class="sub">Änderungen machen wir</span></span></label>
+            <label class="radio-item"><input type="radio" name="56 Inhalte selbst pflegen" value="beratung"><span>Beratung gewünscht</span></label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. SEO & MARKETING -->
+    <section class="block" data-section="8">
+      <h2><span class="num">08</span> SEO &amp; Marketing</h2>
+      <p class="section-desc">Sichtbarkeit und Tracking.</p>
+      <div class="grid-1">
+        <div class="field">
+          <label>Relevante Suchbegriffe / Keywords</label>
+          <div class="hint">Für welche Begriffe soll die Website bei Google gefunden werden?</div>
+          <textarea name="57 SEO - Keywords"></textarea>
+        </div>
+        <div class="field">
+          <label>Vorhandene Marketing-Tools / Konten</label>
+          <div class="check-group row">
+            <label class="check-item"><input type="checkbox" name="58 Marketing-Tools[]" value="gbp"><span>Google Business Profile</span></label>
+            <label class="check-item"><input type="checkbox" name="58 Marketing-Tools[]" value="ga"><span>Google Analytics</span></label>
+            <label class="check-item"><input type="checkbox" name="58 Marketing-Tools[]" value="gsc"><span>Google Search Console</span></label>
+            <label class="check-item"><input type="checkbox" name="58 Marketing-Tools[]" value="gads"><span>Google Ads</span></label>
+            <label class="check-item"><input type="checkbox" name="58 Marketing-Tools[]" value="meta"><span>Meta Pixel</span></label>
+            <label class="check-item"><input type="checkbox" name="58 Marketing-Tools[]" value="matomo"><span>Matomo</span></label>
+            <label class="check-item"><input type="checkbox" name="58 Marketing-Tools[]" value="newsletter"><span>Newsletter-Tool (z. B. Mailchimp)</span></label>
+          </div>
+        </div>
+        <div class="field">
+          <label>Social-Media-Kanäle (Links)</label>
+          <textarea name="59 Social-Media-Kanäle" placeholder="LinkedIn, Instagram, Facebook, YouTube, TikTok ..."></textarea>
+        </div>
+      </div>
+    </section>
+
+    <!-- 9. RECHTLICHES -->
+    <section class="block" data-section="9">
+      <h2><span class="num">09</span> Rechtliches</h2>
+      <p class="section-desc">Pflichtangaben und Datenschutz — wichtig für die rechtssichere Website.</p>
+      <div class="grid">
+        <div class="field">
+          <label>Datenschutzerklärung</label>
+          <select name="60 Datenschutzerklärung">
+            <option value="">Bitte wählen</option>
+            <option value="vorhanden">Liegt vor (Upload unten)</option>
+            <option value="anwalt">Wird durch unseren Anwalt erstellt</option>
+            <option value="generator">Bitte über Generator (z. B. eRecht24)</option>
+            <option value="md">Bitte übernehmen</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>AGB (bei Shop)</label>
+          <select name="61 AGB">
+            <option value="">Bitte wählen</option>
+            <option value="vorhanden">Liegen vor</option>
+            <option value="anwalt">Wird durch Anwalt erstellt</option>
+            <option value="nicht_noetig">Nicht nötig</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Cookie-Consent-Lösung</label>
+          <select name="62 Cookie-Consent-Lösung">
+            <option value="">Bitte wählen</option>
+            <option value="usercentrics">Usercentrics</option>
+            <option value="borlabs">Borlabs (WP)</option>
+            <option value="cookiebot">Cookiebot</option>
+            <option value="eigen">Eigene Lösung</option>
+            <option value="unklar">Beratung gewünscht</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Sind Urheberrechte an Bildern geklärt?</label>
+          <div class="radio-group row">
+            <label class="radio-item"><input type="radio" name="63 Bildrechte geklärt" value="ja"><span>Ja</span></label>
+            <label class="radio-item"><input type="radio" name="63 Bildrechte geklärt" value="nein"><span>Nein</span></label>
+            <label class="radio-item"><input type="radio" name="63 Bildrechte geklärt" value="teilweise"><span>Teilweise</span></label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. ZEITPLAN & BUDGET -->
+    <section class="block" data-section="10">
+      <h2><span class="num">10</span> Zeitplan &amp; Budget</h2>
+      <p class="section-desc">Realistische Einschätzung hilft uns, passgenau zu planen.</p>
+      <div class="grid">
+        <div class="field">
+          <label>Gewünschter Launch-Termin</label>
+          <input type="date" name="64 Launch-Termin">
+        </div>
+        <div class="field">
+          <label>Ist der Termin fix?</label>
+          <div class="radio-group row">
+            <label class="radio-item"><input type="radio" name="65 Launch-Termin fix" value="ja"><span>Ja (fester Anlass)</span></label>
+            <label class="radio-item"><input type="radio" name="65 Launch-Termin fix" value="nein"><span>Flexibel</span></label>
+          </div>
+        </div>
+        <div class="field full">
+          <label>Falls Termin fix: Warum?</label>
+          <input type="text" name="66 Launch-Grund" placeholder="z. B. Messe, Produktlaunch, Geschäftseröffnung">
+        </div>
+        <div class="field full">
+          <label>Budget-Rahmen <span class="req">*</span></label>
+          <div class="hint">Eine Orientierung hilft uns, einen passenden Vorschlag zu machen. Offene Kommunikation spart beiden Seiten Zeit.</div>
+          <div class="radio-group row">
+            <label class="radio-item"><input type="radio" name="67 Budget-Rahmen" value="<3k" required><span>unter 3.000 €</span></label>
+            <label class="radio-item"><input type="radio" name="67 Budget-Rahmen" value="3-5k"><span>3.000 – 5.000 €</span></label>
+            <label class="radio-item"><input type="radio" name="67 Budget-Rahmen" value="5-10k"><span>5.000 – 10.000 €</span></label>
+            <label class="radio-item"><input type="radio" name="67 Budget-Rahmen" value="10-20k"><span>10.000 – 20.000 €</span></label>
+            <label class="radio-item"><input type="radio" name="67 Budget-Rahmen" value="20k+"><span>über 20.000 €</span></label>
+            <label class="radio-item"><input type="radio" name="67 Budget-Rahmen" value="reden"><span>Lassen Sie uns reden</span></label>
+          </div>
+        </div>
+        <div class="field full">
+          <label>Laufende Betreuung nach Launch?</label>
+          <div class="check-group row">
+            <label class="check-item"><input type="checkbox" name="68 Laufende Betreuung[]" value="updates"><span>Technische Updates</span></label>
+            <label class="check-item"><input type="checkbox" name="68 Laufende Betreuung[]" value="inhalte"><span>Inhaltspflege</span></label>
+            <label class="check-item"><input type="checkbox" name="68 Laufende Betreuung[]" value="seo"><span>Laufende SEO</span></label>
+            <label class="check-item"><input type="checkbox" name="68 Laufende Betreuung[]" value="social"><span>Social Media Content</span></label>
+            <label class="check-item"><input type="checkbox" name="68 Laufende Betreuung[]" value="nein"><span>Keine Betreuung</span></label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. KOMMUNIKATION -->
+    <section class="block" data-section="11">
+      <h2><span class="num">11</span> Kommunikation &amp; Freigaben</h2>
+      <p class="section-desc">Wie arbeiten wir am besten zusammen?</p>
+      <div class="grid">
+        <div class="field">
+          <label>Hauptansprechpartner für das Projekt</label>
+          <input type="text" name="69 Kommunikation - Hauptansprechpartner" placeholder="Name, falls anders als oben">
+        </div>
+        <div class="field">
+          <label>Wer erteilt Freigaben?</label>
+          <input type="text" name="70 Kommunikation - Freigaben">
+        </div>
+        <div class="field">
+          <label>Beste Erreichbarkeit</label>
+          <input type="text" name="71 Kommunikation - Erreichbarkeit" placeholder="z. B. werktags 9–17 Uhr">
+        </div>
+        <div class="field">
+          <label>Bevorzugter Kommunikationsweg</label>
+          <select name="72 Kommunikation - Bevorzugter Weg">
+            <option value="">Bitte wählen</option>
+            <option value="email">E-Mail</option>
+            <option value="telefon">Telefon</option>
+            <option value="whatsapp">WhatsApp</option>
+            <option value="teams">MS Teams</option>
+            <option value="zoom">Zoom</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12. SONSTIGES & UPLOADS -->
+    <section class="block" data-section="12">
+      <h2><span class="num">12</span> Sonstiges &amp; Unterlagen</h2>
+      <p class="section-desc">Alles was noch wichtig ist. Dateien übermitteln Sie uns bequem per Cloud-Link oder separater E-Mail.</p>
+
+      <div class="grid-1">
+        <div class="field">
+          <label>Was ist Ihnen besonders wichtig?</label>
+          <textarea name="73 Besonders wichtig"></textarea>
+        </div>
+        <div class="field">
+          <label>Was darf auf keinen Fall passieren?</label>
+          <textarea name="74 No-Gos"></textarea>
+        </div>
+        <div class="field">
+          <label>Inspirationen, Moodboards, Geschichten</label>
+          <textarea name="75 Inspirationen"></textarea>
+        </div>
+        <div class="field">
+          <label>Wie haben Sie von md-mediadesign erfahren?</label>
+          <input type="text" name="76 Wie von md-mediadesign erfahren">
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <div class="field">
+        <label>Cloud-Link für Dateien</label>
+        <div class="hint">Bitte laden Sie Logo, Bilder, Texte und sonstige Unterlagen in einen Cloud-Dienst Ihrer Wahl (WeTransfer, Google Drive, Dropbox, OneDrive …) hoch und teilen Sie uns hier den Link. Alternativ können Sie die Dateien auch direkt an <strong>mail@md-mediadesign.de</strong> schicken.</div>
+        <input type="url" name="77 Cloud-Link (Dateien)" placeholder="https://wetransfer.com/... oder https://drive.google.com/...">
+      </div>
+
+      <div class="field">
+        <label>Welche Dateien liefern Sie mit?</label>
+        <div class="check-group row">
+          <label class="check-item"><input type="checkbox" name="78 Mitgelieferte Dateien[]" value="logo"><span>Logo &amp; CI-Dateien</span></label>
+          <label class="check-item"><input type="checkbox" name="78 Mitgelieferte Dateien[]" value="bilder"><span>Bilder / Fotos</span></label>
+          <label class="check-item"><input type="checkbox" name="78 Mitgelieferte Dateien[]" value="texte"><span>Texte / Briefings</span></label>
+          <label class="check-item"><input type="checkbox" name="78 Mitgelieferte Dateien[]" value="videos"><span>Videos</span></label>
+          <label class="check-item"><input type="checkbox" name="78 Mitgelieferte Dateien[]" value="icons"><span>Icons / Illustrationen</span></label>
+          <label class="check-item"><input type="checkbox" name="78 Mitgelieferte Dateien[]" value="sonstige"><span>Sonstige Unterlagen</span></label>
+        </div>
+      </div>
+
+      <div class="field" style="margin-top: 20px;">
+        <label class="check-item" style="border-color:var(--border);">
+          <input type="checkbox" name="79 Datenschutz-Zustimmung" required>
+          <span>Ich habe die <a href="/datenschutz" target="_blank">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Angaben zum Zweck der Projekt-Angebots-Erstellung zu. <span class="req">*</span></span>
+        </label>
+      </div>
+    </section>
+
+    <div class="actions">
+      <button type="button" class="secondary" id="clearBtn">Formular zurücksetzen</button>
+      <button type="submit" class="submit" id="submitBtn">Briefing abschicken →</button>
+    </div>
+
+    <div class="form-msg" id="formMsg"></div>
+
+    <p class="footer-note">
+      Ihre Angaben werden ausschließlich für die Projekt-Vorbereitung verwendet und nicht an Dritte weitergegeben.<br>
+      © md-mediadesign · Marco Delicati · <a href="/datenschutz" style="color:var(--brand-bright); text-decoration:none;">Datenschutz</a>
+    </p>
+  </form>
+
+  <div class="success-screen" id="successScreen">
+    <div class="mark">✓</div>
+    <h2>Vielen Dank für Ihr Briefing!</h2>
+    <p>Wir haben Ihre Angaben erhalten und melden uns innerhalb von 1–2 Werktagen mit einem ersten Feedback und möglichen Rückfragen bei Ihnen.</p>
+  </div>
+
+</div>
+
+<script>
+  // --- Conditional sections ---
+  // Felder in inaktiven Sektionen werden disabled, damit sie nicht mitgesendet werden.
+  function setConditional(el, interactive = false) {
+    const targetId = el.getAttribute('data-toggle');
+    const target = document.getElementById(targetId);
+    if (!target) return;
+    target.classList.toggle('active', el.checked);
+    target.querySelectorAll('input, select, textarea').forEach(f => {
+      f.disabled = !el.checked;
+    });
+    // Bei User-Interaktion: zur neu sichtbaren Sektion scrollen und visuell hervorheben
+    if (interactive && el.checked) {
+      setTimeout(() => {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        target.classList.remove('flash');
+        void target.offsetWidth; // Reflow erzwingen für Animation-Restart
+        target.classList.add('flash');
+      }, 100);
+    }
+  }
+  const toggles = document.querySelectorAll('[data-toggle]');
+  toggles.forEach(el => {
+    el.addEventListener('change', () => setConditional(el, true));
+    setConditional(el); // Initial-Status (nicht-interaktiv)
+  });
+
+  // --- Reply-to auto-fill ---
+  const emailInput = document.getElementById('emailInput');
+  const replyto = document.getElementById('replyto');
+  emailInput.addEventListener('input', () => { replyto.value = emailInput.value; });
+
+  // --- Progress indicator ---
+  const form = document.getElementById('briefingForm');
+  const progressFill = document.getElementById('progressFill');
+  const progressText = document.getElementById('progressText');
+  function updateProgress() {
+    const fields = form.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], input[type="url"], input[type="date"], input[type="number"], select, textarea');
+    let filled = 0, total = fields.length;
+    fields.forEach(f => { if (f.value && f.value.trim() !== '') filled++; });
+    const checks = form.querySelectorAll('input[type="checkbox"]:checked, input[type="radio"]:checked');
+    // rough: each checked counts as a filled group (limited)
+    const bonus = Math.min(checks.length, 12);
+    const pct = Math.min(100, Math.round(((filled + bonus) / (total + 12)) * 100));
+    progressFill.style.width = pct + '%';
+    progressText.textContent = pct + ' %';
+  }
+  form.addEventListener('input', updateProgress);
+  form.addEventListener('change', updateProgress);
+
+  // --- LocalStorage autosave ---
+  const STORAGE_KEY = 'md-briefing-v1';
+  function saveState() {
+    const data = {};
+    form.querySelectorAll('input, select, textarea').forEach(el => {
+      if (el.type === 'file') return;
+      const key = el.name + (el.type === 'checkbox' || el.type === 'radio' ? ':' + el.value : '');
+      if (el.type === 'checkbox' || el.type === 'radio') data[key] = el.checked;
+      else data[key] = el.value;
+    });
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch(e) {}
+  }
+  function loadState() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return;
+      const data = JSON.parse(raw);
+      form.querySelectorAll('input, select, textarea').forEach(el => {
+        if (el.type === 'file') return;
+        const key = el.name + (el.type === 'checkbox' || el.type === 'radio' ? ':' + el.value : '');
+        if (key in data) {
+          if (el.type === 'checkbox' || el.type === 'radio') {
+            el.checked = data[key];
+            if (el.hasAttribute('data-toggle')) {
+              setConditional(el);
+            }
+          } else {
+            el.value = data[key];
+          }
+        }
+      });
+      updateProgress();
+    } catch(e) {}
+  }
+  form.addEventListener('input', saveState);
+  form.addEventListener('change', saveState);
+  document.addEventListener('DOMContentLoaded', loadState);
+  loadState();
+
+  // --- Reset ---
+  document.getElementById('clearBtn').addEventListener('click', () => {
+    if (confirm('Alle Angaben verwerfen?')) {
+      localStorage.removeItem(STORAGE_KEY);
+      form.reset();
+      toggles.forEach(el => setConditional(el));
+      updateProgress();
+    }
+  });
+
+  // --- Web3Forms submit ---
+  const submitBtn = document.getElementById('submitBtn');
+  const formMsg = document.getElementById('formMsg');
+  const successScreen = document.getElementById('successScreen');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    formMsg.className = 'form-msg';
+    formMsg.textContent = '';
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Wird gesendet …';
+
+    const fd = new FormData(form);
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: fd,
+        headers: { 'Accept': 'application/json' }
+      });
+      const data = await res.json();
+      if (data.success) {
+        form.style.display = 'none';
+        document.querySelector('.briefing-header').style.display = 'none';
+        document.querySelector('.intro-box').style.display = 'none';
+        document.getElementById('progress').style.display = 'none';
+        successScreen.classList.add('active');
+        localStorage.removeItem(STORAGE_KEY);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        throw new Error(data.message || 'Unbekannter Fehler');
+      }
+    } catch (err) {
+      formMsg.className = 'form-msg err';
+      formMsg.textContent = 'FEHLER: ' + (err && err.message ? err.message : String(err));
+      console.error('Briefing submit error:', err);
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Briefing abschicken →';
+    }
+  });
+
+  updateProgress();
+</script>
+
+</body>
+</html>
