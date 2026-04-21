@@ -1,0 +1,843 @@
+@media (max-width:1441px) {
+    .flexslider#slider-2 .slides>li .slide_description_wrapper .slide_description {
+        padding-top: 40px;
+    }
+    .flexslider .slides>li .slide_description_wrapper .slide_description {
+        padding-top: 30px;
+    }
+}
+
+@media (max-width:1367px) {
+    .flexslider#slider-2 .slides>li .slide_description_wrapper .slide_description {
+        padding-top: 20px;
+    }
+    .flexslider .slides>li .slide_description_wrapper .slide_description {
+        padding-top: 20px;
+    }
+}
+
+@media (max-width:1281px) {
+    body {
+        font-size: 14px;
+    }
+    h1,
+    .h1 {
+        font-size: 2.3333em;
+    }
+    h2,
+    .h2 {
+        font-size: 2em;
+    }
+    h3,
+    .h3 {
+        font-size: 1.6667em;
+    }
+    h4,
+    .h4 {
+        font-size: 1.6667em;
+    }
+    h5,
+    .h5 {
+        font-size: 1.3333em;
+    }
+    h6,
+    .h6 {
+        font-size: 1.0667em;
+    }
+    .flexslider .slides>li .slide_description_wrapper {
+        width: 100%;
+        padding-right: 65px;
+        padding-left: 65px;
+    }
+    .flexslider .slides>li .slide_description_wrapper .slide_description .slide_title {
+        font-size: 60px;
+    }
+    .flexslider#slider-2 .slides>li .slide_description_wrapper .slide_description {
+        padding-top: 0px;
+    }
+    .flexslider .slides>li .slide_description_wrapper .slide_description {
+        padding-top: 0px;
+    }
+    .sc_testimonials .sc_testimonials_item_text {
+        font-size: 1.3em;
+    }
+    .five_columns .isotopeElement {
+        width: 24.9%;
+    }
+    header .topWrap .menuTopWrap #mainmenu>li>a {
+        font-size: 12px;
+    }
+}
+
+@media (max-width:1140px) {
+    #slider-2.flexslider .slides>li .slide_description_wrapper .slide_description .slide_title {
+        margin-bottom: 24px;
+    }
+    .sc_services.sc_services_style_3 .sc_title {
+        margin-left: 16px;
+    }
+    #booking_calendar .container .booking_main_container .booking_calendar_container_all .days_container_all {
+        text-align: center;
+    }
+    #booking_calendar .container .booking_main_container .booking_calendar_container_all .days_container_all .booking_day_container {
+        width: 126px;
+        float: none;
+    }
+}
+
+@media (max-width:1025px) {
+    body {
+        font-size: 13px;
+    }
+    .flexslider .slides>li .slide_description_wrapper .slide_description .slide_title {
+        font-size: 50px;
+    }
+    .flexslider .slides>li .slide_description_wrapper .slide_description .slide_title {
+        font-size: 50px;
+        line-height: 50px;
+    }
+    .flexslider#slider-2 .slides>li .slide_description_wrapper .slide_description .slide_title {
+        margin-bottom: 20px;
+    }
+    header .topWrap .menuTopWrap #mainmenu>li>a {
+        font-size: 12px;
+    }
+    .header_style_2 header .topWrap .menuTopWrap #mainmenu>li ul {
+        top: 21px;
+    }
+    #underheader .container .topWrap .usermenu_area .contact_area {
+        font-size: 16px;
+        padding-top: 10px;
+    }
+    #underheader .container .topWrap .usermenu_area .timetable_area {
+        font-size: 14px;
+        padding-top: 10px;
+    }
+    #underheader .container .topWrap .usermenu_area .contact_area .icon-rounded {
+        line-height: 20px;
+    }
+    header .topWrap .logo {
+        padding-bottom: 35px;
+    }
+    header .topWrap .menuTopWrap #mainmenu>li ul {
+        top: 25px;
+    }
+    header .topWrap .menuTopWrap #mainmenu>li ul>li>a {
+        font-size: 13px;
+    }
+    header .topWrap .menuTopWrap #mainmenu>li ul>li>a:hover:before {
+        top: 2px;
+    }
+    header .topWrap .menuTopWrap #mainmenu>li ul>li:first-child:before {
+        height: 13px;
+    }
+    header .topWrap .menuTopWrap #mainmenu>li ul>li:last-child:after {
+        height: 13px;
+    }
+    .sc_team_item .sc_socials .sc_icon.sc_icon_round {
+        padding-top: 6px;
+    }
+    .sc_services.sc_services_style_3 .sc_title {
+        margin-left: 16px;
+    }
+    #contact_info_section,
+    #contact_info_section_2 {
+        font-size: 15px;
+    }
+    #contact_info_section .container .timetable,
+    #contact_info_section_2 .container .timetable {
+        font-size: 12px;
+    }
+    .services_menu li a {
+        padding-left: 20px;
+    }
+    .services_menu li a:before {
+        right: 12px;
+    }
+    .widget_download_pricelist .widget_title {
+        font-size: 15px;
+        line-height: 20px;
+    }
+    .widget_download_pricelist ul li a {
+        font-size: 11px;
+    }
+    .widget.widget_contacts ul li.phone,
+    .widget.widget_contacts ul li.address {
+        font-size: 13px;
+    }
+    .widget.widget_contacts ul li.phone:before {
+        top: 0;
+    }
+    #booking_calendar .container .booking_main_container .booking_calendar_container_all .booking_name_days_container {
+        display: none;
+    }
+    #booking_calendar .container .booking_main_container .booking_calendar_container_all .days_container_all .booking_day_container {
+        margin-right: 10px!important;
+    }
+    .sc_accordion.sc_accordion_style_2 .sc_accordion_item .sc_accordion_title a .sc_accordion_icon {
+        line-height: 1.5;
+    }
+    .sc_socials .sc_socials_item {
+        line-height: 16px;
+    }
+    header .topWrap .search.searchOpen {
+        width: 175px;
+    }
+    #gallery_section.light_section .post_item.post_item_square {
+        width: auto;
+    }
+}
+
+@media (max-width:961px) {
+    header .topWrap .menuTopWrap #mainmenu>li ul {
+        top: 0;
+    }
+    header .topWrap .menuTopWrap #mainmenu>li ul>li.current-menu-item>a:before {
+        top: 2px;
+    }
+    .responsive_menu header .topWrap .menuTopWrap #mainmenu>li>a {
+        font-size: 14px;
+    }
+    header .topWrap .logo {
+        padding-bottom: 0;
+    }
+    header .topWrap .logo .navbar-brand {
+        font-size: 45px;
+    }
+    header .topWrap .logo .navbar-brand img {
+        height: 50px;
+    }
+    header .topWrap .logo .navbar-brand .logo_text {
+        margin: 0;
+    }
+    header .topWrap .logo .navbar-brand .logo_text i {
+        font-size: 65px;
+    }
+    .header_style_2 header .topWrap .openResponsiveMenu {
+        margin-top: 5px;
+    }
+    .post_item .post_content.ih-item.circle.effect5 .info .post_title {
+        font-size: 16px;
+    }
+    .sc_team_item .sc_socials .sc_icon.sc_icon_round {
+        padding-top: 6px;
+    }
+    #welcome_section .container p {
+        font-size: 15px;
+        line-height: 20px;
+    }
+    .sc_testimonials {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+    #more_about_section .container .sc_title {
+        margin-top: 38px;
+    }
+    #more_about_section_2 .container .sc_title {
+        margin-top: 38px;
+    }
+    #testimonialsCarousel .item .col-sm-6:last-child {
+        display: none;
+    }
+    #contact_info_section .container .phone:before,
+    #contact_info_section_2 .container .phone:before {
+        font-size: 14px;
+        margin-right: 10px;
+    }
+    #contact_info_section .container .address:before,
+    #contact_info_section_2 .container .address:before {
+        font-size: 22px;
+        margin-right: 10px;
+        top: 5px;
+    }
+    .services_menu li a {
+        font-size: 18px;
+        line-height: 25px;
+    }
+    .widget.widget_download_pricelist ul li .sc_icon {
+        font-size: 20px;
+    }
+    .widget.widget_contacts ul li.phone,
+    .widget.widget_contacts ul li.address {
+        padding-left: 20px;
+    }
+    .widget.widget_contacts ul li.address:before {
+        font-size: 26px;
+    }
+    .widget.widget_contacts ul li.phone:before {
+        font-size: 16px;
+        top: 4px;
+    }
+    .two_columns .isotopeElement {
+        width: 100% !important;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    #booking_calendar .container .booking_main_container .booking_month_container_all .booking_month_container {
+        font-size: 20px;
+    }
+    .p404_searchform_container .btn {
+        width: 35%;
+    }
+}
+
+@media (max-width:991px) {
+    .five_columns .isotopeElement {
+        width: 33%;
+    }
+}
+
+@media (max-width:801px) {
+    .flexslider .flex-control-nav {
+        display: none;
+    }
+    .flexslider .slides>li .slide_description_wrapper .slide_description .slide_title {
+        font-size: 35px;
+        line-height: 40px;
+    }
+    #team_members_section img {
+        width: 100%;
+    }
+}
+
+@media (max-width: 769px) {
+    .flexslider .slides>li .slide_description_wrapper .slide_description .slide_title {
+        font-size: 30px;
+        line-height: 30px;
+    }
+    .flexslider .slides>li .slide_description_wrapper .slide_description .btn {
+        font-size: 15px!important;
+    }
+    .breadcrumb {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    #contact_info_section .container,
+    #contact_info_section_2 .container {
+        width: 100%;
+    }
+    #contact_info_section .container .row,
+    #contact_info_section_2 .container .row {
+        display: flex;
+        flex: 0 0 100%;
+        justify-content: space-between;
+        align-items: baseline;
+        padding: 0 15px;
+    }
+    #contact_info_section .container .timetable,
+    #contact_info_section_2 .container .timetable {
+        font-size: 15px;
+    }
+    #contact_info_section .address,
+    #contact_info_section_2 .address {
+        display: flex;
+        line-height: 24px;
+    }
+    #contact_info_section .container .timetable,
+    #contact_info_section_2 .container .timetable {
+        line-height: 24px;
+    }
+    #contact_info_section_2 .container .address:before {
+        left: auto;
+    }
+    #contact_info_section .container .timetable {
+        margin-top: 0;
+    }
+    #contact_info_section_2 .container .timetable {
+        text-align: left;
+    }
+    #contact_info_section_2 .container .timetable>span {
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 769px) {
+    #p404_section .text-right {
+        text-align: center;
+    }
+    #p404_section .container .page_title {
+        text-align: center;
+    }
+    #p404_section .container .page_description {
+        text-align: center;
+    }
+    #p404_section .container {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+    .p404_searchform_container .btn {
+        width: 34%;
+    }
+    #gallery_section.light_section .col-sm-6 {
+        display: inline-block;
+        width: 49%;
+        text-align: center;
+    }
+    #gallery_section.light_section .post_item.post_item_square {
+        width: 254px;
+    }
+    #welcome_section_2 .container div.row {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    #contact_info_section .container .row,
+    #contact_info_section_2 .container .row {
+        display: block;
+    }
+    #contact_info_section .address,
+    #contact_info_section_2 .address {
+        display: block;
+        text-align: center;
+    }
+    #contact_info_section .container .timetable,
+    #contact_info_section_2 .container .timetable {
+        text-align: center;
+    }
+    #team_section_2 .container .col-sm-6 {
+        display: inline-block;
+        float: none;
+        width: 49%;
+    }
+}
+
+@media (max-width: 991px) and (min-width: 641px) {
+    .sidebar .widget {
+        width: 48%;
+        margin-right: 4%;
+        float: left;
+        margin-bottom: 30px;
+        max-width: none;
+    }
+    .sidebar .widget:nth-child(2n) {
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 767px) {
+    #typography .sc_dropcaps,
+    #shortcodes .sc_dropcaps {
+        margin-bottom: 25px;
+    }
+}
+
+@media (max-width: 641px) {
+    .flexslider .slides>li .slide_description_wrapper .slide_description .btn {
+        font-size: 10px!important;
+        padding: 10px 20px!important;
+        border-width: 5px!important;
+        bottom: -25px!important;
+    }
+    .sc_services.sc_services_style_2 {
+        margin: auto auto 30px;
+    }
+    footer .copyright_area {
+        text-align: center;
+    }
+    footer .copyright_area .footer_social {
+        text-align: center;
+        margin-top: 10px;
+    }
+    #testimonialsCarousel .item .col-sm-6:nth-child(2) {
+        display: none;
+    }
+    .sc_testimonials.sc_testimonials_style_2 {
+        max-width: 320px;
+        margin: auto;
+    }
+    #contact_info_section .address,
+    #contact_info_section_2 .address {
+        text-align: center;
+        font-size: 14px;
+    }
+    #contact_info_section .container .phone,
+    #contact_info_section_2 .container .phone {
+        font-size: 14px;
+    }
+    #contact_info_section .container .timetable,
+    #contact_info_section_2 .container .timetable {
+        font-size: 14px;
+    }
+    #contact_info_section .container .text-left,
+    #contact_info_section_2 .container .text-left,
+    #contact_info_section .container .text-right,
+    #contact_info_section_2 .container .text-right {
+        text-align: center!important;
+    }
+    #welcome_section_2 .col-xs-6 {
+        width: 100%;
+    }
+    .sc_services.sc_services_style_4 .sc_title {
+        margin-top: 15px;
+    }
+    .services_menu {
+        padding-bottom: 21px;
+    }
+    .widget_download_pricelist ul li a {
+        font-size: 15px;
+    }
+    .widget.widget_contacts ul li.phone,
+    .widget.widget_contacts ul li.address {
+        font-size: 15px;
+    }
+    .widget.widget_contacts ul li.address:before {
+        font-size: 36px;
+        top: -6px;
+    }
+    .widget.widget_contacts ul li.phone:before {
+        font-size: 22px;
+        top: 1px;
+    }
+    .widget.widget_contacts ul li.phone,
+    .widget.widget_contacts ul li.address {
+        padding-left: 35px;
+    }
+    #team_member_section .container .avatar_section .avatar {
+        position: static;
+    }
+    .five_columns .isotopeElement {
+        width: 49.9%;
+    }
+}
+
+@media (max-width: 581px) {
+    .flexslider .slides>li .slide_description_wrapper .slide_description .slide_title {
+        margin-top: 18px;
+        font-size: 25px;
+    }
+    .flex-direction-nav {
+        display: none;
+    }
+    #team_member_section .container .row-eq-height {
+        display: block;
+    }
+    #team_member_section .container .avatar_section {
+        text-align: center;
+        padding-bottom: 0;
+    }
+    .sc_tabs .sc_tabs_titles .sc_tabs_title a {
+        padding: 7px 15px 7px 15px;
+        font-size: 15px;
+        line-height: 20px;
+    }
+    .sc_accordion.sc_accordion_style_2 .sc_accordion_item .sc_accordion_title a .sc_accordion_icon {
+        line-height: 1.5;
+    }
+    #booking_calendar .container .booking_main_container .booking_month_container_all .booking_month_container .booking_month_year {
+        width: 40%;
+    }
+    #booking_calendar .container .booking_main_container .booking_month_container_all .booking_month_container .booking_month_name {
+        width: 58%;
+    }
+}
+
+@media (max-width: 481px) {
+    .flexslider .slides>li .slide_description_wrapper .slide_description .btn {
+        font-size: 10px!important;
+        padding: 10px 20px!important;
+        border-width: 5px!important;
+        bottom: -25px!important;
+    }
+    .flexslider .slides>li .slide_description_wrapper .slide_description .slide_title {
+        font-size: 25px;
+        line-height: 30px;
+        margin-top: 15px;
+    }
+    .flexslider#slider-2 .slides>li .slide_description_wrapper .slide_description .slide_title {
+        margin-bottom: 10px;
+    }
+    #underheader .container .topWrap .usermenu_area .menuUsItem {
+        float: none!important;
+        text-align: center;
+    }
+    header .topWrap .logo.logo_center {
+        margin-top: 10px;
+    }
+    .header_style_2 header .topWrap .search.searchOpen {
+        width: 162px;
+    }
+    .header_style_2 #underheader .container .topWrap .usermenu_area .contact_area {
+        font-size: 13px;
+    }
+    .header_style_2 header .topWrap .logo.logo_left {
+        float: none;
+        clear: none;
+        text-align: center;
+    }
+    .sc_services.sc_services_style_4 .sc_title {
+        margin-top: 0;
+    }
+    .content .post_item.post_format_link .post_descr a {
+        font-size: 15px;
+    }
+    .five_columns .isotopeElement {
+        width: 100%;
+    }
+    .masonry .content .post_item_masonry .post_featured .post_thumb .grid_hover_icon.icon-link {
+        left: 59%;
+        -webkit-transform: translateX(-59%) translateY(-15%);
+        -moz-transform: translateX(-59%) translateY(-15%);
+        transform: translateX(-59%) translateY(-15%);
+    }
+    .masonry .content .post_item_masonry .post_featured .post_thumb .grid_hover_icon.icon-search {
+        left: 41%;
+        top: 15%;
+        -webkit-transform: translateX(-41%) translateY(-15%);
+        -moz-transform: translateX(-41%) translateY(-15%);
+        transform: translateX(-41%) translateY(-15%);
+    }
+    #gallery_section.light_section .col-sm-6 {
+        width: 100%;
+    }
+    #welcome_section_2 .container div.row {
+        padding-left: initial;
+        padding-right: initial;
+    }
+}
+
+@media (max-width: 376px) {
+    body {
+        font-size: 11px;
+    }
+    .flexslider .slides>li .slide_description_wrapper .slide_description .slide_title {
+        font-size: 20px;
+        line-height: 20px;
+        margin-top: 5px;
+    }
+    .flexslider#slider-2 .slides>li .slide_description_wrapper .slide_description .slide_title {
+        margin-bottom: 5px;
+        font-size: 15px;
+        margin-top: 5px;
+    }
+    .flexslider .slides>li .slide_description_wrapper .slide_description .btn {
+        padding: 5px 15px!important;
+        bottom: -20px!important;
+    }
+    #underheader .container .topWrap .usermenu_area .contact_area {
+        font-size: 14px;
+    }
+    #underheader .container .topWrap .usermenu_area .timetable_area {
+        font-size: 12px;
+    }
+    .sc_team_item .sc_team_item_info {
+        padding: 26px 22px 35px 69px;
+    }
+    .sc_team_item.sc_team_item_style_1 .sc_socials {
+        left: 69px;
+    }
+    .sc_services.sc_services_style_2 {
+        margin-left: 40px;
+        margin-bottom: 30px;
+        padding-left: 63px;
+        padding-right: 20px;
+    }
+    #eliminate_section .container .sc_title {
+        color: #ffffff;
+        font-size: 30px;
+    }
+    .sc_testimonials.sc_testimonials_style_2 {
+        max-width: 320px;
+        margin: auto auto auto 40px;
+        padding: 39px 20px 37px 69px;
+    }
+    .p404_searchform_container .btn {
+        width: 40%;
+        padding-left: 25px;
+    }
+    .breadcrumb .breadcrumbs_item.current {
+        display: inline-block;
+    }
+    .sc_socials.sc_socials_large .sc_socials_item {
+        margin-right: 10px;
+    }
+    .comments_wrap .comments_list_wrap .comments_list .comment_item .comment_author_avatar {
+        width: 50px;
+        height: 50px;
+    }
+    .comments_wrap .comments_list_wrap .comments_list .comment_item .comment_author_avatar img {
+        width: 50px;
+        height: 50px;
+    }
+    .comments_wrap .comments_list_wrap .comments_list .comment_item .comment_content {
+        padding: 34px 20px 34px 95px;
+    }
+    .content .post_item .post_info .post_info_item {
+        margin-right: 5px;
+    }
+    .content .post_item .post_info .post_info_item.post_info_counters {
+        margin-left: 0px;
+    }
+    .sc_audio.audio_container .mejs-container .mejs-controls .mejs-time.mejs-currenttime-container {
+        margin-left: 5px;
+    }
+    .sc_audio.audio_container .mejs-container .mejs-controls .mejs-time.mejs-duration-container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .sc_audio.audio_container .mejs-container .mejs-controls .mejs-volume-button {
+        margin-left: 0;
+    }
+    .sc_audio.audio_container .mejs-container .mejs-controls .mejs-volume-button:before {
+        display: none;
+    }
+    .sc_audio.audio_container .mejs-container .mejs-controls .mejs-horizontal-volume-slider {
+        margin-right: 5px;
+    }
+    .content .post_item .post_info .post_info_item.post_info_counters {
+        display: block;
+    }
+    .sc_socials.sc_socials_share .sc_socials_item {
+        margin-right: 5px;
+    }
+    .post_author .post_author_avatar {
+        width: 70px;
+        height: 70px;
+    }
+    .post_author .post_author_content {
+        margin-left: 26px;
+        padding: 40px 20px 40px 45px;
+    }
+    .comments_wrap .comments_list_wrap .comments_list .comment_item .comment_author_avatar {
+        left: 10px;
+    }
+    .comments_wrap .comments_list_wrap .comments_list .comment_item .comment_content {
+        padding: 34px 20px 34px 75px;
+    }
+    .comments_wrap .comments_list_wrap .comments_list.children {
+        margin-left: 30px;
+    }
+    .comments_wrap .comments_list_wrap .comments_list .comment_item .comment_content .comment_info .comment_date_value:after {
+        display: none;
+    }
+    .sc_quote p {
+        font-size: 15px;
+        line-height: 25px;
+    }
+    .sc_audio.audio_container .mejs-container .mejs-controls .mejs-time {
+        font-size: 10px;
+    }
+    .sc_chat .sc_chat_inner {
+        padding: 22px 25px 15px 20px;
+    }
+    .content .post_item.post_format_status .post_descr {
+        font-size: 20px;
+    }
+    .sc_tabs.sc_tabs_style_2 .sc_tabs_titles .sc_tabs_title a {
+        font-size: 13px;
+        padding: 0px 6px 0px 38px;
+    }
+    .sc_tabs.sc_tabs_style_2 .sc_tabs_titles .sc_tabs_title {
+        margin-right: 5px;
+    }
+    .sc_tabs.sc_tabs_style_2 .sc_tabs_titles .sc_tabs_title:last-child {
+        margin-right: 0px;
+    }
+    .sc_accordion.sc_accordion_style_2 .sc_accordion_item .sc_accordion_title a .sc_accordion_icon {
+        line-height: 1.8;
+    }
+    .sc_table table tr:first-child th {
+        padding: 14px 7px;
+    }
+    .sc_table table tr:last-child td {
+        font-size: 12px;
+        padding: 20px 7px 20px 7px;
+    }
+    .sc_table table tr:first-child th {
+        font-size: 13px;
+    }
+    .sc_table table td {
+        padding: 5px 7px 10px;
+    }
+    #shortcodes .btn {
+        margin-bottom: 15px;
+    }
+    #typography .col-xs-4 {
+        width: 100%;
+    }
+    #booking_calendar .container .booking_main_container .booking_calendar_container_all .days_container_all .booking_day_container {
+        margin-right: 5px!important;
+        margin-bottom: 5px!important;
+    }
+    #booking_calendar .container .booking_main_container .booking_month_container_all .booking_month_container {
+        font-size: 13px;
+    }
+    #more_about_section .container .sc_title {
+        margin-bottom: 38px;
+    }
+    .sc_socials .sc_socials_item {
+        line-height: 16px;
+    }
+    .header_style_2 #underheader .container .topWrap .usermenu_area .contact_area {
+        float: none;
+    }
+    .header_style_2 header .topWrap .menuTopWrap #mainmenu>li ul {
+        top: 0px;
+    }
+    #shortcodes .btn-group-default {
+        width: 200px;
+    }
+    .breadcrumb .col-xs-6 {
+        width: 100%;
+    }
+    .breadcrumb h1 {
+        margin-bottom: 0;
+        text-align: center;
+    }
+    .breadcrumb .breadcrumbs {
+        margin-bottom: 21px;
+        text-align: center;
+    }
+    .content .post_item.post_format_link .post_descr a {
+        word-break: break-word;
+    }
+    #partners_section .carousel .carousel-inner .item img {
+        zoom: 50%;
+    }
+    #p404_section .container img {
+        margin-top: 0;
+        margin-right: 0;
+        zoom: 50%;
+    }
+    .masonry .content .post_item_masonry .post_featured .post_thumb .grid_hover_icon.icon-link {
+        left: 63%;
+        -webkit-transform: translateX(-63%) translateY(-15%);
+        -moz-transform: translateX(-63%) translateY(-15%);
+        transform: translateX(-63%) translateY(-15%);
+    }
+    .masonry .content .post_item_masonry .post_featured .post_thumb .grid_hover_icon.icon-search {
+        left: 37%;
+        top: 15%;
+        -webkit-transform: translateX(-37%) translateY(-15%);
+        -moz-transform: translateX(-37%) translateY(-15%);
+        transform: translateX(-37%) translateY(-15%);
+    }
+    #welcome_section_2 .container .shift {
+        right: 0;
+    }
+    .mfp-arrow-right {
+        margin-top: -69px;
+    }
+    #team_member_section .container .avatar {
+        float: none;
+    }
+}
+
+@media (max-width: 326px) {
+    .masonry .content .post_item_masonry .post_featured .post_thumb .grid_hover_icon.icon-link {
+        left: 64%;
+        -webkit-transform: translateX(-64%) translateY(-15%);
+        -moz-transform: translateX(-64%) translateY(-15%);
+        transform: translateX(-64%) translateY(-15%);
+    }
+    .masonry .content .post_item_masonry .post_featured .post_thumb .grid_hover_icon.icon-search {
+        left: 36%;
+        top: 15%;
+        -webkit-transform: translateX(-36%) translateY(-15%);
+        -moz-transform: translateX(-36%) translateY(-15%);
+        transform: translateX(-36%) translateY(-15%);
+    }
+    #typography .sc_image {
+        float: none!important;
+        display: flex;
+        margin: 0 auto;
+    }
+}

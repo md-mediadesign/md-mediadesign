@@ -1,3 +1,5 @@
 .vercel
 .DS_Store
 ai-coding-starter-kit/
+assets/Beispielwebsites/
+node_modules/
