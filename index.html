@@ -690,13 +690,16 @@
       overflow: hidden;
       background: var(--bg-elevated);
     }
-    .device-screen iframe {
-      width: 200%;
-      height: 200%;
-      transform: scale(0.5);
-      transform-origin: top left;
-      border: none;
-      pointer-events: none;
+    .device-screen img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      transition: transform 0.6s var(--ease);
+    }
+    .device:hover .device-screen img {
+      transform: scale(1.03);
     }
     .device-bar {
       display: flex;
@@ -861,7 +864,7 @@
           <span class="device-url">md-mediadesign.de/starfighter</span>
         </div>
         <div class="device-screen">
-          <iframe src="/starfighter" loading="lazy" sandbox="allow-scripts allow-same-origin" tabindex="-1" aria-hidden="true"></iframe>
+          <img src="assets/hero-previews/starfighter-hero.webp" alt="Vorschau: Starfighter-Landingpage" loading="lazy" width="1600" height="900">
         </div>
         <div class="device-label">
           <h3>Starfighter</h3>
@@ -876,7 +879,7 @@
           <span class="device-url">md-mediadesign.de/landingpage</span>
         </div>
         <div class="device-screen">
-          <iframe src="/landingpage" loading="lazy" sandbox="allow-scripts allow-same-origin" tabindex="-1" aria-hidden="true"></iframe>
+          <img src="assets/hero-previews/landingpage-hero.webp" alt="Vorschau: Globe-Landingpage" loading="lazy" width="1600" height="900">
         </div>
         <div class="device-label">
           <h3>Globe-Landingpage</h3>
@@ -891,7 +894,7 @@
           <span class="device-url">md-mediadesign.de/sneaker</span>
         </div>
         <div class="device-screen">
-          <iframe src="/sneaker" loading="lazy" sandbox="allow-scripts allow-same-origin" tabindex="-1" aria-hidden="true"></iframe>
+          <img src="assets/hero-previews/sneaker-hero.webp" alt="Vorschau: Produkt-Landingpage" loading="lazy" width="1600" height="900">
         </div>
         <div class="device-label">
           <h3>Produkt-Landingpage</h3>
