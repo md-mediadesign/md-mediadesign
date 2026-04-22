@@ -790,13 +790,13 @@
     // Section 1 (back view) stays closed; all others open.
     const POSITIONS = [
       { top: 50, left: 75, scale: 1.0, view: 'front', foils: 1,
-        orbit: '0deg 80deg auto',    fov: '28deg' },
+        orbit: '-90deg 80deg auto',  fov: '28deg' },
       { top: 34, left: 50, scale: 0.85, view: 'back',  foils: 0,
-        orbit: '180deg 85deg auto',  fov: '28deg' },
+        orbit: '90deg 85deg auto',   fov: '28deg' },
       { top: 50, left: 82, scale: 1.1, view: 'side',  foils: 1,
-        orbit: '55deg 75deg auto',   fov: '28deg' },
+        orbit: '-35deg 75deg auto',  fov: '28deg' },
       { top: 50, left: 50, scale: 1.25, view: 'top',  foils: 1,
-        orbit: '15deg 20deg auto',   fov: '32deg' },
+        orbit: '-75deg 20deg auto',  fov: '32deg' },
     ];
 
     const shipWrap     = document.getElementById('ship-wrap');
