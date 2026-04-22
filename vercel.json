@@ -6,6 +6,7 @@
   "rewrites": [
     { "source": "/starfighter", "destination": "/starfighter.html" },
     { "source": "/starfighter-classic", "destination": "/starfighter-classic.html" },
+    { "source": "/sneaker", "destination": "/sneaker.html" },
     { "source": "/landingpage", "destination": "/landingpage.html" },
     { "source": "/whey", "destination": "/maintenance.html" },
     { "source": "/impressum", "destination": "/impressum.html" },
