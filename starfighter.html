@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Landingpages auf Lichtgeschwindigkeit — md mediadesign, Regensburg. Ihr digitaler Pilot für hohe Conversion.">
+  <title>Landingpage erstellen lassen — Starfighter-Edition | md mediadesign</title>
+  <link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
+  <link href="https://fonts.bunny.net/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://static.poly.pizza" crossorigin>
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+
+  <style>
+    /* =====================================================
+       Design Tokens — kompatibel zur Globe/Starfighter-Version
+       ===================================================== */
+    :root {
+      --brand:        #4a80d0;
+      --brand-bright: #6a9fdf;
+      --brand-dark:   #2d5fa8;
+      --accent-2:     #7ab4e8;
+      --bg:           #05060d;
+      --bg-deep:      #030410;
+      --bg-card:      #0b1326;
+      --bg-elevated:  #101b36;
+      --text:         #f1f5f9;
+      --text-muted:   #94a3b8;
+      --text-subtle:  #4a6080;
+      --border:       rgba(74,128,208,0.1);
+      --border-md:    rgba(74,128,208,0.18);
+      --border-light: rgba(74,128,208,0.30);
+      --font-display: 'Space Grotesk', system-ui, sans-serif;
+      --font-body:    'Inter', system-ui, sans-serif;
+      --grad:         linear-gradient(135deg, #4a80d0, #7ab4e8);
+      --grad-text:    linear-gradient(120deg, #6a9fdf, #7ab4e8);
+      --engine:       #ff6a3d;
+      --engine-bright:#ffb36a;
+      --star:         #e9efff;
+      --r: 12px; --r-sm: 8px; --r-lg: 20px;
+      --t: 0.3s; --ease: cubic-bezier(0.4,0,0.2,1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text-muted);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      overflow-y: scroll;
+    }
+
+    /* =====================================================
+       Hybrid scroll mechanics (H → V → H).
+       The vertical page scroll drives the track through three
+       equal-length segments (each 100vh of scroll):
+         Seg A: horizontal shift  0   → -100vw
+         Seg B: vertical shift    0   → -100vh (x stays at -100vw)
+         Seg C: horizontal shift -100vw → -200vw
+       Sections are absolutely placed in an L-shape on a 300vw×200vh
+       track so these translations slide them into view in turn.
+       ===================================================== */
+    #scroll-spacer {
+      /* Total scroll = 490vh: Seg A 100vh + Hold-1 80vh + Seg B 160vh +
+         Hold-2 50vh + Seg C 100vh. */
+      height: calc(100vh + 490vh);
+      width: 1px;
+      pointer-events: none;
+    }
+
+    #horizontal-track {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 300vw;
+      height: 200vh;
+      z-index: 5;
+      will-change: transform;
+    }
+
+    /* =====================================================
+       Space Background — fixed, behind everything
+       ===================================================== */
+    .space-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background:
+        radial-gradient(ellipse at 20% 10%, rgba(74,128,208,0.10), transparent 55%),
+        radial-gradient(ellipse at 85% 85%, rgba(122,180,232,0.08), transparent 60%),
+        radial-gradient(ellipse at 50% 50%, #0a0f24 0%, #05060d 65%, #030410 100%);
+      pointer-events: none;
+    }
+    .stars, .stars-2, .stars-3 {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .stars::before, .stars-2::before, .stars-3::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 2px; height: 2px;
+      border-radius: 50%;
+      background: transparent;
+    }
+    .stars::before   { box-shadow: var(--stars-sm); animation: twinkle 6s ease-in-out infinite; }
+    .stars-2::before { box-shadow: var(--stars-md); animation: twinkle 4s ease-in-out infinite 1s; }
+    .stars-3::before { box-shadow: var(--stars-lg); animation: twinkle 3s ease-in-out infinite .5s; }
+
+    /* Stars parallax wrappers — translated horizontally for depth */
+    .stars   { will-change: transform; }
+    .stars-2 { will-change: transform; }
+    .stars-3 { will-change: transform; }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: .55; }
+      50%      { opacity: 1; }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse {
+      0%,100% { box-shadow: 0 0 0 0 rgba(74,128,208,.4); }
+      50%     { box-shadow: 0 0 0 6px rgba(74,128,208,0); }
+    }
+
+    /* =====================================================
+       Progress Bar
+       ===================================================== */
+    #progress-bar {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 2px;
+      background: rgba(74,128,208,0.15);
+      z-index: 100;
+    }
+    #progress-fill {
+      height: 100%;
+      background: var(--grad);
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform 0.15s ease-out;
+      box-shadow: 0 0 8px rgba(74,128,208,0.5);
+    }
+
+    /* =====================================================
+       Header
+       ===================================================== */
+    .site-header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 90;
+      padding: 20px 0;
+      transition: all var(--t) var(--ease);
+    }
+    .site-header.scrolled {
+      padding: 14px 0;
+      background: rgba(5,6,13,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .logo-img { height: 32px; width: auto; }
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 8px 16px;
+      border: 1px solid var(--border-md);
+      border-radius: var(--r-sm);
+      transition: all 0.2s;
+    }
+    .back-link:hover {
+      color: var(--text);
+      border-color: var(--border-light);
+      background: rgba(74,128,208,0.06);
+    }
+    /* Mode Switcher Pills */
+    .mode-switch {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px;
+      background: rgba(10,15,36,0.7);
+      border: 1px solid var(--border-md);
+      border-radius: 100px;
+      backdrop-filter: blur(12px);
+    }
+    .mode-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--text-muted);
+      text-decoration: none;
+      border-radius: 100px;
+      transition: all 0.25s var(--ease);
+      white-space: nowrap;
+    }
+    .mode-pill:hover { color: var(--text); }
+    .mode-pill[aria-current="page"] {
+      background: var(--grad);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(74,128,208,0.35);
+    }
+
+    /* Demo-Badge */
+    .demo-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--brand-bright);
+      background: rgba(74,128,208,0.12);
+      border: 1px solid rgba(74,128,208,0.28);
+      border-radius: 100px;
+      padding: 4px 10px;
+    }
+    .demo-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--brand-bright);
+      animation: pulse 2s infinite;
+    }
+
+    /* =====================================================
+       Side Navigation Dots
+       ===================================================== */
+    #side-nav {
+      position: fixed;
+      right: 32px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 50;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: flex-end;
+    }
+    .nav-dot-wrap { position: relative; display: flex; align-items: center; gap: 10px; }
+    .nav-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      background: rgba(5,6,13,0.95);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-md);
+      border-radius: 6px;
+      padding: 4px 10px;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateX(4px);
+      transition: opacity 0.2s, transform 0.2s;
+      pointer-events: none;
+    }
+    .nav-dot-wrap:hover .nav-label,
+    .nav-dot-wrap.active .nav-label {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .nav-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      border: 2px solid rgba(74,128,208,0.3);
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.3s;
+      position: relative;
+    }
+    .nav-dot::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      background: rgba(74,128,208,0.1);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .nav-dot:hover::before { opacity: 1; }
+    .nav-dot.active {
+      background: var(--brand);
+      border-color: var(--brand);
+      animation: pulse 2s ease infinite;
+    }
+    .nav-line {
+      position: absolute;
+      left: 50%; right: auto;
+      top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, rgba(74,128,208,0.2), transparent);
+      transform: translateX(-50%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* =====================================================
+       Starfighter Stage
+       ===================================================== */
+    #ship-wrap {
+      position: fixed;
+      z-index: 10;
+      pointer-events: none;
+      will-change: transform, opacity;
+      transition: transform 2.2s cubic-bezier(0.22,0.9,0.2,1), opacity 0.8s ease;
+      transform: translate3d(75vw, 50vh, 0) translate3d(-50%,-50%,0) rotate(0deg) scale3d(0.08,0.08,1);
+      opacity: 1;
+    }
+    #ship-wrap.flying-in {
+      transition: transform 3.5s cubic-bezier(0.22,0.75,0.3,1);
+    }
+    .ship-stage {
+      position: relative;
+      width: 460px;
+      height: 460px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    model-viewer.ship {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background-color: transparent;
+      --poster-color: transparent;
+      --progress-bar-color: transparent;
+      z-index: 3;
+      filter: drop-shadow(0 28px 40px rgba(0,0,0,0.6))
+              drop-shadow(0 0 28px rgba(122,180,232,0.18));
+      transition: filter 0.8s ease;
+    }
+    model-viewer.ship::part(default-progress-bar) { display: none; }
+
+    /* =====================================================
+       Sections — absolutely placed in L-shape inside the track
+       ===================================================== */
+    .scroll-section {
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 100px 6vw 80px;
+    }
+    .scroll-section[data-index="0"] { left: 0;      top: 0;      }
+    .scroll-section[data-index="1"] { left: 100vw;  top: 0;      }
+    .scroll-section[data-index="2"] { left: 100vw;  top: 100vh;  }
+    .scroll-section[data-index="3"] { left: 200vw;  top: 100vh;  }
+    .scroll-section.align-center { justify-content: center; text-align: center; }
+    .scroll-section.align-right  { justify-content: flex-end; text-align: right; }
+
+    .section-inner {
+      max-width: 640px;
+      width: 100%;
+      margin-left: 2vw;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+    }
+    .align-center .section-inner { margin: 0 auto; }
+    .align-right  .section-inner { margin-right: 2vw; margin-left: auto; }
+    .section-inner.visible { opacity: 1; transform: translateY(0); }
+
+    .section-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--brand-bright);
+      background: rgba(74,128,208,0.1);
+      border: 1px solid rgba(74,128,208,0.22);
+      border-radius: 100px;
+      padding: 5px 14px;
+      margin-bottom: 24px;
+    }
+    .badge-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--brand-bright);
+      animation: pulse 2s infinite;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 5vw, 68px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+    .section-title .grad {
+      background: var(--grad-text);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .section-subtitle {
+      font-family: var(--font-display);
+      font-size: clamp(20px, 3vw, 38px);
+      font-weight: 500;
+      color: var(--text-subtle);
+      letter-spacing: -0.01em;
+      margin-bottom: 24px;
+    }
+    .section-desc {
+      font-size: clamp(15px, 1.5vw, 18px);
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 36px;
+    }
+    .scroll-hint {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+    .scroll-hint-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--text-subtle);
+    }
+    .scroll-hint-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--brand);
+      animation: pulse 2s infinite;
+    }
+
+    /* Features */
+    .features-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 36px;
+    }
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 18px 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    }
+    .feature-item:hover {
+      border-color: var(--border-md);
+      box-shadow: 0 4px 24px rgba(74,128,208,0.12);
+      transform: translateY(-2px);
+    }
+    .feature-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: rgba(74,128,208,0.5);
+      flex-shrink: 0;
+      margin-top: 6px;
+      transition: background 0.2s;
+    }
+    .feature-item:hover .feature-dot { background: var(--brand); }
+    .feature-item h3 {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .feature-item p {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Actions */
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .align-center .actions { justify-content: center; }
+    .align-right  .actions { justify-content: flex-end; }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 28px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 600;
+      color: #fff;
+      background: var(--grad);
+      border: none;
+      border-radius: var(--r);
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.15s, box-shadow 0.15s, transform 0.15s;
+    }
+    .btn-primary:hover {
+      opacity: 0.88;
+      box-shadow: 0 8px 32px rgba(74,128,208,0.4);
+      transform: translateY(-1px);
+    }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 28px;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text);
+      background: rgba(74,128,208,0.06);
+      border: 1px solid var(--border-md);
+      border-radius: var(--r);
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s, transform 0.15s;
+    }
+    .btn-ghost:hover {
+      background: rgba(74,128,208,0.12);
+      border-color: var(--border-light);
+      transform: translateY(-1px);
+    }
+
+    /* =====================================================
+       CTA Section overlay glow
+       ===================================================== */
+    .section-cta { position: relative; }
+    .cta-glow {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      width: 720px; height: 440px;
+      max-width: 92vw;
+      background:
+        radial-gradient(ellipse at center, rgba(5,8,20,0.72) 0%, rgba(5,8,20,0.45) 40%, rgba(5,8,20,0) 75%),
+        radial-gradient(ellipse at center, rgba(74,128,208,0.18) 0%, transparent 70%);
+      filter: blur(2px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .section-cta .section-inner {
+      position: relative;
+      z-index: 1;
+      text-shadow: 0 2px 18px rgba(0,0,0,0.55);
+    }
+    .section-cta .section-subtitle { color: var(--text); }
+    .section-cta .section-desc     { color: #cbd6e4; }
+
+    /* =====================================================
+       Footer — fixed bottom strip, shown near scroll end
+       ===================================================== */
+    .page-footer {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 30;
+      text-align: center;
+      padding: 18px 24px 16px;
+      background: linear-gradient(to top, rgba(5,6,13,0.92) 0%, rgba(5,6,13,0) 100%);
+      font-size: 12px;
+      color: var(--text-subtle);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+    .page-footer.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .page-footer a {
+      color: var(--brand-bright);
+      text-decoration: none;
+    }
+    .page-footer a:hover { text-decoration: underline; }
+
+    /* =====================================================
+       Horizontal scroll hint (bottom)
+       ===================================================== */
+    .hscroll-hint {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 35;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      background: rgba(10,15,36,0.65);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border-md);
+      border-radius: 100px;
+      padding: 8px 14px;
+      transition: opacity 0.4s ease;
+    }
+    .hscroll-hint.fade { opacity: 0; pointer-events: none; }
+    .hscroll-hint svg {
+      animation: hint-bounce 1.6s ease-in-out infinite;
+    }
+    @keyframes hint-bounce {
+      0%, 100% { transform: translateX(0); }
+      50%      { transform: translateX(4px); }
+    }
+
+    /* =====================================================
+       Responsive
+       ===================================================== */
+    @media (max-width: 768px) {
+      .ship-stage { width: 320px; height: 320px; }
+      #side-nav { right: 16px; }
+      .scroll-section { padding: 100px 5vw 80px; }
+      .section-inner { margin-left: 0; max-width: 100%; }
+      .align-right .section-inner { margin-right: 0; }
+      .back-link span { display: none; }
+      .mode-pill span.label-long { display: none; }
+      .demo-badge { display: none; }
+    }
+    @media (max-width: 480px) {
+      .ship-stage { width: 240px; height: 240px; }
+      #side-nav { display: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .stars::before, .stars-2::before, .stars-3::before { animation: none !important; }
+      #ship-wrap { transition-duration: 0.3s; }
+      .hscroll-hint svg { animation: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Space Background -->
+  <div class="space-bg"></div>
+  <div class="stars"></div>
+  <div class="stars-2"></div>
+  <div class="stars-3"></div>
+
+  <!-- Progress Bar -->
+  <div id="progress-bar"><div id="progress-fill"></div></div>
+
+  <!-- Header -->
+  <header class="site-header" id="header">
+    <div class="header-inner">
+      <a href="/" class="logo"><img src="assets/logo.png" alt="md mediadesign" class="logo-img"></a>
+      <div class="header-right">
+        <nav class="mode-switch" aria-label="Landingpage-Variante wechseln">
+          <a class="mode-pill" href="/landingpage">Erde</a>
+          <a class="mode-pill" href="/starfighter" aria-current="page">Starfighter</a>
+          <a class="mode-pill" href="/whey">Produkt</a>
+        </nav>
+        <a href="/#leistungen" class="back-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          <span>Zurück zur Hauptseite</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Side Navigation -->
+  <div id="side-nav">
+    <div class="nav-line"></div>
+    <div class="nav-dot-wrap active" data-index="0">
+      <span class="nav-label">Start</span>
+      <button class="nav-dot active" data-target="0" aria-label="Start"></button>
+    </div>
+    <div class="nav-dot-wrap" data-index="1">
+      <span class="nav-label">Kurs</span>
+      <button class="nav-dot" data-target="1" aria-label="Kurs"></button>
+    </div>
+    <div class="nav-dot-wrap" data-index="2">
+      <span class="nav-label">Ausrüstung</span>
+      <button class="nav-dot" data-target="2" aria-label="Ausrüstung"></button>
+    </div>
+    <div class="nav-dot-wrap" data-index="3">
+      <span class="nav-label">Start frei</span>
+      <button class="nav-dot" data-target="3" aria-label="Start frei"></button>
+    </div>
+  </div>
+
+  <!-- Starfighter — fixed, rides above the track -->
+  <div id="ship-wrap" class="flying-in">
+    <div class="ship-stage">
+      <model-viewer
+        id="ship-model"
+        class="ship"
+        src="assets/xwing.glb"
+        alt="X-Wing Starfighter 3D-Modell"
+        environment-image="neutral"
+        exposure="1.2"
+        shadow-intensity="0"
+        camera-orbit="0deg 80deg auto"
+        field-of-view="30deg"
+        interpolation-decay="80"
+        disable-zoom
+        disable-pan
+        disable-tap
+        interaction-prompt="none"
+        loading="eager">
+      </model-viewer>
+    </div>
+  </div>
+
+  <!-- Scroll spacer: gives body the scrollable height that drives horizontal translation -->
+  <div id="scroll-spacer" aria-hidden="true"></div>
+
+  <!-- Horizontal track: 4 sections, 100vw each, translated left as user scrolls down -->
+  <div id="horizontal-track">
+
+    <!-- Section 0 — Hero -->
+    <section class="scroll-section" data-index="0" data-view="front" id="sec-0">
+      <div class="section-inner">
+        <div class="section-badge"><span class="badge-dot"></span>Webdesign · md mediadesign</div>
+        <h1 class="section-title">Landingpages mit<br><span class="grad">Lichtgeschwindigkeit.</span></h1>
+        <p class="section-subtitle">Ihr digitaler Pilot — zielgenau auf Kurs</p>
+        <p class="section-desc">Eine professionelle Landingpage ist Ihr schnellstes Vehikel vom ersten Klick zur Anfrage. Klare Flugbahn, volle Schubkraft, messbare Ankunft.</p>
+        <div class="scroll-hint">
+          <div class="scroll-hint-item"><span class="scroll-hint-dot"></span>Scrollen bewegt in alle Richtungen</div>
+          <div class="scroll-hint-item"><span class="scroll-hint-dot" style="animation-delay:.5s"></span>Interaktive Demo</div>
+        </div>
+        <div class="actions" style="margin-top:40px">
+          <a href="#sec-3" class="btn-primary">
+            Landingpage anfragen
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="#sec-1" class="btn-ghost">Mehr erfahren</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 1 — Warum -->
+    <section class="scroll-section align-center" data-index="1" data-view="back" id="sec-1">
+      <div class="section-inner">
+        <div class="section-badge"><span class="badge-dot"></span>Warum Landingpage?</div>
+        <h1 class="section-title">Ein Kurs,<br><span class="grad">ein Ziel.</span></h1>
+        <p class="section-desc">Normale Webseiten haben viele Kontrollinstrumente. Eine Landingpage hat genau eines: Ihre Besucher zur Handlung zu bewegen. Ob Anfrage, Kauf, Anmeldung oder Anruf — die Flugbahn ist klar und direkt.</p>
+        <p class="section-desc" style="margin-top:-16px">Studien zeigen: Dedizierte Landingpages steigern die Conversion-Rate um bis zu <strong style="color:var(--text)">300 %</strong> gegenüber normalen Unterseiten.</p>
+      </div>
+    </section>
+
+    <!-- Section 2 — Ausrüstung -->
+    <section class="scroll-section" data-index="2" data-view="side" id="sec-2">
+      <div class="section-inner">
+        <div class="section-badge"><span class="badge-dot"></span>Ihre Ausrüstung</div>
+        <h1 class="section-title">Alles aus<br><span class="grad">einer Hand.</span></h1>
+        <p class="section-subtitle">Kein Template. Kein Baukasten.</p>
+        <div class="features-list">
+          <div class="feature-item">
+            <div class="feature-dot"></div>
+            <div>
+              <h3>Maßgeschneidertes Design</h3>
+              <p>Individuell gestaltet auf Ihre Marke, Zielgruppe und Botschaft — kein generisches Template.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-dot"></div>
+            <div>
+              <h3>Conversion-optimierter Aufbau</h3>
+              <p>Klare Struktur, starke Headlines und gezielte Call-to-Actions, die Besucher zu Kunden machen.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-dot"></div>
+            <div>
+              <h3>Mobil &amp; schnell</h3>
+              <p>Perfekte Darstellung auf allen Geräten. Ladezeiten unter 2 Sekunden — für Google und Nutzer.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-dot"></div>
+            <div>
+              <h3>DSGVO-konform &amp; SSL</h3>
+              <p>Rechtssicher, verschlüsselt, barrierefrei. Inklusive Impressum und Datenschutzerklärung.</p>
+            </div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-dot"></div>
+            <div>
+              <h3>Tracking &amp; Telemetrie</h3>
+              <p>Optional: Google Analytics, Meta Pixel oder andere Tracking-Tools für messbare Ergebnisse.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3 — CTA -->
+    <section class="scroll-section align-center section-cta" data-index="3" data-view="top" id="sec-3">
+      <div class="cta-glow"></div>
+      <div class="section-inner">
+        <div class="section-badge"><span class="badge-dot"></span>Start frei</div>
+        <h1 class="section-title">Bereit zum<br><span class="grad">Abheben?</span></h1>
+        <p class="section-subtitle">Einfach anfragen — kostenlos &amp; unverbindlich</p>
+        <p class="section-desc">Teilen Sie uns kurz Ihre Mission mit. Wir melden uns innerhalb von 24 Stunden mit einem unverbindlichen Angebot zurück.</p>
+        <div class="actions" style="justify-content:center">
+          <a href="/#kontakt" class="btn-primary">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Jetzt anfragen
+          </a>
+          <a href="/" class="btn-ghost">Zur Hauptseite</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Horizontal hint -->
+  <div class="hscroll-hint" id="hscroll-hint">
+    <span>Scrollen = fliegen, fallen, weiterfliegen</span>
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+  </div>
+
+  <!-- Footer -->
+  <footer class="page-footer" id="page-footer">
+    <p>&copy; 2026 md mediadesign — Marco Delicati · build with ❤️ and 🍕</p>
+    <p style="margin-top:8px;font-size:12.5px;opacity:.8"><a href="/">md-mediadesign.de</a> &nbsp;·&nbsp; <a href="/impressum">Impressum</a> &nbsp;·&nbsp; <a href="/datenschutz">Datenschutz</a> &nbsp;·&nbsp; <a href="/barrierefreiheit">Barrierefreiheit</a></p>
+  </footer>
+
+  <script>
+  (function () {
+    /* =====================================================
+       Build starfield (same as vertical version)
+       ===================================================== */
+    function randomStars(count, maxX, maxY, sizeRange) {
+      const parts = [];
+      for (let i = 0; i < count; i++) {
+        const x = Math.floor(Math.random() * maxX);
+        const y = Math.floor(Math.random() * maxY);
+        const size = sizeRange[0] + Math.random() * (sizeRange[1] - sizeRange[0]);
+        const opacity = 0.45 + Math.random() * 0.55;
+        parts.push(`${x}px ${y}px 0 ${size.toFixed(1)}px rgba(233,239,255,${opacity.toFixed(2)})`);
+      }
+      return parts.join(',');
+    }
+    // Widen the star tile so parallax translation doesn't reveal empty space.
+    const W = Math.max(window.innerWidth * 2, 2880);
+    const H = Math.max(window.innerHeight, 900);
+    const root = document.documentElement;
+    root.style.setProperty('--stars-sm', randomStars(260, W, H, [0, 0.5]));
+    root.style.setProperty('--stars-md', randomStars(140, W, H, [0.5, 1.2]));
+    root.style.setProperty('--stars-lg', randomStars(55,  W, H, [1.2, 2.0]));
+
+    /* =====================================================
+       Ship anchor points per section — viewport-relative.
+       Path thinking (from viewer's POV):
+         0: Hero. Front view, right of text.
+         1: Warum. Arc OVER the text → lands BELOW it, rear toward camera.
+         2: Ausrüstung. Continues turning right while diving CLOSER to camera,
+            comes to rest sideways, right of text, higher than start.
+         3: CTA. Behind the text, near top-down, faded.
+       Theta is cumulative (no wrap) so interpolation always rotates right.
+       ===================================================== */
+    // Mobile anchors carry their own scale so we can size each pose
+    // individually: P0 +25%, P1/P2 +50% (over the old 0.7× mobile factor),
+    // P3 unchanged. Math: 0.7 × 1.25 = 0.875, 0.7 × 1.5 = 1.05.
+    const POSITIONS = [
+      { top: 50, left: 72, scale: 1.00, theta:    0, phi: 80, opacity: 1.00, foils: 1, fov: 28,
+        mobile: { top: 20, left: 58, scale: 0.875 } },
+      { top: 88, left: 50, scale: 0.72, theta: -180, phi: 82, opacity: 1.00, foils: 0, fov: 28,
+        mobile: { scale: 0.756 } },
+      { top: 22, left: 80, scale: 0.45, theta:  -90, phi: 75, opacity: 1.00, foils: 1, fov: 28,
+        mobile: { top: 14, left: 78, scale: 0.4725 } },
+      { top: 50, left: 50, scale: 1.25, theta:   15, phi: 20, opacity: 0.32, foils: 1, fov: 32,
+        mobile: { scale: 1.3125 } },
+    ];
+
+    // Per-anchor mobile overrides are folded in at lookup time.
+    function getAnchor(i) {
+      const p = POSITIONS[i];
+      if (window.innerWidth < 768 && p.mobile) return { ...p, ...p.mobile };
+      return p;
+    }
+
+    const shipWrap     = document.getElementById('ship-wrap');
+    const shipModel    = document.getElementById('ship-model');
+    const track        = document.getElementById('horizontal-track');
+    const sections     = document.querySelectorAll('.scroll-section');
+    const navDots      = document.querySelectorAll('.nav-dot');
+    const navWraps     = document.querySelectorAll('.nav-dot-wrap');
+    const progressFill = document.getElementById('progress-fill');
+    const header       = document.getElementById('header');
+    const footer       = document.getElementById('page-footer');
+    const hscrollHint  = document.getElementById('hscroll-hint');
+    const starsA       = document.querySelector('.stars');
+    const starsB       = document.querySelector('.stars-2');
+    const starsC       = document.querySelector('.stars-3');
+
+    const SECTION_COUNT = sections.length;
+    let activeIndex = -1;
+    let introActive = true;
+
+    /* =====================================================
+       Continuous ship state interpolation
+       segProgress ∈ [0, SECTION_COUNT-1]. Floor → segment,
+       frac → local t. Per-segment "arc" bumps shape the path.
+       ===================================================== */
+    const lerp      = (a, b, t) => a + (b - a) * t;
+    const easeInOut = t => t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+    const sinBump   = t => Math.sin(t * Math.PI);
+
+    function computeShipState(segProgress) {
+      const maxIdx  = POSITIONS.length - 1;
+      const clamped = Math.max(0, Math.min(maxIdx, segProgress));
+      const seg     = Math.min(Math.floor(clamped), maxIdx - 1);
+      const t       = clamped - seg;
+      const ts      = easeInOut(t);
+
+      const P = getAnchor(seg);
+      const N = getAnchor(seg + 1);
+
+      let left    = lerp(P.left,    N.left,    ts);
+      let top     = lerp(P.top,     N.top,     ts);
+      let scale   = lerp(P.scale,   N.scale,   ts);
+      let theta   = lerp(P.theta,   N.theta,   ts);
+      const phi   = lerp(P.phi,     N.phi,     ts);
+      const opac  = lerp(P.opacity, N.opacity, ts);
+      const foils = lerp(P.foils,   N.foils,   ts);
+      const fov   = lerp(P.fov,     N.fov,     ts);
+
+      const bump = sinBump(t);
+      let bumpBank = bump;
+
+      if (seg === 0) {
+        // Fly STRAIGHT toward the camera first, THEN bank off into the turn.
+        // Position eases late (fighter dwells near P0 while coming closer);
+        // rotation + banking only kick in after t ≈ 0.3, so the first third
+        // of the segment is pure forward flight before the ship twists.
+        const tPos = Math.pow(t, 1.7);
+        const tRot = Math.max(0, (t - 0.3) / 0.7);
+        const bumpRot = sinBump(tRot);
+        left  = lerp(P.left,  N.left,  tPos);
+        top   = lerp(P.top,   N.top,   tPos);
+        scale = lerp(P.scale, N.scale, tPos) * (1 + 0.32 * bump);
+        theta = lerp(P.theta, N.theta, easeInOut(tRot));
+        bumpBank = bumpRot;
+      } else if (seg === 2) {
+        // Pronounced arc up-and-right past the CTA text before swooping into
+        // the top-down overlay pose at P3 (nose pointing toward lower-left).
+        top  -= 32 * bump;
+        left += 16 * bump;
+      }
+      // Seg 1 is a plain lerp — fighter recedes smoothly from the back-view
+      // low anchor into the small side-view accent next to the heading.
+
+      // Seg 0 rotates CCW (theta 0 → -180); Seg 1 and Seg 2 both rotate CW
+      // (theta -180 → -90 → +15), so they share the opposite bank sign.
+      const bankSign = (seg === 1 || seg === 2) ? -1 : +1;
+      const bank = bankSign * 18 * bumpBank;
+
+      return { left, top, scale, theta, phi, opacity: opac, foils, fov, bank };
+    }
+
+    function applyShipState(s) {
+      // Mobile scale is baked into the anchor overrides (see POSITIONS), so
+      // no extra multiplier needed here — interpolated s.scale is final.
+      const scl = s.scale;
+      shipWrap.style.transform =
+        `translate3d(${s.left}vw, ${s.top}vh, 0) translate3d(-50%, -50%, 0) rotate(${s.bank}deg) scale3d(${scl},${scl},1)`;
+      shipWrap.style.opacity = String(s.opacity);
+      shipModel.setAttribute('camera-orbit', `${s.theta}deg ${s.phi}deg auto`);
+      shipModel.setAttribute('field-of-view', `${s.fov}deg`);
+      applyFoils(s.foils);
+    }
+
+    /* =====================================================
+       S-Foils rig — pivots collected from the artist's
+       Empty-LU/LB/RU/RB nodes. applyFoils(p) interpolates
+       between folded (p=0) and attack (p=1) pose.
+       ===================================================== */
+    const pivots = {};
+
+    function findThreeScene(el) {
+      const syms = [...Object.getOwnPropertySymbols(el)];
+      for (const s of syms) {
+        const v = el[s];
+        if (v && typeof v.traverse === 'function' && Array.isArray(v.children)) return v;
+      }
+      if (el.scene && el.scene.traverse) return el.scene;
+      if (el.model?.scene?.traverse) return el.model.scene;
+      return null;
+    }
+
+    function collectWings() {
+      const scene = findThreeScene(shipModel);
+      if (!scene) return;
+      scene.traverse(obj => {
+        if (!obj.name) return;
+        const m = obj.name.match(/^Empty-(LU|LB|RU|RB)/i);
+        if (m) {
+          const key = m[1].toUpperCase();
+          if (!pivots[key]) {
+            pivots[key] = obj;
+            obj.userData.origRot = { x: obj.rotation.x, y: obj.rotation.y, z: obj.rotation.z };
+          }
+        }
+      });
+    }
+
+    function applyFoils(progress) {
+      for (const key in pivots) {
+        const p = pivots[key];
+        const orig = p.userData.origRot;
+        p.rotation.x = orig.x * progress;
+        p.rotation.y = orig.y * progress;
+        p.rotation.z = orig.z * progress;
+      }
+    }
+
+    /* =====================================================
+       Model load
+       ===================================================== */
+    let shipReady = false;
+
+    shipModel.addEventListener('load', () => {
+      collectWings();
+      applyFoils(1);
+      shipReady = true;
+
+      // Kick off the intro: the CSS flying-in transition animates from the
+      // tiny hero-pose to the first anchor point over 3.5s. After that the
+      // transform transition is cleared so rAF drives motion per scroll pixel.
+      const s0 = computeShipState(0);
+      const scl = s0.scale;
+      shipWrap.style.transform =
+        `translate3d(${s0.left}vw, ${s0.top}vh, 0) translate3d(-50%, -50%, 0) rotate(${s0.bank}deg) scale3d(${scl},${scl},1)`;
+      shipWrap.style.opacity = String(s0.opacity);
+      shipModel.setAttribute('camera-orbit', `${s0.theta}deg ${s0.phi}deg auto`);
+      shipModel.setAttribute('field-of-view', `${s0.fov}deg`);
+
+      activeIndex = 0;
+      navDots.forEach((d, i) => d.classList.toggle('active', i === 0));
+      navWraps.forEach((w, i) => w.classList.toggle('active', i === 0));
+
+      setTimeout(() => {
+        shipWrap.classList.remove('flying-in');
+        // Disable transform transition — ship now follows scroll per frame.
+        shipWrap.style.transition = 'opacity 0.4s ease';
+        introActive = false;
+        onScroll();
+      }, 3800);
+    });
+
+    function setActiveSection(index) {
+      if (index === activeIndex) return;
+      activeIndex = index;
+      navDots.forEach((d, i) => d.classList.toggle('active', i === index));
+      navWraps.forEach((w, i) => w.classList.toggle('active', i === index));
+    }
+
+    /* =====================================================
+       Scroll handler — drives the hybrid-axis track.
+       Three equal-length scroll segments (each 100vh) map to:
+         Seg A: X  0 → -100vw   (horizontal pan right)
+         Seg B: Y  0 → -100vh   (vertical pan down)
+         Seg C: X -100vw → -200vw (horizontal pan right again)
+       ===================================================== */
+    let rafPending = false;
+
+    function updateScroll() {
+      rafPending = false;
+      const scrollTop = window.pageYOffset;
+      const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+      const progress = Math.min(Math.max(scrollTop / maxScroll, 0), 1);
+
+      progressFill.style.transform = `scaleX(${progress})`;
+      header.classList.toggle('scrolled', scrollTop > 48);
+
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+
+      // Scroll layout with hold zones between transitions:
+      //   [0 .. segA]        Seg A — horizontal 0 → -100vw
+      //   [segA .. holdA]    Hold on Sec 1 (track frozen, fighter dwells)
+      //   [holdA .. segB]    Seg B — vertical 0 → -100vh
+      //   [segB .. holdB]    Hold on Sec 2
+      //   [holdB .. segC]    Seg C — horizontal -100vw → -200vw
+      const segA   = vh * 1.0;
+      const holdA  = segA + vh * 0.8;
+      const segB   = holdA + vh * 1.6;
+      const holdB  = segB + vh * 0.5;
+      const segC   = holdB + vh * 1.0;
+
+      let tx = 0, ty = 0, fractional = 0;
+      if (scrollTop < segA) {
+        const t = scrollTop / (vh * 1.0);
+        tx = -t * vw;
+        fractional = t;
+      } else if (scrollTop < holdA) {
+        tx = -vw;
+        fractional = 1;
+      } else if (scrollTop < segB) {
+        const t = (scrollTop - holdA) / (vh * 1.6);
+        tx = -vw;
+        ty = -t * vh;
+        fractional = 1 + t;
+      } else if (scrollTop < holdB) {
+        tx = -vw;
+        ty = -vh;
+        fractional = 2;
+      } else {
+        const t = Math.min(1, (scrollTop - holdB) / (vh * 1.0));
+        tx = -(1 + t) * vw;
+        ty = -vh;
+        fractional = 2 + t;
+      }
+      track.style.transform = `translate3d(${tx}px, ${ty}px, 0)`;
+
+      // Parallax star layers — track offset on both axes, smaller = slower
+      if (starsA) starsA.style.transform = `translate3d(${tx * 0.12}px, ${ty * 0.12}px, 0)`;
+      if (starsB) starsB.style.transform = `translate3d(${tx * 0.28}px, ${ty * 0.28}px, 0)`;
+      if (starsC) starsC.style.transform = `translate3d(${tx * 0.48}px, ${ty * 0.48}px, 0)`;
+
+      // Continuous ship path — one update per frame
+      if (shipReady && !introActive) {
+        applyShipState(computeShipState(fractional));
+      }
+
+      const activeIdx = Math.max(0, Math.min(SECTION_COUNT - 1, Math.round(fractional)));
+      setActiveSection(activeIdx);
+
+      // Reveal section content once it approaches its centered state
+      sections.forEach((sec, i) => {
+        const inner = sec.querySelector('.section-inner');
+        if (!inner) return;
+        if (Math.abs(fractional - i) < 0.65) inner.classList.add('visible');
+      });
+
+      footer.classList.toggle('visible', progress > 0.9);
+      hscrollHint.classList.toggle('fade', scrollTop > 80);
+    }
+
+    function onScroll() {
+      if (rafPending) return;
+      rafPending = true;
+      requestAnimationFrame(updateScroll);
+    }
+
+    /* =====================================================
+       Nav dot clicks → scroll to target section
+       ===================================================== */
+    function scrollToSection(idx) {
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      const target = maxScroll * (idx / (SECTION_COUNT - 1));
+      window.scrollTo({ top: target, behavior: 'smooth' });
+    }
+
+    navDots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        const idx = parseInt(dot.dataset.target, 10);
+        scrollToSection(idx);
+      });
+    });
+
+    document.querySelectorAll('a[href^="#sec-"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const match = a.getAttribute('href').match(/#sec-(\d+)/);
+        if (!match) return;
+        scrollToSection(parseInt(match[1], 10));
+      });
+    });
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+
+    // Initial state
+    onScroll();
+  })();
+  </script>
+
+</body>
+</html>
