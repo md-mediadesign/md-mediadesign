@@ -5,9 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Professionelle Landingpages von md mediadesign — Regensburg. Hohe Conversion, modernes Design, schnell online.">
   <title>Landingpage erstellen lassen — md mediadesign</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
+  <link href="https://fonts.bunny.net/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
     /* =====================================================
@@ -134,6 +133,40 @@
       color: var(--text);
       border-color: var(--border-light);
       background: rgba(74,128,208,0.06);
+    }
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .mode-switch {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px;
+      background: rgba(13,18,32,0.7);
+      border: 1px solid var(--border-md);
+      border-radius: 100px;
+      backdrop-filter: blur(12px);
+    }
+    .mode-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--text-muted);
+      text-decoration: none;
+      border-radius: 100px;
+      transition: all 0.25s var(--ease);
+      white-space: nowrap;
+    }
+    .mode-pill:hover { color: var(--text); }
+    .mode-pill[aria-current="page"] {
+      background: var(--grad);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(74,128,208,0.35);
     }
 
     /* =====================================================
@@ -495,10 +528,17 @@
   <header class="site-header" id="header">
     <div class="header-inner">
       <a href="/" class="logo"><img src="assets/logo.png" alt="md mediadesign" class="logo-img"></a>
-      <a href="/#leistungen" class="back-link">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-        <span>Zurück zur Hauptseite</span>
-      </a>
+      <div class="header-right">
+        <nav class="mode-switch" aria-label="Landingpage-Variante wechseln">
+          <a class="mode-pill" href="/landingpage" aria-current="page">Erde</a>
+          <a class="mode-pill" href="/starfighter">Starfighter</a>
+          <a class="mode-pill" href="/sneaker">Produkt</a>
+        </nav>
+        <a href="/#leistungen" class="back-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          <span>Zurück zur Hauptseite</span>
+        </a>
+      </div>
     </div>
   </header>
 
@@ -640,7 +680,8 @@
 
   <!-- Footer -->
   <footer class="page-footer">
-    <p>&copy; 2026 md mediadesign — <a href="/">md-mediadesign.de</a> &nbsp;·&nbsp; <a href="/impressum.html">Impressum</a> &nbsp;·&nbsp; <a href="/datenschutz.html">Datenschutz</a></p>
+    <p>&copy; 2026 md mediadesign — Marco Delicati · build with ❤️ and 🍕</p>
+    <p style="margin-top:8px;font-size:12.5px;opacity:.8"><a href="/">md-mediadesign.de</a> &nbsp;·&nbsp; <a href="/impressum">Impressum</a> &nbsp;·&nbsp; <a href="/datenschutz">Datenschutz</a> &nbsp;·&nbsp; <a href="/barrierefreiheit">Barrierefreiheit</a></p>
   </footer>
 
   <script>

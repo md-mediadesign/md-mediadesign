@@ -82,11 +82,78 @@
     }
 
     /* =====================================================
+       Demo bar — cross-links between demo landingpages
+       ===================================================== */
+    .demo-bar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 50;
+      padding: 8px 6vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      background: rgba(250, 247, 239, 0.96);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    .mode-switch {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px;
+      background: rgba(45, 74, 47, 0.06);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+    }
+    .mode-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 5px 12px;
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--text-muted);
+      text-decoration: none;
+      border-radius: 100px;
+      transition: all 0.2s var(--ease);
+      white-space: nowrap;
+    }
+    .mode-pill:hover { color: var(--forest-deep); }
+    .mode-pill[aria-current="page"] {
+      background: var(--forest-deep);
+      color: var(--cream);
+      box-shadow: 0 2px 8px rgba(26, 51, 33, 0.25);
+    }
+    .demo-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--forest);
+      text-decoration: none;
+      padding: 6px 10px;
+      border-radius: 6px;
+      transition: all 0.2s var(--ease);
+    }
+    .demo-back-link:hover {
+      color: var(--forest-deep);
+      background: rgba(45, 74, 47, 0.06);
+    }
+    @media (max-width: 680px) {
+      .demo-bar { padding: 6px 4vw; }
+      .mode-pill { padding: 5px 10px; font-size: 10.5px; }
+      .demo-back-link span { display: none; }
+    }
+
+    /* =====================================================
        Header
        ===================================================== */
     .site-header {
       position: fixed;
-      top: 0; left: 0; right: 0;
+      top: 40px; left: 0; right: 0;
       z-index: 40;
       padding: 18px 6vw;
       display: flex;
@@ -537,6 +604,19 @@
     <div class="parallax-layer pl-4" data-layer="4"></div>
   </div>
   <div class="parallax-overlay" aria-hidden="true"></div>
+
+  <!-- Demo-bar: cross-links between demo landingpages -->
+  <div class="demo-bar" aria-label="Demo-Navigation">
+    <nav class="mode-switch" aria-label="Landingpage-Variante wechseln">
+      <a class="mode-pill" href="/landingpage">Erde</a>
+      <a class="mode-pill" href="/starfighter">Starfighter</a>
+      <a class="mode-pill" href="/sneaker" aria-current="page">Produkt</a>
+    </nav>
+    <a href="/#leistungen" class="demo-back-link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      <span>Zurück zur Hauptseite</span>
+    </a>
+  </div>
 
   <!-- Header -->
   <header class="site-header">
