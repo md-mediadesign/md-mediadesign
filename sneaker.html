@@ -689,10 +689,10 @@
        scale = optional multiplier applied visually
        ===================================================== */
     const POSES = [
-      { theta:  45, phi: 80, fov: 28, opacity: 1.00 }, // Hero — front 3/4
-      { theta: 110, phi: 75, fov: 28, opacity: 1.00 }, // Features — side profile
-      { theta: 225, phi: 78, fov: 30, opacity: 1.00 }, // Materialien — rear 3/4
-      { theta: 315, phi: 45, fov: 32, opacity: 1.00 }, // Preorder — angled top
+      { theta: 225, phi:  78, fov: 28, opacity: 1.00 }, // Hero — rotated 180° from original, back 3/4 view
+      { theta: 225, phi: 172, fov: 30, opacity: 1.00 }, // Features — tilt under, sole visible from below
+      { theta:  45, phi:  95, fov: 30, opacity: 1.00 }, // Materialien — rotated 180° via the rear, opposite side below horizon
+      { theta:  45, phi:  25, fov: 32, opacity: 1.00 }, // Preorder — angled top-down (final resting pose)
     ];
 
     const lerp      = (a, b, t) => a + (b - a) * t;
