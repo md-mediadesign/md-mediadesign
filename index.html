@@ -773,6 +773,200 @@
       padding: 20px 26px 28px;
     }
 
+    /* Live-Projekte (echte Kunden) */
+    .refs-live-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 22px;
+      max-width: 1240px;
+      margin: 0 auto 40px;
+    }
+    @media (min-width: 900px) {
+      .refs-live-grid { grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); }
+    }
+    .ref-card--live {
+      display: flex;
+      flex-direction: column;
+    }
+    .ref-screenshot {
+      position: relative;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      background: var(--bg-elevated);
+    }
+    .ref-screenshot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      transition: transform .6s var(--ease, cubic-bezier(0.4,0,0.2,1));
+    }
+    .ref-card--live:hover .ref-screenshot img { transform: scale(1.03); }
+    .ref-live-badge {
+      position: absolute;
+      top: 14px; right: 14px;
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 12px;
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #ecfdf5;
+      background: rgba(6,17,12,0.78);
+      border: 1px solid rgba(34,197,94,0.4);
+      border-radius: 100px;
+      backdrop-filter: blur(6px);
+    }
+    .ref-live-badge::before {
+      content: '';
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 0 0 rgba(34,197,94,0.5);
+      animation: live-pulse 2s ease-out infinite;
+    }
+    @keyframes live-pulse {
+      0%   { box-shadow: 0 0 0 0 rgba(34,197,94,0.55); }
+      70%  { box-shadow: 0 0 0 8px rgba(34,197,94,0); }
+      100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+    }
+
+    /* Demos hinter Disclosure */
+    .refs-demos-toggle {
+      max-width: 1240px;
+      margin: 8px auto 0;
+    }
+    .refs-demos-toggle > summary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 18px;
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--text-muted);
+      background: rgba(74,128,208,0.06);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      cursor: pointer;
+      list-style: none;
+      transition: color .25s, border-color .25s, background .25s;
+    }
+    .refs-demos-toggle > summary::-webkit-details-marker { display: none; }
+    .refs-demos-toggle > summary::before {
+      content: '+';
+      font-size: 16px;
+      line-height: 1;
+      color: var(--brand-bright);
+      transition: transform .3s;
+    }
+    .refs-demos-toggle[open] > summary::before { content: '−'; }
+    .refs-demos-toggle > summary:hover {
+      color: var(--text);
+      border-color: var(--border-light);
+      background: rgba(74,128,208,0.1);
+    }
+    .refs-demos-toggle > summary .hint {
+      color: var(--text-subtle);
+      font-size: 12px;
+      font-weight: 400;
+    }
+    .refs-demos-toggle .refs-grid {
+      margin-top: 24px;
+    }
+
+    /* Testimonials / Kundenstimmen */
+    .testimonials-grid {
+      display: grid;
+      gap: 24px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .testimonials-grid.has-many {
+      max-width: 1240px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    }
+    .testimonial {
+      position: relative;
+      margin: 0;
+      padding: 36px 32px 28px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      transition: border-color .3s, box-shadow .3s;
+    }
+    .testimonial:hover {
+      border-color: var(--border-light);
+      box-shadow: 0 6px 24px rgba(74,128,208,0.1);
+    }
+    .testimonial-quote {
+      width: 32px; height: 32px;
+      color: var(--brand-bright);
+      opacity: 0.45;
+      flex-shrink: 0;
+    }
+    .testimonial blockquote {
+      margin: 0;
+    }
+    .testimonial blockquote p {
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.6;
+      color: var(--text);
+      font-weight: 400;
+    }
+    .testimonial figcaption {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+    }
+    .testimonial-avatar {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: var(--grad, linear-gradient(135deg, var(--brand), var(--accent)));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.02em;
+      flex-shrink: 0;
+    }
+    .testimonial-avatar img {
+      width: 100%; height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .testimonial-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      line-height: 1.35;
+    }
+    .testimonial-meta strong {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .testimonial-meta a {
+      font-size: 13px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color .25s;
+    }
+    .testimonial-meta a:hover { color: var(--brand-bright); }
+
     /* Avatar initials */
     .avatar {
       width: 120px; height: 120px;
@@ -1059,46 +1253,89 @@
   <section class="section" id="referenzen">
     <div class="section-head">
       <span class="section-label">Referenzen</span>
-      <h2 class="section-title">Beispiel-<span class="grad">Designs.</span></h2>
-      <p class="section-desc">Vier Demo-Websites aus unterschiedlichen Branchen — jede mit eigener Tonalität, Bildsprache und Funktionslogik. Ein Eindruck vom Gestaltungsspielraum.</p>
+      <h2 class="section-title">Live-<span class="grad">Projekte.</span></h2>
+      <p class="section-desc">Echte Webseiten für echte Kunden — aktuell online und in Betrieb. Jeden Monat kommen neue dazu.</p>
     </div>
 
-    <div class="refs-grid">
-      <a class="ref-card reveal" href="referenzen/arztpraxis/index.html">
-        <div class="ref-gradient ref-gradient--druck"></div>
+    <div class="refs-live-grid">
+      <a class="ref-card ref-card--live reveal" href="https://www.marinas-massagegarage.de" target="_blank" rel="noopener">
+        <div class="ref-screenshot">
+          <img src="assets/referenzen/marinas-massagegarage.webp" alt="Marinas Massagegarage — Website-Screenshot" loading="lazy" width="1280" height="800">
+          <span class="ref-live-badge">Live</span>
+        </div>
         <div class="ref-card-body">
-          <div class="ref-badge">Demo ansehen</div>
-          <h3>Zahnarztpraxis Dr. Bergmann</h3>
-          <p>Moderne Praxis-Website mit Terminanfrage, Team-Vorstellung und warmer, vertrauensvoller Bildsprache.</p>
+          <div class="ref-badge">Website besuchen ↗</div>
+          <h3>Marinas Massagegarage</h3>
+          <p>Mobile Massage-Praxis mit klarer Bildsprache, Online-Terminanfrage und lokaler SEO-Optimierung.</p>
         </div>
       </a>
+    </div>
 
-      <a class="ref-card reveal" href="referenzen/handwerker/index.html">
-        <div class="ref-gradient ref-gradient--handwerk"></div>
-        <div class="ref-card-body">
-          <div class="ref-badge">Demo ansehen</div>
-          <h3>Bauhaus Ehrlich</h3>
-          <p>Handwerksbetrieb mit Leistungsübersicht, Projektgalerie und Angebots-Anfrage — solide und bodenständig.</p>
-        </div>
-      </a>
+    <details class="refs-demos-toggle reveal">
+      <summary>Beispiel-Designs ansehen <span class="hint">(Demo-Layouts, keine echten Kunden)</span></summary>
+      <div class="refs-grid">
+        <a class="ref-card" href="referenzen/arztpraxis/index.html">
+          <div class="ref-gradient ref-gradient--druck"></div>
+          <div class="ref-card-body">
+            <div class="ref-badge">Demo ansehen</div>
+            <h3>Zahnarztpraxis Dr. Bergmann</h3>
+            <p>Moderne Praxis-Website mit Terminanfrage, Team-Vorstellung und warmer, vertrauensvoller Bildsprache.</p>
+          </div>
+        </a>
 
-      <a class="ref-card reveal" href="referenzen/pizzeria/index.html">
-        <div class="ref-gradient ref-gradient--pizza"></div>
-        <div class="ref-card-body">
-          <div class="ref-badge">Demo ansehen</div>
-          <h3>Pizzeria Da Matteo</h3>
-          <p>Gastronomie-Auftritt mit Speisekarte, Reservierung und authentisch-italienischer Tonalität.</p>
-        </div>
-      </a>
+        <a class="ref-card" href="referenzen/handwerker/index.html">
+          <div class="ref-gradient ref-gradient--handwerk"></div>
+          <div class="ref-card-body">
+            <div class="ref-badge">Demo ansehen</div>
+            <h3>Bauhaus Ehrlich</h3>
+            <p>Handwerksbetrieb mit Leistungsübersicht, Projektgalerie und Angebots-Anfrage — solide und bodenständig.</p>
+          </div>
+        </a>
 
-      <a class="ref-card reveal" href="referenzen/solarpark/index.html">
-        <div class="ref-gradient ref-gradient--solar"></div>
-        <div class="ref-card-body">
-          <div class="ref-badge">Demo ansehen</div>
-          <h3>SonneNord Solar</h3>
-          <p>Regionaler Solarpark-Betreiber mit Projektübersicht, Kennzahlen und Bürgerenergie-Fokus.</p>
-        </div>
-      </a>
+        <a class="ref-card" href="referenzen/pizzeria/index.html">
+          <div class="ref-gradient ref-gradient--pizza"></div>
+          <div class="ref-card-body">
+            <div class="ref-badge">Demo ansehen</div>
+            <h3>Pizzeria Da Matteo</h3>
+            <p>Gastronomie-Auftritt mit Speisekarte, Reservierung und authentisch-italienischer Tonalität.</p>
+          </div>
+        </a>
+
+        <a class="ref-card" href="referenzen/solarpark/index.html">
+          <div class="ref-gradient ref-gradient--solar"></div>
+          <div class="ref-card-body">
+            <div class="ref-badge">Demo ansehen</div>
+            <h3>SonneNord Solar</h3>
+            <p>Regionaler Solarpark-Betreiber mit Projektübersicht, Kennzahlen und Bürgerenergie-Fokus.</p>
+          </div>
+        </a>
+      </div>
+    </details>
+  </section>
+
+  <section class="section" id="testimonials">
+    <div class="section-head">
+      <span class="section-label">Kundenstimmen</span>
+      <h2 class="section-title">Was Kunden <span class="grad">sagen.</span></h2>
+      <p class="section-desc">Echte Stimmen von echten Auftraggebern — keine Stockfotos, keine erfundenen Zitate.</p>
+    </div>
+
+    <div class="testimonials-grid">
+      <figure class="testimonial reveal">
+        <svg class="testimonial-quote" aria-hidden="true" viewBox="0 0 32 32" fill="currentColor">
+          <path d="M0 24h6.857V12.571H2.286c0-2.514 2.057-4.571 4.571-4.571V4C2.057 4 0 8.057 0 12.571V24zm18.286 0h6.857V12.571h-4.571c0-2.514 2.057-4.571 4.571-4.571V4c-4.8 0-6.857 4.057-6.857 8.571V24z"/>
+        </svg>
+        <blockquote>
+          <p>„[Marinas Zitat — wird nach dem Briefing hier eingesetzt. Bis dahin Platzhalter, damit Layout sichtbar bleibt.]"</p>
+        </blockquote>
+        <figcaption>
+          <div class="testimonial-avatar" aria-hidden="true">MM</div>
+          <div class="testimonial-meta">
+            <strong>Marina Müller</strong>
+            <a href="https://www.marinas-massagegarage.de" target="_blank" rel="noopener">Marinas Massagegarage ↗</a>
+          </div>
+        </figcaption>
+      </figure>
     </div>
   </section>
 

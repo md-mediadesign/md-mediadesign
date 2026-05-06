@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Kundenfeedback für md-mediadesign — kurze Rückmeldung zu deinem Projekt.">
+<title>Dein Feedback · md mediadesign</title>
+<link rel="icon" type="image/png" href="/assets/logo.png">
+<link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
+<link href="https://fonts.bunny.net/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brand:        #4a80d0;
+    --brand-bright: #6a9fdf;
+    --brand-dark:   #2d5fa8;
+    --accent:       #7ab4e8;
+    --accent-dark:  #3a6bc7;
+    --bg:           #05060d;
+    --bg-card:      #0b1326;
+    --bg-elevated:  #101b36;
+    --bg-input:     #070b1a;
+    --surface:      #0b1326;
+    --text:         #f1f5f9;
+    --muted:        #94a3b8;
+    --text-subtle:  #4a6080;
+    --border:       rgba(74,128,208,0.12);
+    --border-md:    rgba(74,128,208,0.22);
+    --border-light: rgba(74,128,208,0.30);
+    --radius:       12px;
+    --radius-sm:    8px;
+    --radius-lg:    20px;
+    --shadow:       0 1px 3px rgba(0,0,0,0.4), 0 4px 20px rgba(0,0,0,0.35);
+    --shadow-hover: 0 8px 32px rgba(74,128,208,0.2);
+    --font-display: 'Space Grotesk', system-ui, sans-serif;
+    --font-body:    'Inter', system-ui, sans-serif;
+    --grad-text:    linear-gradient(120deg, var(--brand-bright), var(--accent));
+    --ease:         cubic-bezier(0.4,0,0.2,1);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-body);
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(74,128,208,0.12), transparent 60%),
+      var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+  ::selection { background: var(--brand); color: #fff; }
+  .container { max-width: 760px; margin: 0 auto; padding: 56px 24px 96px; position: relative; z-index: 2; }
+
+  .brand-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 40px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  .brand-bar a { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
+  .brand-bar img { height: 32px; width: auto; }
+  .brand-bar .brand-label {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--muted);
+    letter-spacing: 0.02em;
+  }
+
+  header.page-header {
+    text-align: left;
+    margin-bottom: 32px;
+  }
+  .page-header .eyebrow {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--brand-bright);
+    margin-bottom: 18px;
+    padding: 6px 12px;
+    border: 1px solid var(--border-md);
+    border-radius: 100px;
+    background: rgba(74,128,208,0.06);
+  }
+  .page-header h1 {
+    margin: 0 0 16px;
+    font-family: var(--font-display);
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    color: var(--text);
+  }
+  .page-header h1 .grad {
+    background: var(--grad-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .page-header p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.65;
+    max-width: 620px;
+  }
+
+  .intro-box {
+    background: rgba(74,128,208,0.06);
+    border: 1px solid var(--border-md);
+    border-radius: var(--radius);
+    padding: 18px 22px;
+    margin-bottom: 32px;
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .intro-box strong { color: var(--brand-bright); font-weight: 600; }
+
+  section.block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 28px 24px;
+    margin-bottom: 18px;
+    box-shadow: var(--shadow);
+    transition: border-color 0.25s var(--ease), box-shadow 0.25s ease;
+  }
+  section.block:hover { border-color: var(--border-md); }
+  section.block h2 {
+    margin: 0 0 8px;
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    color: var(--text);
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+  section.block h2 .num {
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--brand-bright);
+    background: rgba(74,128,208,0.1);
+    border: 1px solid var(--border-md);
+    padding: 4px 9px;
+    border-radius: 100px;
+    letter-spacing: 0.08em;
+  }
+  section.block .section-desc {
+    color: var(--muted);
+    font-size: 14px;
+    margin: 0 0 18px;
+    line-height: 1.6;
+  }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 560px) { .grid { grid-template-columns: 1fr; } }
+
+  .field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 4px; }
+  .field.full { grid-column: 1 / -1; }
+  .field label {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+  }
+  .field label .req { color: var(--brand-bright); margin-left: 2px; }
+  .field input[type="text"],
+  .field input[type="email"],
+  .field input[type="url"],
+  .field textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--border-md);
+    border-radius: var(--radius-sm);
+    font-size: 15px;
+    font-family: inherit;
+    background: var(--bg-input);
+    color: var(--text);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  }
+  .field input::placeholder, .field textarea::placeholder { color: var(--text-subtle); }
+  .field textarea { resize: vertical; min-height: 92px; line-height: 1.6; }
+  .field input:focus, .field textarea:focus {
+    outline: none;
+    border-color: var(--brand-bright);
+    background: var(--bg-elevated);
+    box-shadow: 0 0 0 3px rgba(74, 128, 208, 0.2);
+  }
+
+  .check-list { display: flex; flex-direction: column; gap: 10px; }
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    cursor: pointer;
+    padding: 12px 16px;
+    border: 1px solid var(--border-md);
+    border-radius: var(--radius-sm);
+    background: var(--bg-input);
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+  .check-item:hover { border-color: var(--brand-bright); background: var(--bg-elevated); }
+  .check-item:has(input:checked) {
+    border-color: var(--brand-bright);
+    background: rgba(74,128,208,0.12);
+    box-shadow: inset 0 0 0 1px rgba(74,128,208,0.3);
+  }
+  .check-item input { margin-top: 3px; accent-color: var(--brand); flex-shrink: 0; }
+  .check-item span { font-size: 14px; color: var(--text); line-height: 1.4; }
+  .check-item .sub { display: block; color: var(--muted); font-size: 12px; margin-top: 2px; font-weight: 400; }
+
+  .file-drop {
+    display: block;
+    border: 2px dashed var(--border-md);
+    border-radius: var(--radius);
+    padding: 22px 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    background: var(--bg-input);
+    color: var(--muted);
+  }
+  .file-drop:hover { border-color: var(--brand-bright); background: var(--bg-elevated); color: var(--text); }
+  .file-drop input { display: none; }
+  .file-drop .label { font-weight: 600; font-size: 14px; color: var(--text); }
+  .file-drop .hint { color: var(--muted); font-size: 12px; margin-top: 4px; }
+  .file-list { margin-top: 8px; font-size: 13px; color: var(--brand-bright); list-style: none; padding: 0; }
+  .file-list li { padding: 2px 0; }
+
+  .actions { margin-top: 36px; display: flex; justify-content: flex-end; gap: 12px; }
+  button.submit {
+    background: linear-gradient(135deg, var(--brand) 0%, var(--accent-dark) 100%);
+    color: #fff;
+    border: 1px solid var(--brand-bright);
+    padding: 15px 32px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: var(--font-display);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: box-shadow 0.25s ease, transform 0.1s ease, filter 0.2s ease;
+    box-shadow: 0 4px 20px rgba(74,128,208,0.3);
+  }
+  button.submit:hover { box-shadow: 0 8px 32px rgba(74,128,208,0.5); filter: brightness(1.1); }
+  button.submit:active { transform: translateY(1px); }
+  button.submit:disabled { opacity: 0.6; cursor: wait; }
+
+  .form-msg {
+    margin-top: 20px;
+    padding: 14px 18px;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    display: none;
+  }
+  .form-msg.err {
+    display: block;
+    background: rgba(220,38,38,0.1);
+    border: 1px solid rgba(220,38,38,0.3);
+    color: #fca5a5;
+  }
+
+  .success-screen { display: none; text-align: center; padding: 80px 24px; }
+  .success-screen.active { display: block; animation: fadeUp 0.6s var(--ease); }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  .success-screen .mark {
+    width: 72px; height: 72px; margin: 0 auto 20px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(74,128,208,0.15);
+    border: 1px solid var(--brand);
+    color: var(--brand-bright);
+    font-size: 32px;
+  }
+  .success-screen h2 {
+    font-family: var(--font-display);
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin: 0 0 14px;
+    color: var(--text);
+  }
+  .success-screen p { color: var(--muted); max-width: 480px; margin: 0 auto; font-size: 16px; line-height: 1.65; }
+
+  .field-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 8px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.55;
+  }
+  .field-check input { margin-top: 3px; accent-color: var(--brand); }
+  .field-check a { color: var(--brand-bright); }
+
+  .footer-note {
+    text-align: center;
+    margin-top: 48px;
+    color: var(--text-subtle);
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .footer-note a { color: var(--muted); text-decoration: none; }
+  .footer-note a:hover { color: var(--brand-bright); }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="brand-bar">
+    <a href="/" aria-label="Zur Startseite">
+      <img src="assets/logo.png" alt="md mediadesign">
+      <span class="brand-label">md mediadesign</span>
+    </a>
+  </div>
+
+  <header class="page-header">
+    <span class="eyebrow">Kundenstimme</span>
+    <h1>Dein <span class="grad">Feedback</span> zählt.</h1>
+    <p>Du hast eine Website von mir bekommen — und ich würde mich riesig freuen, wenn du mir kurz schreibst, wie du die Zusammenarbeit erlebt hast. 3–4 Sätze reichen völlig.</p>
+  </header>
+
+  <div class="intro-box">
+    <strong>Tipp:</strong> Nimm dir die Fragen, die für dich passen. Du musst nicht alle ausfüllen. Schreib einfach in deinem ganz eigenen Ton — genau das macht ein gutes Testimonial aus.
+  </div>
+
+  <form id="feedbackForm" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data" novalidate>
+    <input type="hidden" name="access_key" value="e4c660cb-1427-4610-b1a6-ed1ea44b5e55">
+    <input type="hidden" name="subject" value="Kundenfeedback — md-mediadesign.de">
+    <input type="hidden" name="from_name" value="md-mediadesign · Feedback">
+    <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" aria-hidden="true">
+
+    <section class="block">
+      <h2><span class="num">01</span> Wer schreibt?</h2>
+      <div class="grid">
+        <div class="field">
+          <label>Vorname &amp; Nachname <span class="req">*</span></label>
+          <input type="text" name="01 Name" required autocomplete="name">
+        </div>
+        <div class="field">
+          <label>Firma / Projekt</label>
+          <input type="text" name="02 Firma" autocomplete="organization">
+        </div>
+        <div class="field">
+          <label>E-Mail <span class="req">*</span></label>
+          <input type="email" name="03 E-Mail" required autocomplete="email">
+        </div>
+        <div class="field">
+          <label>Website (deine)</label>
+          <input type="url" name="04 Website" placeholder="https://...">
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2><span class="num">02</span> Vorher</h2>
+      <p class="section-desc">Wie sah deine Online-Präsenz vor unserer Zusammenarbeit aus? Was hat dir gefehlt?</p>
+      <div class="field">
+        <textarea name="05 Vorher" placeholder="z. B. ‚Ich hatte gar keine Website und war nur auf Instagram aktiv. Mir hat …'"></textarea>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2><span class="num">03</span> Warum ich?</h2>
+      <p class="section-desc">Warum hast du dich für mich entschieden — und gegen andere?</p>
+      <div class="field">
+        <textarea name="06 Warum ich" placeholder="z. B. ‚Mir war wichtig, dass ich direkt mit der Person spreche, die das umsetzt …'"></textarea>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2><span class="num">04</span> Zusammenarbeit</h2>
+      <p class="section-desc">Wie hast du den Prozess erlebt? Was ist dir besonders im Gedächtnis geblieben?</p>
+      <div class="field">
+        <textarea name="07 Zusammenarbeit" placeholder="z. B. ‚Marco hat genau zugehört und meine Ideen direkt verstanden …'"></textarea>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2><span class="num">05</span> Ergebnis</h2>
+      <p class="section-desc">Was hat sich für dein Geschäft konkret verändert, seit die Seite online ist? (Anfragen, Sichtbarkeit, Feedback von Kunden …)</p>
+      <div class="field">
+        <textarea name="08 Ergebnis" placeholder="z. B. ‚Ich bekomme jetzt regelmäßig Anfragen über die Seite …'"></textarea>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2><span class="num">06</span> Empfehlung</h2>
+      <p class="section-desc">Wem würdest du mich weiterempfehlen — und warum?</p>
+      <div class="field">
+        <textarea name="09 Empfehlung" placeholder="z. B. ‚Allen Selbstständigen, die …'"></textarea>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2><span class="num">07</span> Erlaubnisse</h2>
+      <p class="section-desc">Was darf ich von deinem Feedback auf md-mediadesign.de zeigen?</p>
+      <div class="check-list">
+        <label class="check-item">
+          <input type="checkbox" name="10 OK Name+Firma" value="ja">
+          <span>Du darfst meinen <strong>Namen und meine Firma</strong> auf md-mediadesign.de zeigen.<span class="sub">Ohne diese Erlaubnis veröffentliche ich gar nichts.</span></span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" name="11 OK Logo" value="ja">
+          <span>Du darfst mein <strong>Logo</strong> verwenden.<span class="sub">Falls ja: Datei unten hochladen.</span></span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" name="12 OK Foto" value="ja">
+          <span>Du darfst ein <strong>Portrait-Foto</strong> von mir verwenden.<span class="sub">Optional — wenn nicht, nehme ich deine Initialen.</span></span>
+        </label>
+        <label class="check-item">
+          <input type="checkbox" name="13 Google-Bewertung" value="ja">
+          <span>Ich schreibe gerne zusätzlich eine <strong>Google-Bewertung</strong>.<span class="sub">Marco schickt dir dazu den passenden Link.</span></span>
+        </label>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2><span class="num">08</span> Logo / Foto hochladen</h2>
+      <p class="section-desc">Optional — falls du oben „Logo" oder „Foto" angekreuzt hast.</p>
+      <div class="grid">
+        <div class="field full">
+          <label class="file-drop">
+            <input type="file" name="14 Logo-Datei" accept="image/*,.svg,.pdf" id="logoInput">
+            <div class="label">Logo hochladen</div>
+            <div class="hint">PNG, SVG, PDF — am besten in höchster Auflösung</div>
+            <ul class="file-list" id="logoList"></ul>
+          </label>
+        </div>
+        <div class="field full">
+          <label class="file-drop">
+            <input type="file" name="15 Foto-Datei" accept="image/*" id="photoInput">
+            <div class="label">Portrait-Foto hochladen</div>
+            <div class="hint">Quadratisch funktioniert am besten — JPG oder PNG</div>
+            <ul class="file-list" id="photoList"></ul>
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2><span class="num">09</span> Sonstiges</h2>
+      <p class="section-desc">Anmerkungen, Wünsche oder etwas, das ich beim nächsten Mal besser machen kann?</p>
+      <div class="field">
+        <textarea name="16 Sonstiges" placeholder="Optional — was dir noch wichtig ist."></textarea>
+      </div>
+
+      <label class="field-check">
+        <input type="checkbox" required>
+        <span>Ich habe die <a href="/datenschutz" target="_blank" rel="noopener">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Angaben zur Bearbeitung des Feedbacks zu. <span class="req" style="color: var(--brand-bright);">*</span></span>
+      </label>
+    </section>
+
+    <div class="actions">
+      <button type="submit" class="submit" id="submitBtn">Feedback senden →</button>
+    </div>
+
+    <div class="form-msg" id="formMsg"></div>
+  </form>
+
+  <div class="success-screen" id="successScreen">
+    <div class="mark">✓</div>
+    <h2>Vielen Dank!</h2>
+    <p>Dein Feedback ist angekommen. Marco meldet sich in den nächsten Tagen kurz bei dir, sobald das Zitat online geht.</p>
+  </div>
+
+  <div class="footer-note">
+    md mediadesign · Tegernheim · <a href="mailto:mdelicati@googlemail.com">mdelicati@googlemail.com</a><br>
+    <a href="/impressum">Impressum</a> · <a href="/datenschutz">Datenschutz</a>
+  </div>
+
+</div>
+
+<script>
+  const form = document.getElementById('feedbackForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const formMsg = document.getElementById('formMsg');
+  const successScreen = document.getElementById('successScreen');
+
+  function showFiles(input, listEl) {
+    listEl.innerHTML = '';
+    Array.from(input.files || []).forEach(f => {
+      const li = document.createElement('li');
+      li.textContent = '✓ ' + f.name + ' (' + Math.round(f.size / 1024) + ' KB)';
+      listEl.appendChild(li);
+    });
+  }
+  document.getElementById('logoInput').addEventListener('change', e => showFiles(e.target, document.getElementById('logoList')));
+  document.getElementById('photoInput').addEventListener('change', e => showFiles(e.target, document.getElementById('photoList')));
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    formMsg.className = 'form-msg';
+    formMsg.textContent = '';
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Wird gesendet …';
+
+    const fd = new FormData(form);
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: fd,
+        headers: { 'Accept': 'application/json' }
+      });
+      const data = await res.json();
+      if (data.success) {
+        form.style.display = 'none';
+        document.querySelector('.page-header').style.display = 'none';
+        document.querySelector('.intro-box').style.display = 'none';
+        successScreen.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        throw new Error(data.message || 'Unbekannter Fehler');
+      }
+    } catch (err) {
+      formMsg.className = 'form-msg err';
+      formMsg.textContent = 'FEHLER: ' + (err && err.message ? err.message : String(err));
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Feedback senden →';
+    }
+  });
+</script>
+
+</body>
+</html>
