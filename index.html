@@ -1629,6 +1629,33 @@ void main(void){
   <!-- Lisa — KI-Telefonassistentin (Demo-Widget, ElevenLabs) -->
   <elevenlabs-convai agent-id="agent_4301ktyynjvff8db24ad478sxk5f"></elevenlabs-convai>
   <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+  <!-- Schließen-Button fürs Lisa-Widget (ausblenden für die aktuelle Sitzung) -->
+  <script>
+  (function () {
+    function init() {
+      var widget = document.querySelector('elevenlabs-convai');
+      if (!widget) return false;
+      if (sessionStorage.getItem('lisaHidden') === '1') { widget.style.display = 'none'; return true; }
+      if (document.getElementById('lisa-close-btn')) return true;
+      var btn = document.createElement('button');
+      btn.id = 'lisa-close-btn';
+      btn.setAttribute('aria-label', 'Telefonassistent ausblenden');
+      btn.textContent = '\u00d7';
+      btn.style.cssText = 'position:fixed;bottom:78px;right:16px;z-index:2147483647;width:24px;height:24px;border-radius:50%;border:none;background:rgba(20,20,30,.8);color:#fff;font-size:16px;line-height:24px;text-align:center;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.35);padding:0;';
+      btn.addEventListener('click', function () {
+        widget.style.display = 'none';
+        btn.style.display = 'none';
+        sessionStorage.setItem('lisaHidden', '1');
+      });
+      document.body.appendChild(btn);
+      return true;
+    }
+    var tries = 0;
+    var timer = setInterval(function () {
+      if (init() || ++tries > 30) clearInterval(timer);
+    }, 500);
+  })();
+  </script>
 
 </body>
 </html>
