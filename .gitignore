@@ -3,3 +3,11 @@
 ai-coding-starter-kit/
 assets/Beispielwebsites/
 node_modules/
+
+# Ablage & gekaufte Vorlagen (kein Website-Code)
+Ablage/
+Solar-Firma/
+
+# Backups & temporäre Asset-Sicherungen
+*.bak
+*.backup-*
