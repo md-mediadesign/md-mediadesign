@@ -4,9 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>md mediadesign — Bald wieder für Sie da</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
+  <link href="https://fonts.bunny.net/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -148,13 +147,29 @@
 
     .footer {
       position: fixed;
-      bottom: 24px;
+      bottom: 20px;
       left: 0; right: 0;
       text-align: center;
       font-size: 12px;
-      color: #334155;
+      color: #475569;
       z-index: 10;
+      padding: 0 16px;
     }
+    .footer-legal {
+      margin-top: 6px;
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      font-size: 11.5px;
+    }
+    .footer-legal a {
+      color: #6a9fdf;
+      text-decoration: none;
+      opacity: 0.75;
+      transition: opacity 0.2s;
+    }
+    .footer-legal a:hover { opacity: 1; }
 
     /* Entrance animation */
     .content > * {
@@ -202,7 +217,14 @@
     </div>
   </div>
 
-  <div class="footer">&copy; 2026 md mediadesign — Marco Delicati</div>
+  <div class="footer">
+    &copy; 2026 md mediadesign — Marco Delicati · build with ❤️ and 🍕
+    <div class="footer-legal">
+      <a href="/impressum">Impressum</a>
+      <a href="/datenschutz">Datenschutz</a>
+      <a href="/barrierefreiheit">Barrierefreiheit</a>
+    </div>
+  </div>
 
   <script>
     (function () {

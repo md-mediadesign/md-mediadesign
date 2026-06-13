@@ -3,89 +3,285 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Datenschutzerklärung — md mediadesign, Marco Delicati, Tegernheim.">
   <title>Datenschutzerklärung — md mediadesign</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
+  <link href="https://fonts.bunny.net/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    .legal-page { padding: 140px 0 80px; }
-    .legal-page h1 { font-size: 2rem; font-weight: 700; color: var(--black); margin-bottom: 32px; }
-    .legal-page h2 { font-size: 1.3rem; font-weight: 600; color: var(--black); margin: 32px 0 12px; }
-    .legal-page h3 { font-size: 1.1rem; font-weight: 600; color: var(--black); margin: 20px 0 8px; }
-    .legal-page p, .legal-page li { font-size: 0.95rem; line-height: 1.8; color: var(--gray-700); margin-bottom: 8px; }
-    .legal-page ul { padding-left: 20px; list-style: disc; }
-    .legal-page a { color: var(--blue); }
-    .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 0.9rem; font-weight: 500; margin-bottom: 24px; }
+    :root {
+      --brand:        #4a80d0;
+      --brand-bright: #6a9fdf;
+      --bg:           #05060d;
+      --bg-deep:      #030410;
+      --bg-card:      #0b1326;
+      --text:         #f1f5f9;
+      --text-muted:   #94a3b8;
+      --text-subtle:  #4a6080;
+      --border:       rgba(74,128,208,0.12);
+      --border-md:    rgba(74,128,208,0.22);
+      --border-light: rgba(74,128,208,0.30);
+      --font-display: 'Space Grotesk', system-ui, sans-serif;
+      --font-body:    'Inter', system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text-muted);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background:
+        radial-gradient(ellipse at 20% 10%, rgba(74,128,208,0.10), transparent 55%),
+        radial-gradient(ellipse at 85% 85%, rgba(122,180,232,0.08), transparent 60%),
+        radial-gradient(ellipse at 50% 50%, #0a0f24 0%, #05060d 65%, #030410 100%);
+    }
+    .site-header {
+      position: sticky; top: 0; z-index: 10;
+      padding: 16px 0;
+      background: rgba(5,6,13,0.88);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .header-inner {
+      max-width: 1200px; margin: 0 auto;
+      padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    }
+    .logo-img { height: 28px; width: auto; }
+    .back-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 14px; font-weight: 500;
+      color: var(--text-muted); text-decoration: none;
+      padding: 8px 14px;
+      border: 1px solid var(--border-md); border-radius: 8px;
+      transition: all .2s;
+    }
+    .back-link:hover {
+      color: var(--text); border-color: var(--border-light);
+      background: rgba(74,128,208,0.06);
+    }
+    .legal-wrap {
+      max-width: 760px; margin: 0 auto;
+      padding: 80px 24px 120px;
+    }
+    .legal-wrap h1 {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 700; letter-spacing: -0.02em;
+      color: var(--text); line-height: 1.1;
+      margin-bottom: 12px;
+    }
+    .legal-wrap .lead {
+      font-size: 15px; color: var(--text-subtle);
+      margin-bottom: 48px;
+    }
+    .legal-wrap h2 {
+      font-family: var(--font-display);
+      font-size: 22px; font-weight: 600;
+      color: var(--text); letter-spacing: -0.01em;
+      margin: 48px 0 14px;
+      display: flex; align-items: baseline; gap: 10px;
+    }
+    .legal-wrap h2 .num {
+      font-family: var(--font-display);
+      font-size: 15px; font-weight: 500;
+      color: var(--brand-bright);
+      letter-spacing: 0.02em;
+    }
+    .legal-wrap h3 {
+      font-family: var(--font-display);
+      font-size: 16px; font-weight: 600;
+      color: var(--text);
+      margin: 24px 0 8px;
+    }
+    .legal-wrap p, .legal-wrap li {
+      font-size: 15px; line-height: 1.75;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    .legal-wrap strong { color: var(--text); font-weight: 600; }
+    .legal-wrap a {
+      color: var(--brand-bright); text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color .2s;
+    }
+    .legal-wrap a:hover { border-bottom-color: var(--brand-bright); }
+    .legal-wrap ul {
+      list-style: none; padding-left: 0;
+      margin: 4px 0 16px;
+    }
+    .legal-wrap ul li {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 6px;
+    }
+    .legal-wrap ul li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 11px;
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--brand);
+    }
+    .legal-wrap address {
+      font-style: normal;
+      padding: 18px 22px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--text);
+      margin: 8px 0 16px;
+    }
+    .legal-wrap address p { color: var(--text); margin-bottom: 4px; }
+    .legal-wrap address p:last-child { margin-bottom: 0; }
+    .legal-wrap .legal-basis {
+      display: block;
+      margin-top: 6px;
+      padding: 10px 14px;
+      background: rgba(74,128,208,0.06);
+      border-left: 2px solid var(--brand);
+      border-radius: 4px;
+      font-size: 13.5px;
+    }
+    .legal-stand {
+      margin-top: 56px;
+      padding: 18px 22px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      font-size: 13.5px;
+      color: var(--text-subtle);
+    }
+    .page-footer {
+      text-align: center;
+      padding: 28px 24px;
+      border-top: 1px solid var(--border);
+      font-size: 13px; color: var(--text-subtle);
+    }
+    .page-footer a {
+      color: var(--brand-bright); text-decoration: none;
+    }
+    .page-footer a:hover { text-decoration: underline; }
+    @media (max-width: 640px) {
+      .legal-wrap { padding: 56px 20px 80px; }
+      .back-link span { display: none; }
+    }
   </style>
 </head>
 <body>
 
-  <header class="site-header scrolled" id="header">
-    <div class="container header-inner">
-      <a href="index.html" class="logo">
-        <img src="assets/logo.png" alt="md mediadesign Logo" class="logo-img">
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="/" aria-label="Zur Startseite"><img src="assets/logo.png" alt="md mediadesign" class="logo-img"></a>
+      <a href="/" class="back-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        <span>Zur Startseite</span>
       </a>
     </div>
   </header>
 
-  <main class="legal-page">
-    <div class="container" style="max-width: 720px;">
-      <a href="index.html" class="back-link">← Zurück zur Startseite</a>
+  <main class="legal-wrap">
+    <h1>Datenschutzerklärung</h1>
+    <p class="lead">Diese Erklärung informiert Sie gemäß Art. 13 DSGVO über Art, Umfang und Zweck der Verarbeitung personenbezogener Daten auf dieser Website.</p>
 
-      <h1>Datenschutzerklärung</h1>
+    <h2><span class="num">1</span> Verantwortlicher</h2>
+    <p>Verantwortlicher für die Datenverarbeitung auf dieser Website ist:</p>
+    <address>
+      <p><strong>Marco Delicati</strong></p>
+      <p>md mediadesign</p>
+      <p>Donaustr. 6</p>
+      <p>93105 Tegernheim</p>
+      <p>Deutschland</p>
+      <p>Telefon: <a href="tel:+4994064250005">09406 42 500 05</a></p>
+      <p>E-Mail: <a href="mailto:mail@md-mediadesign.de">mail@md-mediadesign.de</a></p>
+    </address>
 
-      <h2>1. Datenschutz auf einen Blick</h2>
+    <h2><span class="num">2</span> Hosting &amp; Server-Logs</h2>
+    <p>Diese Website wird gehostet bei <strong>Vercel Inc.</strong> (340 S Lemon Ave #4133, Walnut, CA 91789, USA). Die Auslieferung erfolgt bevorzugt über das EU-Rechenzentrum Frankfurt am Main (Region <code>fra1</code>).</p>
+    <p>Bei jedem Seitenaufruf erfasst der Server technische Zugriffsdaten in Log-Dateien:</p>
+    <ul>
+      <li>IP-Adresse des anfragenden Rechners</li>
+      <li>Datum und Uhrzeit der Anfrage</li>
+      <li>Abgerufene URL und übertragene Datenmenge</li>
+      <li>Browser-Kennung (User-Agent) und Referrer</li>
+    </ul>
+    <p>Diese Daten sind technisch erforderlich, um die Website stabil und sicher bereitzustellen (u.&nbsp;a. Abwehr von Angriffen).</p>
+    <p><span class="legal-basis"><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse am stabilen und sicheren Betrieb der Website).</span></p>
+    <p><strong>Drittlandübermittlung:</strong> Da Vercel seinen Hauptsitz in den USA hat, kann es bei bestimmten Vorgängen (z.&nbsp;B. Support, Lastverteilung) zu einer Verarbeitung in den USA kommen. Es besteht ein Auftragsverarbeitungsvertrag (Data Processing Addendum) mit Vercel, einschließlich der EU-Standardvertragsklauseln nach Art. 46 DSGVO.</p>
+    <p>Weitere Informationen: <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">vercel.com/legal/privacy-policy</a></p>
 
-      <h3>Allgemeine Hinweise</h3>
-      <p>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.</p>
+    <h2><span class="num">3</span> Web-Analyse (Vercel Analytics)</h2>
+    <p>Zur statistischen Auswertung der Nutzung setzen wir <strong>Vercel Web Analytics</strong> ein, einen cookie-freien Analysedienst der Vercel Inc. Erfasst werden ausschließlich aggregierte, anonymisierte Kennzahlen:</p>
+    <ul>
+      <li>Seitenaufrufe und Besucherzahlen</li>
+      <li>Referrer-Quelle (woher kommt der Besucher)</li>
+      <li>Land (aus der IP-Adresse abgeleitet, die IP selbst wird nicht gespeichert)</li>
+      <li>Gerätetyp und Browserfamilie</li>
+    </ul>
+    <p>Vercel Analytics setzt <strong>keine Cookies</strong> und erstellt keine dauerhaften Nutzer-Identifikatoren. Eine Wiedererkennung einzelner Personen ist technisch ausgeschlossen.</p>
+    <p><span class="legal-basis"><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer datensparsamen Reichweitenmessung). Eine Einwilligung nach § 25 TTDSG ist nicht erforderlich, da weder Cookies gesetzt noch Informationen vom Endgerät ausgelesen werden.</span></p>
+    <p>Weitere Informationen: <a href="https://vercel.com/docs/analytics/privacy-policy" target="_blank" rel="noopener noreferrer">vercel.com/docs/analytics/privacy-policy</a></p>
 
-      <h3>Datenerfassung auf dieser Website</h3>
-      <p><strong>Wer ist verantwortlich für die Datenerfassung auf dieser Website?</strong></p>
-      <p>Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber:</p>
-      <p>Marco Delicati<br>Donaustr. 6<br>93105 Tegernheim<br>E-Mail: <a href="mailto:mail@md-mediadesign.de">mail@md-mediadesign.de</a></p>
+    <h2><span class="num">4</span> Kontaktformular (Web3Forms)</h2>
+    <p>Für die Kontaktaufnahme über unser Formular nutzen wir den Dienst <strong>Web3Forms</strong> (Betrieb durch <em>Astroship Software LLP</em>, Indien — die Zustellung unserer Formulardaten erfolgt über EU-Server). Wenn Sie das Kontaktformular absenden, werden die eingegebenen Daten (in der Regel Name, E-Mail-Adresse und Ihre Nachricht) verschlüsselt per HTTPS an Web3Forms übertragen und als E-Mail an <a href="mailto:mail@md-mediadesign.de">mail@md-mediadesign.de</a> weitergeleitet.</p>
+    <p>Die Daten werden bei Web3Forms nicht dauerhaft gespeichert, sondern nur kurzzeitig zur Zustellung verarbeitet.</p>
+    <p><span class="legal-basis"><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. b DSGVO (Anbahnung vorvertraglicher Maßnahmen), hilfsweise Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Bearbeitung Ihrer Anfrage).</span></p>
+    <p><strong>Speicherdauer bei uns:</strong> Ihre Nachricht verbleibt in unserem E-Mail-Postfach, solange der Zweck der Bearbeitung fortbesteht (z.&nbsp;B. laufende Projektanfrage). Danach löschen wir die Korrespondenz, es sei denn, gesetzliche Aufbewahrungspflichten (insbesondere handels- oder steuerrechtlich) stehen entgegen.</p>
+    <p>Weitere Informationen: <a href="https://web3forms.com/privacy-policy" target="_blank" rel="noopener noreferrer">web3forms.com/privacy-policy</a></p>
 
-      <h2>2. Hosting</h2>
-      <p>Diese Website wird bei einem externen Dienstleister gehostet (Hoster). Die personenbezogenen Daten, die auf dieser Website erfasst werden, werden auf den Servern des Hosters gespeichert. Hierbei kann es sich v.&nbsp;a. um IP-Adressen, Kontaktanfragen, Meta- und Kommunikationsdaten, Vertragsdaten, Kontaktdaten, Namen, Websitezugriffe und sonstige Daten, die über eine Website generiert werden, handeln.</p>
+    <h2><span class="num">5</span> Schriftarten (Bunny Fonts)</h2>
+    <p>Für eine einheitliche Darstellung nutzen wir <strong>Bunny Fonts</strong>, einen DSGVO-konformen Schriftartendienst der <em>BunnyWay d.&nbsp;o.&nbsp;o.</em> (Cesta komandanta Staneta 4a, 4202 Naklo, Slowenien / EU). Die Schriften werden ausschließlich aus dem EU-Rechenzentrum ausgeliefert.</p>
+    <p>Bunny Fonts setzt <strong>keine Cookies</strong>, protokolliert laut Anbieter <strong>keine IP-Adressen</strong> und bietet damit eine datenschutzfreundliche Alternative zu Google Fonts.</p>
+    <p><span class="legal-basis"><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer einheitlichen, schnellen und datensparsamen Schriftdarstellung).</span></p>
+    <p>Weitere Informationen: <a href="https://fonts.bunny.net/about" target="_blank" rel="noopener noreferrer">fonts.bunny.net/about</a></p>
 
-      <h2>3. Allgemeine Hinweise und Pflichtinformationen</h2>
+    <h2><span class="num">6</span> 3D-Modell-Viewer (nur auf Demo-Unterseiten)</h2>
+    <p>Auf einzelnen Showcase-Unterseiten (<code>/starfighter</code>, <code>/starfighter-classic</code>, <code>/whey</code>) binden wir die JavaScript-Bibliothek <strong>Google Model Viewer</strong> über die Google-CDN (<code>ajax.googleapis.com</code>, Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA) ein, um 3D-Modelle darzustellen. Beim Aufruf dieser Seiten baut Ihr Browser eine kurzzeitige Verbindung zu Google-Servern auf; dabei werden IP-Adresse, Browser-Kennung und Referrer an Google übertragen.</p>
+    <p><span class="legal-basis"><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer leistungsfähigen, gepflegten 3D-Darstellung ohne eigene CDN-Infrastruktur).</span></p>
+    <p><strong>Drittlandübermittlung:</strong> USA. Google ist nach dem EU-US Data Privacy Framework zertifiziert.</p>
+    <p>Google-Datenschutzerklärung: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a></p>
 
-      <h3>Datenschutz</h3>
-      <p>Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir behandeln Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen Datenschutzvorschriften sowie dieser Datenschutzerklärung.</p>
+    <h2><span class="num">7</span> Anfrage per E-Mail oder Telefon</h2>
+    <p>Wenn Sie uns per E-Mail oder Telefon kontaktieren, werden Ihre Angaben (Name, Rufnummer, Anliegen) zur Bearbeitung Ihrer Anfrage bei uns gespeichert und verarbeitet.</p>
+    <p><span class="legal-basis"><strong>Rechtsgrundlage:</strong> Art. 6 Abs. 1 lit. b DSGVO (Anbahnung oder Erfüllung eines Vertrags) bzw. Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse).</span></p>
+    <p>Wir geben diese Daten ohne Ihre Einwilligung nicht weiter und löschen sie, sobald der Zweck entfällt — unter Beachtung gesetzlicher Aufbewahrungspflichten.</p>
 
-      <h3>Hinweis zur verantwortlichen Stelle</h3>
-      <p>Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:</p>
-      <p>Marco Delicati<br>Donaustr. 6<br>93105 Tegernheim<br>Telefon: 09406 42 500 05<br>E-Mail: <a href="mailto:mail@md-mediadesign.de">mail@md-mediadesign.de</a></p>
+    <h2><span class="num">8</span> Ihre Rechte</h2>
+    <p>Sie haben uns gegenüber jederzeit folgende Rechte bezüglich Ihrer personenbezogenen Daten:</p>
+    <ul>
+      <li>Recht auf Auskunft (Art. 15 DSGVO)</li>
+      <li>Recht auf Berichtigung (Art. 16 DSGVO)</li>
+      <li>Recht auf Löschung (Art. 17 DSGVO)</li>
+      <li>Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
+      <li>Recht auf Datenübertragbarkeit (Art. 20 DSGVO)</li>
+      <li>Recht auf Widerspruch gegen die Verarbeitung (Art. 21 DSGVO)</li>
+      <li>Recht auf Widerruf erteilter Einwilligungen (Art. 7 Abs. 3 DSGVO)</li>
+      <li>Recht auf Beschwerde bei einer Aufsichtsbehörde (Art. 77 DSGVO)</li>
+    </ul>
+    <p>Zur Ausübung genügt eine formlose Nachricht an <a href="mailto:mail@md-mediadesign.de">mail@md-mediadesign.de</a>.</p>
+    <p>Zuständige Aufsichtsbehörde für Bayern: <em>Bayerisches Landesamt für Datenschutzaufsicht (BayLDA)</em>, Promenade 18, 91522 Ansbach — <a href="https://www.lda.bayern.de" target="_blank" rel="noopener noreferrer">lda.bayern.de</a>.</p>
 
-      <h3>Speicherdauer</h3>
-      <p>Soweit innerhalb dieser Datenschutzerklärung keine speziellere Speicherdauer genannt wurde, verbleiben Ihre personenbezogenen Daten bei uns, bis der Zweck für die Datenverarbeitung entfällt.</p>
+    <h2><span class="num">9</span> SSL/TLS-Verschlüsselung</h2>
+    <p>Diese Website nutzt durchgängig eine SSL/TLS-Verschlüsselung zum Schutz der Datenübertragung. Erkennbar am Präfix <code>https://</code> in der Adresszeile Ihres Browsers.</p>
 
-      <h3>Widerruf Ihrer Einwilligung zur Datenverarbeitung</h3>
-      <p>Viele Datenverarbeitungsvorgänge sind nur mit Ihrer ausdrücklichen Einwilligung möglich. Sie können eine bereits erteilte Einwilligung jederzeit widerrufen. Die Rechtmäßigkeit der bis zum Widerruf erfolgten Datenverarbeitung bleibt vom Widerruf unberührt.</p>
+    <h2><span class="num">10</span> Änderungen dieser Erklärung</h2>
+    <p>Wir behalten uns vor, diese Datenschutzerklärung anzupassen, damit sie stets den aktuellen rechtlichen Anforderungen entspricht oder um Änderungen unserer Leistungen umzusetzen.</p>
 
-      <h3>Recht auf Datenübertragbarkeit</h3>
-      <p>Sie haben das Recht, Daten, die wir auf Grundlage Ihrer Einwilligung oder in Erfüllung eines Vertrags automatisiert verarbeiten, an sich oder an einen Dritten in einem gängigen, maschinenlesbaren Format aushändigen zu lassen.</p>
-
-      <h3>Auskunft, Löschung und Berichtigung</h3>
-      <p>Sie haben im Rahmen der geltenden gesetzlichen Bestimmungen jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenverarbeitung und ggf. ein Recht auf Berichtigung oder Löschung dieser Daten.</p>
-
-      <h2>4. Datenerfassung auf dieser Website</h2>
-
-      <h3>Kontaktformular</h3>
-      <p>Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
-      <p>Die Verarbeitung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, sofern Ihre Anfrage mit der Erfüllung eines Vertrags zusammenhängt oder zur Durchführung vorvertraglicher Maßnahmen erforderlich ist. In allen übrigen Fällen beruht die Verarbeitung auf unserem berechtigten Interesse an der effektiven Bearbeitung der an uns gerichteten Anfragen (Art. 6 Abs. 1 lit. f DSGVO) oder auf Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO).</p>
-
-      <h3>Google Fonts (lokal)</h3>
-      <p>Diese Seite nutzt zur einheitlichen Darstellung von Schriftarten so genannte Google Fonts. Die Google Fonts sind lokal installiert. Eine Verbindung zu Servern von Google findet nicht statt.</p>
-      <p><em>Hinweis: Aktuell werden Google Fonts über die Google-Server geladen. Für eine datenschutzkonforme Lösung sollten die Schriften lokal eingebunden werden.</em></p>
-
-      <h2>5. Anfrage per E-Mail oder Telefon</h2>
-      <p>Wenn Sie uns per E-Mail oder Telefon kontaktieren, wird Ihre Anfrage inklusive aller daraus hervorgehenden personenbezogenen Daten (Name, Anfrage) zum Zwecke der Bearbeitung Ihres Anliegens bei uns gespeichert und verarbeitet.</p>
-
-      <p><em>Stand: Februar 2025</em></p>
-    </div>
+    <p class="legal-stand"><strong>Stand:</strong> April 2026. Diese Erklärung wurde auf Basis der tatsächlich eingesetzten Dienste erstellt. Sie finden hier jeweils die aktuelle Fassung.</p>
   </main>
 
-  <script src="script.js"></script>
+  <footer class="page-footer">
+    <p>&copy; 2026 md mediadesign — Marco Delicati · build with ❤️ and 🍕</p>
+    <p style="margin-top:8px;font-size:12.5px;opacity:.8"><a href="/">md-mediadesign.de</a> &nbsp;·&nbsp; <a href="/impressum">Impressum</a> &nbsp;·&nbsp; <a href="/datenschutz">Datenschutz</a> &nbsp;·&nbsp; <a href="/barrierefreiheit">Barrierefreiheit</a></p>
+  </footer>
+
 </body>
 </html>
