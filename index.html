@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="md mediadesign — Werbeagentur aus Tegernheim bei Regensburg. Webdesign, Landingpages, WebApps, Logo &amp; Print. Über 25 Jahre Medienerfahrung.">
-  <title>md mediadesign — Webdesign &amp; Mediengestaltung aus Regensburg</title>
+  <meta name="description" content="md mediadesign — Werbeagentur aus Tegernheim bei Regensburg. Webdesign, App-Entwicklung, KI-Telefonassistenten, Logo &amp; Print. Über 25 Jahre Medienerfahrung.">
+  <title>md mediadesign — Webdesign, App-Entwicklung &amp; KI aus Regensburg</title>
 
   <link rel="icon" type="image/png" href="/assets/logo.png">
   <link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
@@ -265,6 +265,9 @@
     @media (max-width: 900px) {
       .cat-group { grid-template-columns: 1fr; gap: 24px; }
     }
+    .cat--wide { grid-column: 1 / -1; }
+    .cat--wide .svc-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    @media (max-width: 900px) { .cat--wide .svc-list { grid-template-columns: 1fr; } }
     .cat {
       padding: 40px 32px;
       background: var(--bg-card);
@@ -1033,8 +1036,8 @@
     <div class="hero-overlay"></div>
     <div class="hero-inner">
       <div class="hero-badge">Werbeagentur · Tegernheim &nbsp;·&nbsp; Regensburg</div>
-      <h1>Webdesign &amp;<br><span class="grad">Mediengestaltung.</span></h1>
-      <p class="hero-sub">Über 25 Jahre Erfahrung in Werbetechnik, Grafik und Web — von der ersten Skizze bis zum fertigen Webauftritt. Aus Tegernheim bei Regensburg für Kunden in ganz Deutschland.</p>
+      <h1>Webdesign, Apps &amp;<br><span class="grad">KI.</span></h1>
+      <p class="hero-sub">Über 25 Jahre Werbetechnik, Grafik und Web — heute auch App-Entwicklung und KI-Telefonassistenten wie Lisa, die rund um die Uhr ans Telefon geht. Von der ersten Skizze bis zur fertigen Lösung, aus Tegernheim bei Regensburg für Kunden in ganz Deutschland.</p>
       <div class="hero-cta">
         <a href="#kontakt" class="btn-primary">
           Angebot anfragen
@@ -1109,7 +1112,7 @@
     <div class="section-head">
       <span class="section-label">Leistungen</span>
       <h2 class="section-title">Was ich für Sie <span class="grad">baue.</span></h2>
-      <p class="section-desc">Zwei klare Bereiche — Web und Brand. Alles, was Sie brauchen, um online überzeugend aufzutreten.</p>
+      <p class="section-desc">Drei Bereiche — Web, Brand und App &amp; KI. Von der Website über die Marke bis zur eigenen App und zum KI-Telefonassistenten.</p>
     </div>
 
     <div class="cat-group">
@@ -1199,6 +1202,51 @@
               <p class="svc-desc">15–20 fertige Post-Templates in Ihrem Design — Sie posten selbst, keine Dauerbindung.</p>
             </div>
           </a>
+        </div>
+      </article>
+
+      <article class="cat cat--wide reveal">
+        <div class="cat-head">
+          <span class="cat-num">03</span>
+          <h3>App &amp; KI</h3>
+        </div>
+        <p class="cat-desc">Software, die mitarbeitet. Von der individuellen App über KI-Telefonassistenten bis zur Automatisierung — entwickelt, gehostet und betreut aus einer Hand.</p>
+
+        <div class="svc-list">
+          <a href="tel:+4994036443104" class="svc">
+            <div class="svc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15.05 5A5 5 0 0 1 19 8.95M15.05 1A9 9 0 0 1 23 8.94m-1 7.98v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+            <div class="svc-body">
+              <div class="svc-title"><h4>KI-Telefonassistent</h4><span class="svc-price">auf Anfrage</span></div>
+              <p class="svc-desc">Nimmt Anrufe rund um die Uhr an, erfasst Anliegen und Kontaktdaten und meldet jeden Lead sofort — individuell auf Ihre Firma zugeschnitten, auf Wunsch mehrsprachig. <strong style="color:var(--brand-bright)">Lisa anrufen und erleben →</strong></p>
+            </div>
+          </a>
+
+          <a href="#kontakt" class="svc">
+            <div class="svc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
+            <div class="svc-body">
+              <div class="svc-title"><h4>App-Entwicklung</h4><span class="svc-price">auf Anfrage</span></div>
+              <p class="svc-desc">Web- und Mobile-Apps, Buchungssysteme und interne Tools — von der Idee über die Entwicklung bis zum laufenden Betrieb.</p>
+            </div>
+          </a>
+
+          <a href="#kontakt" class="svc">
+            <div class="svc-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+            <div class="svc-body">
+              <div class="svc-title"><h4>Automatisierung &amp; KI-Integration</h4><span class="svc-price">auf Anfrage</span></div>
+              <p class="svc-desc">Chatbots, automatische Benachrichtigungen und KI, die in Ihre bestehenden Systeme eingebunden wird und wiederkehrende Aufgaben übernimmt.</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="cat-addons">
+          <div class="cat-addons-label">Add-Ons</div>
+          <div class="pill-row">
+            <span class="pill">Mehrsprachig</span>
+            <span class="pill">Terminbuchung</span>
+            <span class="pill">Kalender-Anbindung</span>
+            <span class="pill">Sofort-Benachrichtigung</span>
+            <span class="pill">Telegram &amp; E-Mail</span>
+          </div>
         </div>
       </article>
 
