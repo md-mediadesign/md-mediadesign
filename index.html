@@ -1680,9 +1680,14 @@ void main(void){
   })();
   </script>
 
-  <!-- Lisa — KI-Telefonassistentin (Demo-Widget, ElevenLabs) -->
+  <!-- Lisa — KI-Telefonassistentin (Demo-Widget, ElevenLabs)
+       DEAKTIVIERT 2026-06-16: Widget zeigt "Permission denied" (Mikrofon wird
+       beim Verbinden initialisiert, auch im Textmodus). Debugging folgt.
+       Zum Reaktivieren: diesen Kommentar-Block-Anfang und das schliessende
+       "-->" weiter unten entfernen.
   <elevenlabs-convai agent-id="agent_4301ktyynjvff8db24ad478sxk5f"></elevenlabs-convai>
   <script src="https://unpkg.com/@elevenlabs/convai-widget-embed@0.14.2" async type="text/javascript"></script>
+  -->
   <!-- Schließen-Button fürs Lisa-Widget (ausblenden für die aktuelle Sitzung) -->
   <script>
   (function () {
